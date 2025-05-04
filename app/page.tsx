@@ -1,7 +1,9 @@
-import BrowserMockup from "@/ui/BrowserMockup";
-import CodeSnippet from "@/ui/CodeSnippet";
-import ThemeController from "@/ui/ThemeController";
-import Toggle from "@/ui/Toggle";
+import Accordion from "@/ui/daisy/Accordion";
+import BrowserMockup from "@/ui/daisy/BrowserMockup";
+import CodeSnippet from "@/ui/daisy/CodeSnippet";
+import Dropdown from "@/ui/daisy/Dropdown";
+import ThemeController from "@/ui/daisy/ThemeController";
+import Toggle from "@/ui/daisy/Toggle";
 import Image from "next/image";
 
 export default function Home() {
@@ -39,33 +41,37 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 items-center bg-neutral-800 p-8 w-full overflow-y-scroll">
-          <ThemeController />
-          <Toggle label={"Button Options"} />
-          <CodeSnippet />
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center">
+          <div className="flex flex-col gap-4 items-center bg-neutral-800 p-8 w-full overflow-y-scroll">
+            <ThemeController />
+            <Dropdown label={"Library"} />
+            <Accordion label={"Library"} />
+            <Toggle label={"Button Options"} />
+            <CodeSnippet />
+            <a
+              className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
+              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                className="dark:invert"
+                src="/vercel.svg"
+                alt="Vercel logomark"
+                width={20}
+                height={20}
+              />
+              Deploy now
+            </a>
+            <a
+              className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
+              href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read our docs
+            </a>
+          </div>
         </div>
       </main>
 

@@ -1,21 +1,12 @@
-export enum ButtonColor {
-    Primary = 'primary',
-    Secondary = 'secondary',
-    Accent = 'accent',
-    Neutral = 'neutral',
-    Info = 'info',
-    Success = 'success',
-    Warning = 'warning',
-    Error = 'error'
-}
+import { ElementColor } from "@/core/constants/daisy/color";
 
 export default function Toggle({
     label,
-    color = ButtonColor.Primary,
+    color = ElementColor.Primary,
     ...props
 }: React.HTMLAttributes<HTMLElement> & {
     label: string;
-    color?: ButtonColor;
+    color?: ElementColor;
 }) {
     return (
         <fieldset className="fieldset border-base-300 rounded-box w-64 border p-4">
