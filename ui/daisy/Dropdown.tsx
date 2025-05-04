@@ -1,5 +1,8 @@
 import { DropdownAlignment, DropdownDirection, DropdownModifier } from '@/core/constants/daisy/dropdown';
 
+/* 
+See documentation https://daisyui.com/components/dropdown/
+*/
 export default function Dropdown({
     label,
     alignment = DropdownAlignment.Start,

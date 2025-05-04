@@ -1,5 +1,7 @@
-// See documentation @link https://daisyui.com/components/accordion/
-// All class names include a hyphenated "collapse" prefix
+/* 
+See documentation https://daisyui.com/components/accordion/
+All class names include a hyphenated "collapse" prefix
+*/
 
 export enum AccordionModifier {
     Arrow = 'start',

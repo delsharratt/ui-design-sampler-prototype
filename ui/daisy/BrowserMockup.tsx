@@ -1,3 +1,6 @@
+/* 
+See documentation https://daisyui.com/components/mockup-browser/
+*/
 export default function BrowserMockup({
   theme = 'light',
   layout,

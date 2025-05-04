@@ -13,8 +13,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UI Design Sampler",
-  description: "UI Design Sampler is a tool intended to customize previews of elements and layouts using different UI libraries",
+  title: {
+    default: 'UI Design Sampler',
+    template: '%s | UI Design Sampler',
+  },
+  description: 'UI Design Sampler is a tool intended to customize previews of elements and layouts using different UI libraries',
+  // openGraph: {
+  //   title: 'UI Design Sampler',
+  //   description:
+  //     'UI Design Sampler is a tool intended to customize previews of elements and layouts using different UI libraries',
+  //   images: [``],
+  // },
+  // twitter: {
+  //   card: '',
+  // },
 };
 
 export default function RootLayout({

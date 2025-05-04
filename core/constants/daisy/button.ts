@@ -1,5 +1,7 @@
-// See documentation @link https://daisyui.com/components/button/
-// All class names include a hyphenated "btn" prefix
+/* 
+See documentation https://daisyui.com/components/button/
+All class names include a hyphenated "btn" prefix
+*/
 
 export enum ButtonStyle {
     Outline = 'outline',

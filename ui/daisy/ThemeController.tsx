@@ -1,3 +1,6 @@
+/* 
+See documentation https://daisyui.com/components/theme-controller/
+*/
 export default function ThemeController({
     theme = 'light',
     ...props

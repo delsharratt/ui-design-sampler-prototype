@@ -1,5 +1,8 @@
-import { AccordionModifier } from '@/core/constants/daisy/accordion'
+import { AccordionModifier } from "@/core/constants/daisy/accordion";
 
+/* 
+See documentation https://daisyui.com/components/accordion/
+*/
 export default function Accordion({
     label,
     modifier,

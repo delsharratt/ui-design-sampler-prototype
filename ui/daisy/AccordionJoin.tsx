@@ -1,6 +1,9 @@
 import { AccordionModifier } from '@/core/constants/daisy/accordion'
-import Accordion from './daisy/Accordion';
+import Accordion from './Accordion';
 
+/* 
+See documentation https://daisyui.com/components/accordion/#using-accordion-and-join-together
+*/
 export default function AccordionJoin({
     label,
     modifier,

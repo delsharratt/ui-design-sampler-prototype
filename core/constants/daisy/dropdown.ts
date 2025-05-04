@@ -1,5 +1,7 @@
-// See documentation @link https://daisyui.com/components/dropdown/
-// All class names include a hyphenated "dropdown" prefix
+/* 
+See documentation @link https://daisyui.com/components/dropdown/
+All class names include a hyphenated "dropdown" prefix
+*/
 
 export enum DropdownAlignment {
     Start = 'start',

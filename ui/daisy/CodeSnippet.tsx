@@ -1,9 +1,21 @@
-export default function CodeSnippet({
-    theme = 'light',
-    ...props
-}: React.HTMLAttributes<HTMLElement> & {
-    theme?: 'light' | 'dark';
-}) {
+/* 
+See documentation https://daisyui.com/components/mockup-code/
+*/
+export default function CodeSnippet({ }: React.HTMLAttributes<HTMLElement> & {}) {
+
+    type Code = CodeLine[];
+
+    type CodeLine = {
+        Line: string;
+        Prefix?: DataPrefix;
+    }
+
+    enum DataPrefix {
+        Shell = '$',
+        Prompt = '>',
+        None = ''
+    }
+
     return (
         <div className="mockup-code w-full">
             <pre data-prefix="$"><code>npm i daisyui</code></pre>
