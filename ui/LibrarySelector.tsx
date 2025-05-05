@@ -2,18 +2,33 @@
 
 import { LIBRARIES, Library } from '@/core/system/uiLibraries';
 import { useLibrary } from '@/core/system/useLibrary';
+import { useParams, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function LibrarySelector() {
     const { library, changeLibrary } = useLibrary();
+    const params = useParams();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (params.library && params.library !== library) {
+            changeLibrary(params.library as Library);
+        }
+    }, [params.library, library, changeLibrary]);
+
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedLibrary = e.target.value as Library;
+        changeLibrary(selectedLibrary);
+        router.push(`/${selectedLibrary}`); // Update the URL to reflect the selected library
+    };
 
     return (
         <select
-            value={library}
-            defaultValue=""
-            onChange={(e) => changeLibrary(e.target.value as Library)}
+            value={library || ''}
+            onChange={handleChange}
             className="select"
         >
-            <option value="" disabled></option>
+            <option value="" disabled>Select Library</option>
             {Object.entries(LIBRARIES).map(([key, { label }]) => (
                 <option key={key} value={key}>
                     {label}
