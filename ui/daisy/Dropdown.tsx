@@ -26,6 +26,7 @@ export default function Dropdown({
             <ul className="dropdown menu w-52 rounded-box bg-base-100 shadow-sm"
                 popover="auto" id="popover-1" style={{ ['positionAnchor']: '--anchor-1' } as React.CSSProperties}>
                 <li><a>DaisyUI</a></li>
+                <li><a>ShadCN</a></li>
                 <li><a>OnceUI</a></li>
                 <li><a>MaterialUI</a></li>
                 <li><a>Tailwind</a></li>

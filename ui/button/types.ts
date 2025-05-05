@@ -1,7 +1,20 @@
+import { ElementColor } from "@/core/constants/daisy/color";
+
+
+export type ButtonLibrary = 'daisy' | 'material'; // extend later
+
 /* 
 See documentation https://daisyui.com/components/button/
 All class names include a hyphenated "btn" prefix
 */
+
+export interface ButtonProps {
+    label: string;
+    style?: ButtonStyle;
+    size?: ButtonSize;
+    color?: ElementColor;
+    disabled?: boolean;
+}
 
 export enum ButtonStyle {
     Outline = 'outline',
@@ -29,3 +42,4 @@ export enum ButtonModifier {
     Square = 'square',
     Circle = 'circle'
 }
+

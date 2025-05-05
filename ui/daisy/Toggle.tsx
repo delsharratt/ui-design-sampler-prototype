@@ -1,5 +1,5 @@
-import { ButtonSize } from "@/core/constants/daisy/button";
 import { ElementColor } from "@/core/constants/daisy/color";
+import { ButtonSize } from "../button/types";
 
 /* 
 See documentation https://daisyui.com/components/toggle/
