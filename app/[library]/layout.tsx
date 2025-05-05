@@ -19,7 +19,7 @@ export default function LibraryLayout({
           <Link
             key={tab}
             href={`/${library}/${tab}`}
-            className="capitalize"
+            className="uppercase text-sm font-semibold text-neutral-300 hover:text-neutral-100"
           >
             {tab}
           </Link>

@@ -1,4 +1,4 @@
-import { LIBRARIES, Library } from '@/core/system/uiLibraries';
+import { Library, LIBRARY_IDS } from '@/core/system/uiLibraries';
 import DaisyButton from './daisy';
 import { ButtonProps } from './types';
 
@@ -10,7 +10,7 @@ export default function ButtonRenderer(props: RenderProps) {
     const { library, ...rest } = props;
 
     switch (library) {
-        case LIBRARIES.DAISY:
+        case LIBRARY_IDS.DAISY:
             return <DaisyButton {...rest} />;
         default:
             return null;

@@ -9,12 +9,13 @@ export default function LibrarySelector() {
     return (
         <select
             value={library}
+            defaultValue=""
             onChange={(e) => changeLibrary(e.target.value as Library)}
             className="select"
         >
-            <option value="">Select a Library</option>
-            {Object.entries(LIBRARIES).map(([label, value]) => (
-                <option key={value} value={value}>
+            <option value="" disabled></option>
+            {Object.entries(LIBRARIES).map(([key, { label }]) => (
+                <option key={key} value={key}>
                     {label}
                 </option>
             ))}
