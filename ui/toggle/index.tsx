@@ -1,17 +1,17 @@
 import { Library, LIBRARY_IDS } from '@/core/system/uiLibraries';
-import DaisyButton from './daisy';
-import { ButtonProps } from './types';
+import DaisyToggle from './daisy';
+import { ToggleProps } from './types';
 
-export interface RenderProps extends ButtonProps {
+export interface RenderProps extends ToggleProps {
     library: Library;
 }
 
-export default function ButtonRenderer(props: RenderProps) {
+export default function ToggleRenderer(props: RenderProps) {
     const { library, ...rest } = props;
 
     switch (library) {
         case LIBRARY_IDS.DAISY:
-            return <DaisyButton {...rest} />;
+            return <DaisyToggle {...rest} />;
         default:
             return null;
     }

@@ -14,12 +14,12 @@ export default function LibraryLayout({
 
   return (
     <div>
-      <nav className="mb-4 flex gap-4 border-b pb-2">
+      <nav className="mb-8 flex gap-8 border-b border-neutral-400 pb-2">
         {UI_TABS.map((tab) => (
           <Link
             key={tab}
             href={`/${library}/${tab}`}
-            className="uppercase text-sm font-semibold text-neutral-300 hover:text-neutral-100"
+            className="uppercase text-sm font-semibold text-neutral-300 hover:text-neutral-100 pb-2"
           >
             {tab}
           </Link>

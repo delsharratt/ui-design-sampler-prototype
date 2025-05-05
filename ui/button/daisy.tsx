@@ -1,12 +1,13 @@
 import clsx from 'clsx';
-import { ElementColor } from "@/core/constants/daisy/color";
+import { ElementColor } from "@/core/constants/daisy";
 import { ButtonProps, ButtonSize, ButtonStyle } from "./types";
+import { COMPONENT_IDS } from '@/core/system/componentRegistry';
 
 /* 
 See documentation https://daisyui.com/components/button/
 */
 export default function DaisyButton({
-    label,
+    label = COMPONENT_IDS.Button,
     style = ButtonStyle.Outline,
     size = ButtonSize.Medium,
     color = ElementColor.Primary,
@@ -24,7 +25,8 @@ export default function DaisyButton({
         {
             "btn-disabled": rest.disabled, // Apply disabled class if button is disabled
             "loading": rest.disabled // Show loading spinner if button is disabled
-        }
+        },
+        "capitalize"
     );
 
     return (

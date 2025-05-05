@@ -1,7 +1,4 @@
-import { ElementColor } from "@/core/constants/daisy/color";
-
-
-export type ButtonLibrary = 'daisy' | 'material'; // extend later
+import { ElementColor } from "@/core/constants/daisy";
 
 /* 
 See documentation https://daisyui.com/components/button/
@@ -9,7 +6,7 @@ All class names include a hyphenated "btn" prefix
 */
 
 export interface ButtonProps {
-    label: string;
+    label?: string;
     style?: ButtonStyle;
     size?: ButtonSize;
     color?: ElementColor;

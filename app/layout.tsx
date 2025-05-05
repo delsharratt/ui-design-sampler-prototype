@@ -67,7 +67,7 @@ export default function RootLayout({
                 </ol>
               </div>
 
-              <div className="col-span-3 md:col-span-2 h-full flex flex-col gap-4 border-2 border-neutral-500 rounded-md p-8 overflow-y-auto">
+              <div className="col-span-3 md:col-span-2 h-full flex flex-col gap-4 border-2 border-neutral-500 rounded-md p-10 overflow-y-auto">
                 {children}
               </div>
             </div>
