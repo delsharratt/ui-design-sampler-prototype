@@ -1,9 +1,9 @@
 'use client';
 
+import { COMPONENT_IDS } from '@/core/system/componentRegistry';
+import clsx from 'clsx';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
-
-const UI_TABS = ['button', 'accordion', 'toggle'] as const;
+import { useParams, usePathname } from 'next/navigation';
 
 export default function LibraryLayout({
   children,
@@ -11,17 +11,35 @@ export default function LibraryLayout({
   children: React.ReactNode;
 }) {
   const { library } = useParams();
+  const pathname = usePathname();
 
   return (
     <div>
       <nav className="mb-8 flex gap-8 border-b border-neutral-400 pb-2">
-        {UI_TABS.map((tab) => (
+        <Link
+          key="all"
+          href={`/${library}`}
+          className={clsx(
+            'uppercase text-sm font-semibold text-neutral-300 hover:text-neutral-100 pb-2',
+            {
+              'font-bold text-neutral-100': pathname === `/${library}`,
+            },
+          )}
+        >
+          View All
+        </Link>
+        {Object.entries(COMPONENT_IDS).map(([label, component]) => (
           <Link
-            key={tab}
-            href={`/${library}/${tab}`}
-            className="uppercase text-sm font-semibold text-neutral-300 hover:text-neutral-100 pb-2"
+            key={component}
+            href={`/${library}/${component}`}
+            className={clsx(
+              'uppercase text-sm font-semibold text-neutral-300 hover:text-neutral-100 pb-2',
+              {
+                'font-bold text-neutral-100': pathname === `/${library}/${label}`,
+              },
+            )}
           >
-            {tab}
+            {label}
           </Link>
         ))}
       </nav>

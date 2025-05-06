@@ -10,4 +10,6 @@ export interface ToggleProps {
     label?: string | null;
     color?: ElementColor;
     size?: ButtonSize;
+    disabled?: boolean;
+    simple: boolean;
 }

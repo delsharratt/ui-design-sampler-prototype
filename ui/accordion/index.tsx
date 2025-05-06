@@ -6,7 +6,7 @@ import DaisyAccordion from './daisy';
 import { useState } from 'react';
 import { SAMPLE_ACCORDION_DATA_1, SAMPLE_ACCORDION_DATA_2, SAMPLE_ACCORDION_DATA_3 } from './config';
 
-interface RenderProps extends AccordionProps {
+export interface RenderProps extends AccordionProps {
     library: Library;
 }
 

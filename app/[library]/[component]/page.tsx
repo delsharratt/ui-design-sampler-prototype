@@ -24,7 +24,8 @@ export default async function ComponentPage({ params }: { params: Promise<{ libr
     }
 
     return (
-        <div>
+        <div className="flex flex-col gap-4 items-start h-full w-full">
+            <h2 className="text-2xl font-semibold capitalize">{component} Customization</h2>
             <WrapperComponent library={library} />
         </div>
     );

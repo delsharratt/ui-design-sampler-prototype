@@ -1,50 +1,19 @@
 'use client';
 
 import React, { useState } from 'react';
-import ButtonRenderer, { RenderProps } from '../index';
-import { ButtonStyle, ButtonSize } from '../types';
+import ToggleRenderer, { RenderProps } from '../index';
 import { ElementColor } from '@/core/constants/daisy';
+import { ButtonSize } from '@/ui/button/types';
 
-export default function ButtonCustomizationWrapper({ library }: RenderProps) {
-    const [style, setStyle] = useState<ButtonStyle>(ButtonStyle.Outline);
-    const [size, setSize] = useState<ButtonSize>(ButtonSize.Medium);
+export default function ToggleCustomizationWrapper({ library }: RenderProps) {
     const [color, setColor] = useState<ElementColor>(ElementColor.Primary);
+    const [size, setSize] = useState(ButtonSize.Medium);
     const [disabled, setDisabled] = useState(false);
+    const [simple, setSimple] = useState(false);
 
     return (
         <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
-                {/* Style Selector */}
-                <label>
-                    <span className="mr-2">Style:</span>
-                    <select
-                        value={style}
-                        onChange={(e) => setStyle(e.target.value as ButtonStyle)}
-                        className="select select-bordered"
-                    >
-                        {Object.values(ButtonStyle).map((styleOption) => (
-                            <option key={styleOption} value={styleOption}>
-                                {styleOption}
-                            </option>
-                        ))}
-                    </select>
-                </label>
-
-                {/* Size Selector */}
-                <label>
-                    <span className="mr-2">Size:</span>
-                    <select
-                        value={size}
-                        onChange={(e) => setSize(e.target.value as ButtonSize)}
-                        className="select select-bordered"
-                    >
-                        {Object.values(ButtonSize).map((sizeOption) => (
-                            <option key={sizeOption} value={sizeOption}>
-                                {sizeOption}
-                            </option>
-                        ))}
-                    </select>
-                </label>
 
                 {/* Color Selector */}
                 <label>
@@ -62,6 +31,22 @@ export default function ButtonCustomizationWrapper({ library }: RenderProps) {
                     </select>
                 </label>
 
+                {/* Size Selector */}
+                <label>
+                    <span className="mr-2">Size:</span>
+                    <select
+                        value={size}
+                        onChange={(e) => setSize(e.target.value as ButtonSize)}
+                        className="select select-bordered capitalize"
+                    >
+                        {Object.values(ButtonSize).map((sizeOption) => (
+                            <option key={sizeOption} value={sizeOption}>
+                                {sizeOption}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+
                 {/* Disabled Toggle */}
                 <label className="flex items-center gap-2">
                     <input
@@ -72,19 +57,29 @@ export default function ButtonCustomizationWrapper({ library }: RenderProps) {
                     />
                     <span>Disabled</span>
                 </label>
+
+                {/* Simple Toggle */}
+                <label className="flex items-center gap-2">
+                    <input
+                        type="checkbox"
+                        onChange={(e) => setSimple(e.target.checked)}
+                        className="checkbox"
+                    />
+                    <span>With Fieldset and Label</span>
+                </label>
             </div>
 
-            {/* Render the Button */}
+            {/* Render the Toggle */}
             <div className="mt-4">
-                <ButtonRenderer
-                    label="Preview Button"
+                <ToggleRenderer
                     library={library}
-                    style={style}
-                    size={size}
                     color={color}
+                    size={size}
                     disabled={disabled}
+                    simple={simple}
                 />
             </div>
+
         </div>
     );
 }
