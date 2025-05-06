@@ -3,16 +3,16 @@
 import React, { useState } from 'react';
 import ToggleRenderer, { RenderProps } from '../index';
 import { ElementColor } from '@/core/constants/daisy';
-import { ButtonSize } from '@/ui/button/types';
+import { DaisyButtonSize } from '@/ui/button/daisy/types';
 
 export default function ToggleCustomizationWrapper({ library }: RenderProps) {
     const [color, setColor] = useState<ElementColor>(ElementColor.Primary);
-    const [size, setSize] = useState(ButtonSize.Medium);
+    const [size, setSize] = useState(DaisyButtonSize.Medium); // Placeholder, will replace with ButtonSize when available
     const [disabled, setDisabled] = useState(false);
     const [simple, setSimple] = useState(false);
 
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 text-start">
             <div className="flex flex-col gap-2">
 
                 {/* Color Selector */}
@@ -36,10 +36,10 @@ export default function ToggleCustomizationWrapper({ library }: RenderProps) {
                     <span className="mr-2">Size:</span>
                     <select
                         value={size}
-                        onChange={(e) => setSize(e.target.value as ButtonSize)}
+                        onChange={(e) => setSize(e.target.value as DaisyButtonSize)}
                         className="select select-bordered capitalize"
                     >
-                        {Object.values(ButtonSize).map((sizeOption) => (
+                        {Object.values(DaisyButtonSize).map((sizeOption) => (
                             <option key={sizeOption} value={sizeOption}>
                                 {sizeOption}
                             </option>

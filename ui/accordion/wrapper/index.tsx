@@ -24,7 +24,7 @@ export default function AccordionCustomizationWrapper({ library }: RenderProps) 
     };
 
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 text-start">
             <div className="flex flex-col gap-2">
                 {/* Modifier Selector */}
                 <label>

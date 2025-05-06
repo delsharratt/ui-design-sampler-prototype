@@ -11,5 +11,5 @@ export interface ToggleProps {
     color?: ElementColor;
     size?: ButtonSize;
     disabled?: boolean;
-    simple: boolean;
+    simple?: boolean;
 }

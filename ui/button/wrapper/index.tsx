@@ -2,29 +2,29 @@
 
 import React, { useState } from 'react';
 import ButtonRenderer, { RenderProps } from '../index';
-import { ButtonStyle, ButtonSize } from '../types';
 import { ElementColor } from '@/core/constants/daisy';
+import { DaisyButtonSize, DaisyButtonVariant } from '../daisy/types';
 
 export default function ButtonCustomizationWrapper({ library }: RenderProps) {
-    const [style, setStyle] = useState<ButtonStyle>(ButtonStyle.Outline);
-    const [size, setSize] = useState<ButtonSize>(ButtonSize.Medium);
+    const [variant, setVariant] = useState<DaisyButtonVariant>(DaisyButtonVariant.Outline);
+    const [size, setSize] = useState<DaisyButtonSize>(DaisyButtonSize.Medium);
     const [color, setColor] = useState<ElementColor>(ElementColor.Primary);
     const [disabled, setDisabled] = useState(false);
 
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 text-start">
             <div className="flex flex-col gap-2">
                 {/* Style Selector */}
                 <label>
                     <span className="mr-2">Style:</span>
                     <select
-                        value={style}
-                        onChange={(e) => setStyle(e.target.value as ButtonStyle)}
+                        value={variant}
+                        onChange={(e) => setVariant(e.target.value as DaisyButtonVariant)}
                         className="select select-bordered"
                     >
-                        {Object.values(ButtonStyle).map((styleOption) => (
-                            <option key={styleOption} value={styleOption}>
-                                {styleOption}
+                        {Object.values(DaisyButtonVariant).map((variantOption) => (
+                            <option key={variantOption} value={variantOption}>
+                                {variantOption}
                             </option>
                         ))}
                     </select>
@@ -35,10 +35,10 @@ export default function ButtonCustomizationWrapper({ library }: RenderProps) {
                     <span className="mr-2">Size:</span>
                     <select
                         value={size}
-                        onChange={(e) => setSize(e.target.value as ButtonSize)}
+                        onChange={(e) => setSize(e.target.value as DaisyButtonSize)}
                         className="select select-bordered"
                     >
-                        {Object.values(ButtonSize).map((sizeOption) => (
+                        {Object.values(DaisyButtonSize).map((sizeOption) => (
                             <option key={sizeOption} value={sizeOption}>
                                 {sizeOption}
                             </option>
@@ -79,7 +79,7 @@ export default function ButtonCustomizationWrapper({ library }: RenderProps) {
                 <ButtonRenderer
                     label="Preview Button"
                     library={library}
-                    style={style}
+                    variant={variant}
                     size={size}
                     color={color}
                     disabled={disabled}

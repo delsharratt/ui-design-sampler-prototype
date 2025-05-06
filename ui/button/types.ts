@@ -1,42 +1,20 @@
-import { ElementColor } from "@/core/constants/daisy";
+import { Library } from '@/core/system/uiLibraries';
+import { DaisyButtonProps, DaisyButtonSize, DaisyButtonVariant } from './daisy/types';
+import { MaterialButtonSize, MaterialButtonVariant, MaterialButtonProps } from './material/types';
 
-/* 
-See documentation https://daisyui.com/components/button/
-All class names include a hyphenated "btn" prefix
-*/
-
+/* Shared Button Props */
 export interface ButtonProps {
+    library: Library;
     label?: string;
-    style?: ButtonStyle;
-    size?: ButtonSize;
-    color?: ElementColor;
     disabled?: boolean;
+    loading?: boolean;
 }
 
-export enum ButtonStyle {
-    Outline = 'outline',
-    Dash = 'dash',
-    Soft = 'soft',
-    Ghost = 'ghost',
-    Link = 'link'
-}
+/* Combined Button Size */
+export type ButtonSize = DaisyButtonSize | MaterialButtonSize;
 
-export enum ButtonBehavior {
-    Active = 'active',
-    Disabled = 'disabled'
-}
+/* Combined Button Variant */
+export type ButtonStyle = DaisyButtonVariant | MaterialButtonVariant;
 
-export enum ButtonSize {
-    ExtraSmall = 'xs',
-    Small = 'sm',
-    Medium = 'md',
-    Large = 'lg',
-    ExtraLarge = 'xl'
-}
-
-export enum ButtonModifier {
-    Wide = 'wide',
-    Square = 'square',
-    Circle = 'circle'
-}
-
+/* Unified Button Props */
+export type UnifiedButtonProps = DaisyButtonProps | MaterialButtonProps;

@@ -1,12 +1,12 @@
 import { ElementColor } from "@/core/constants/daisy";
-import { ButtonSize } from "../button/types";
+import { DaisyButtonSize } from "../button/daisy/types";
 import { ToggleProps } from "./types";
 import clsx from "clsx";
 
 export default function DaisyToggle({
     label = null,
     color = ElementColor.Primary,
-    size = ButtonSize.Medium,
+    size = DaisyButtonSize.Medium,
     disabled = false,
     simple = false,
     ...rest

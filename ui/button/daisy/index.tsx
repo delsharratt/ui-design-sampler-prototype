@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { ElementColor } from "@/core/constants/daisy";
-import { ButtonProps, ButtonSize, ButtonStyle } from "./types";
+import { DaisyButtonProps, DaisyButtonSize, DaisyButtonVariant } from "./types";
 import { COMPONENT_IDS } from '@/core/system/componentRegistry';
 
 /* 
@@ -8,16 +8,16 @@ See documentation https://daisyui.com/components/button/
 */
 export default function DaisyButton({
     label = COMPONENT_IDS.Button,
-    style = ButtonStyle.Outline,
-    size = ButtonSize.Medium,
+    variant = DaisyButtonVariant.Outline,
+    size = DaisyButtonSize.Medium,
     color = ElementColor.Primary,
     ...rest
-}: React.ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps) {
+}: React.ButtonHTMLAttributes<HTMLButtonElement> & DaisyButtonProps) {
 
     const buttonStyles = clsx(
         "btn",
         [ // Styled based on props
-            style && `btn-${style}`,
+            variant && `btn-${variant}`,
             size && `btn-${size}`,
             color && `btn-${color}`,
         ],
