@@ -3,7 +3,7 @@ import Accordion from "@/ui/accordion";
 import Toggle from "@/ui/toggle";
 import ButtonCustomizationWrapper from "@/ui/button/wrapper";
 import AccordionCustomizationWrapper from "@/ui/accordion/wrapper";
-import ToggleCustomizationWrapper from "@/ui/toggle/wrapper";
+import ToggleCustomizationWrapper from "@/ui/toggle/wrappeer";
 
 export const COMPONENT_IDS = {
     Button: "button",

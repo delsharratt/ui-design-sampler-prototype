@@ -1,6 +1,7 @@
-import { Library } from '@/core/system/uiLibraries';
-import { DaisyButtonProps, DaisyButtonSize, DaisyButtonVariant } from './daisy/types';
-import { MaterialButtonSize, MaterialButtonVariant, MaterialButtonProps } from './material/types';
+import { Library, LIBRARY_IDS } from '@/core/system/uiLibraries';
+import { DaisyButtonProps } from './daisy/types';
+import { MaterialButtonProps } from './material/types';
+import DaisyButtonOptions from './daisy/options';
 
 /* Shared Button Props */
 export interface ButtonProps {
@@ -10,11 +11,11 @@ export interface ButtonProps {
     loading?: boolean;
 }
 
-/* Combined Button Size */
-export type ButtonSize = DaisyButtonSize | MaterialButtonSize;
+export const BUTTON_OPTIONS_REGISTRY = {
+    [LIBRARY_IDS.DAISY]: DaisyButtonOptions,
+    // [LIBRARY_IDS.MATERIAL]: MaterialButtonOptions,
+} as const;
 
-/* Combined Button Variant */
-export type ButtonStyle = DaisyButtonVariant | MaterialButtonVariant;
 
 /* Unified Button Props */
 export type UnifiedButtonProps = DaisyButtonProps | MaterialButtonProps;

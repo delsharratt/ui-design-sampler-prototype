@@ -1,4 +1,4 @@
-import { DropdownAlignment, DropdownDirection, DropdownModifier } from '@/core/constants/daisy/dropdown';
+import { DropdownAlignment, DropdownDirection, DropdownModifier } from "./types";
 
 /* 
 See documentation https://daisyui.com/components/dropdown/

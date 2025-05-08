@@ -7,7 +7,6 @@
 import { ElementColor } from "@/core/constants/daisy";
 import { ButtonProps } from "../types";
 
-
 export enum DaisyButtonVariant {
     Outline = 'outline',
     Dash = 'dash',

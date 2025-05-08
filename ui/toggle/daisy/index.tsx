@@ -1,16 +1,15 @@
 import { ElementColor } from "@/core/constants/daisy";
-import { DaisyButtonSize } from "../button/daisy/types";
-import { ToggleProps } from "./types";
+import { DaisyToggleProps, DaisyToggleSize } from "./types";
 import clsx from "clsx";
 
 export default function DaisyToggle({
-    label = null,
+    label = "Toggle",
     color = ElementColor.Primary,
-    size = DaisyButtonSize.Medium,
+    size = DaisyToggleSize.Medium,
     disabled = false,
     simple = false,
     ...rest
-}: React.HTMLAttributes<HTMLElement> & ToggleProps) {
+}: React.HTMLAttributes<HTMLElement> & DaisyToggleProps) {
     const toggleStyles = clsx(
         "toggle",
         [ // Styled based on props

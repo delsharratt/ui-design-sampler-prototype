@@ -40,6 +40,7 @@ export enum MaterialButtonColor {
 export interface MaterialButtonProps extends ButtonProps {
     size?: MaterialButtonSize;
     variant?: MaterialButtonVariant;
+    color: MaterialButtonColor;
     disableElevation?: boolean;
     // disableFocusRipple?: boolean;
     // fullWidth?: boolean;

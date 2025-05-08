@@ -1,15 +1,12 @@
-import { ElementColor } from "@/core/constants/daisy";
-import { ButtonSize } from "../button/types";
+import { Library } from "@/core/system/uiLibraries";
+import { DaisyToggleProps } from "./daisy/types";
 
-/* 
-See documentation https://daisyui.com/components/toggle/
-All class names include a hyphenated "toggle" prefix
-*/
-
+/* Shared Button Props */
 export interface ToggleProps {
-    label?: string | null;
-    color?: ElementColor;
-    size?: ButtonSize;
-    disabled?: boolean;
-    simple?: boolean;
+    library: Library;
+    label?: string;
+    active?: boolean;
 }
+
+/* Unified Toggle Props */
+export type UnifiedToggleProps = DaisyToggleProps; // TODO: add MaterialToggleProps when available

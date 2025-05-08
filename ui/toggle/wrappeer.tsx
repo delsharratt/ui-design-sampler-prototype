@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import ToggleRenderer, { RenderProps } from '../index';
+import ToggleRenderer, { RenderProps } from './index';
 import { ElementColor } from '@/core/constants/daisy';
-import { DaisyButtonSize } from '@/ui/button/daisy/types';
+import { DaisyToggleSize } from './daisy/types';
 
 export default function ToggleCustomizationWrapper({ library }: RenderProps) {
     const [color, setColor] = useState<ElementColor>(ElementColor.Primary);
-    const [size, setSize] = useState(DaisyButtonSize.Medium); // Placeholder, will replace with ButtonSize when available
+    const [size, setSize] = useState(DaisyToggleSize.Medium); // Placeholder, will replace with ButtonSize when available
     const [disabled, setDisabled] = useState(false);
     const [simple, setSimple] = useState(false);
 
@@ -36,10 +36,10 @@ export default function ToggleCustomizationWrapper({ library }: RenderProps) {
                     <span className="mr-2">Size:</span>
                     <select
                         value={size}
-                        onChange={(e) => setSize(e.target.value as DaisyButtonSize)}
+                        onChange={(e) => setSize(e.target.value as DaisyToggleSize)}
                         className="select select-bordered capitalize"
                     >
-                        {Object.values(DaisyButtonSize).map((sizeOption) => (
+                        {Object.values(DaisyToggleSize).map((sizeOption) => (
                             <option key={sizeOption} value={sizeOption}>
                                 {sizeOption}
                             </option>
