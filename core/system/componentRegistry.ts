@@ -1,9 +1,9 @@
 import ButtonRenderer from "@/ui/button";
 import Accordion from "@/ui/accordion";
 import Toggle from "@/ui/toggle";
-import ButtonCustomizationWrapper from "@/ui/button/wrapper";
 import AccordionCustomizationWrapper from "@/ui/accordion/wrapper";
 import ToggleCustomizationWrapper from "@/ui/toggle/wrappeer";
+import ButtonWrapperRenderer from "@/ui/button/wrapper";
 
 export const COMPONENT_IDS = {
     Button: "button",
@@ -21,7 +21,7 @@ export const COMPONENT_REGISTRY = {
 };
 
 export const COMPONENT_WRAPPER_REGISTRY = {
-    [COMPONENT_IDS.Button]: ButtonCustomizationWrapper,
+    [COMPONENT_IDS.Button]: ButtonWrapperRenderer,
     [COMPONENT_IDS.Accordion]: AccordionCustomizationWrapper,
     [COMPONENT_IDS.Toggle]: ToggleCustomizationWrapper,
 };

@@ -30,6 +30,7 @@ export enum DaisyButtonSize {
 
 export enum DaisyButtonModifier {
     Wide = 'wide',
+    Block = 'block', // full width
     Square = 'square',
     Circle = 'circle'
 }
@@ -38,4 +39,7 @@ export interface DaisyButtonProps extends ButtonProps {
     size?: DaisyButtonSize;
     variant?: DaisyButtonVariant;
     color?: ElementColor;
+    modifier?: DaisyButtonModifier | null;
+    icon?: boolean;
+    iconOnly?: boolean;
 }

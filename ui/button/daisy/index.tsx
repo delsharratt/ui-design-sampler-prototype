@@ -11,6 +11,9 @@ export default function DaisyButton({
     variant = DaisyButtonVariant.Outline,
     size = DaisyButtonSize.Medium,
     color = ElementColor.Primary,
+    modifier = null,
+    icon = false,
+    iconOnly = false,
     ...rest
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & DaisyButtonProps) {
 
@@ -20,16 +23,22 @@ export default function DaisyButton({
             variant && `btn-${variant}`,
             size && `btn-${size}`,
             color && `btn-${color}`,
+            modifier && `btn-${modifier}`,
+            rest.disabled && "btn-disabled",
         ],
         rest.className, // Allow additional classes to be passed in
-        {
-            "btn-disabled": rest.disabled, // Apply disabled class if button is disabled
-            "loading": rest.disabled // Show loading spinner if button is disabled
-        },
         "capitalize"
     );
 
+    const sampleIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="size-[1.2em]">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" /></svg>;
+
     return (
-        <button className={buttonStyles} {...rest}>{label}</button>
+        <button className={buttonStyles} {...rest}>
+            {/* Show loading spinner if button is disabled */}
+            {rest.disabled && <span className="loading loading-spinner"></span>}
+            {icon && <span>{sampleIcon}</span>}
+            {!iconOnly && label}
+        </button>
     );
 }
