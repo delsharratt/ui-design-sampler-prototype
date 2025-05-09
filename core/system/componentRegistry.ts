@@ -1,8 +1,8 @@
-import ButtonRenderer from "@/ui/button";
-import Accordion from "@/ui/accordion";
-import Toggle from "@/ui/toggle";
+import AccordionRenderer from "@/ui/accordion";
 import AccordionCustomizationWrapper from "@/ui/accordion/wrapper";
+import ButtonRenderer from "@/ui/button";
 import ButtonWrapperRenderer from "@/ui/button/wrapper";
+import Toggle from "@/ui/toggle";
 import ToggleWrapperRenderer from "@/ui/toggle/wrapper";
 
 export const COMPONENT_IDS = {
@@ -16,7 +16,7 @@ export type ComponentId = (typeof COMPONENT_IDS)[keyof typeof COMPONENT_IDS];
 // Replace others with renderer components once made to reflect button component setup
 export const COMPONENT_REGISTRY = {
     [COMPONENT_IDS.Button]: ButtonRenderer,
-    [COMPONENT_IDS.Accordion]: Accordion,
+    [COMPONENT_IDS.Accordion]: AccordionRenderer,
     [COMPONENT_IDS.Toggle]: Toggle,
 };
 

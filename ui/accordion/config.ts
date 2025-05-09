@@ -1,34 +1,25 @@
-import { AccordionItem } from './types';
+import { MaterialAccordionItem } from "./material/types";
 
-export const SAMPLE_ACCORDION_DATA_1: AccordionItem[] = [
+export const ACCORDION_SAMPLE_DATA: MaterialAccordionItem[] = [
     {
-        title: 'Single Item',
-        content: 'This is the content for the single accordion item.',
-    },
-];
-
-export const SAMPLE_ACCORDION_DATA_2: AccordionItem[] = [
-    {
-        title: 'First Item',
-        content: 'This is the content for the first accordion item.',
+        id: 'panel1',
+        title: 'Accordion 1',
+        details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
+        actions: null, // No actions for this accordion
     },
     {
-        title: 'Second Item',
-        content: 'This is the content for the second accordion item.',
-    },
-];
-
-export const SAMPLE_ACCORDION_DATA_3: AccordionItem[] = [
-    {
-        title: 'First Item',
-        content: 'This is the content for the first accordion item.',
+        id: 'panel2',
+        title: 'Accordion 2',
+        details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
+        actions: null, // No actions for this accordion
     },
     {
-        title: 'Second Item',
-        content: 'This is the content for the second accordion item.',
-    },
-    {
-        title: 'Third Item',
-        content: 'This is the content for the third accordion item.',
+        id: 'panel3',
+        title: 'Accordion Actions',
+        details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
+        actions: [
+            // { label: 'Cancel', onClick: () => console.log('Cancel clicked') },
+            // { label: 'Agree', onClick: () => console.log('Agree clicked') },
+        ],
     },
 ];

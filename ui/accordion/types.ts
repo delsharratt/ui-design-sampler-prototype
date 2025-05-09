@@ -1,22 +1,19 @@
-/* 
-See documentation https://daisyui.com/components/accordion/
-All class names include a hyphenated "collapse" prefix
-*/
+import { Library } from '@/core/system/uiLibraries';
+import { DaisyAccordionProps } from './daisy/types';
+import { MaterialAccordionProps } from './material/types';
 
 export interface AccordionItem {
+    id: string;
     title: string;
-    content: string;
+    details: string;
 }
 
+/* Shared Accordion Props */
 export interface AccordionProps {
+    library: Library;
     items?: AccordionItem[];
-    modifier?: AccordionModifier;
-    join?: boolean;
+    disabled?: boolean;
 }
 
-export enum AccordionModifier {
-    Arrow = 'arrow',
-    Plus = 'plus',
-    Open = 'open',
-    Close = 'close'
-}
+/* Unified Button Props */
+export type UnifiedAccordionProps = DaisyAccordionProps | MaterialAccordionProps;

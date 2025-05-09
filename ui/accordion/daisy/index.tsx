@@ -1,4 +1,5 @@
-import { AccordionItem, AccordionModifier, AccordionProps } from "./types";
+import { AccordionItem } from "../types";
+import { DaisyAccordionModifier, DaisyAccordionProps } from "./types";
 import clsx from "clsx";
 
 /* 
@@ -6,10 +7,10 @@ See documentation https://daisyui.com/components/accordion/
 */
 export default function DaisyAccordion({
     items = [],
-    modifier = AccordionModifier.Arrow,
+    modifier = DaisyAccordionModifier.Arrow,
     join = false,
     ...rest
-}: React.HTMLAttributes<HTMLElement> & AccordionProps) {
+}: React.HTMLAttributes<HTMLElement> & DaisyAccordionProps) {
     const wrapperClass = join ? "join join-vertical bg-base-100" : "flex flex-col gap-2"; // Apply "join" wrapper if enabled
 
     return (
@@ -19,12 +20,12 @@ export default function DaisyAccordion({
                     key={index} // TODO: potentially look into changing background color and border by prop?
                     className={clsx(
                         `collapse collapse-${modifier} bg-base-100`,
-                        { 'join-item': join } // Add 'join-item' class if join is true
+                        { 'join-item': join }
                     )}
                 >
                     <input type="radio" name="accordion-group" defaultChecked={index === 0} />
                     <div className="collapse-title font-semibold">{item.title}</div>
-                    <div className="collapse-content text-sm">{item.content}</div>
+                    <div className="collapse-content text-sm">{item.details}</div>
                 </div>
             ))}
         </div>
