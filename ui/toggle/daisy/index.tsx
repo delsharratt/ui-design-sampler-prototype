@@ -1,5 +1,5 @@
 import { DaisyElementColor, DaisyElementSize } from "@/core/constants/daisy";
-import { DaisyToggleProps, DaisyToggleSize } from "./types";
+import { DaisyToggleProps } from "./types";
 import clsx from "clsx";
 import { COMPONENT_IDS } from "@/core/system/componentRegistry";
 
