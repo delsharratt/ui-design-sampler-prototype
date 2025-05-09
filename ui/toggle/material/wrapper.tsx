@@ -5,6 +5,7 @@ import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
 import MaterialToggle from './index';
 import { MaterialToggleOrientation, MaterialToggleProps } from './types';
+import MaterialThemeProvider from '@/ui/providers/MaterialThemeProvider';
 
 export default function MaterialToggleWrapperRenderer({ }: MaterialToggleProps) {
     const [size, setSize] = useState<MaterialComponentSize>(MaterialComponentSize.Medium);
@@ -137,14 +138,18 @@ export default function MaterialToggleWrapperRenderer({ }: MaterialToggleProps) 
             </div>
 
             {/* Render the Toggle */}
-            <div className="m-auto w-full">
+            <div className="flex justify-around mt-8 w-full">
                 <MaterialToggle
                     label="Preview Toggle"
                     library={LIBRARY_IDS.MATERIAL}
                     size={size}
                     color={color}
                     orientation={orientation}
+                    isExclusive={isExclusive}
+                    fullWidth={fullWidth}
                     disabled={disabled}
+                    disableRipple={disableRipple}
+                    disableFocusRipple={disableFocusRipple}
                 />
             </div>
 

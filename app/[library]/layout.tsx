@@ -1,6 +1,8 @@
 'use client';
 
 import { COMPONENT_IDS } from '@/core/system/componentRegistry';
+import { LIBRARY_IDS } from '@/core/system/uiLibraries';
+import MaterialThemeProvider from '@/ui/providers/MaterialThemeProvider';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useParams, usePathname } from 'next/navigation';
@@ -13,7 +15,7 @@ export default function LibraryLayout({
   const { library } = useParams();
   const pathname = usePathname();
 
-  return (
+  const layout = (
     <div>
       <nav className="mb-8 flex gap-8 border-b border-neutral-400 pb-2">
         <Link
@@ -47,5 +49,12 @@ export default function LibraryLayout({
       </nav>
       <div>{children}</div>
     </div>
+  )
+
+  // Conditionally wrap with MaterialThemeProvider if the library is MaterialUI
+  return library === LIBRARY_IDS.MATERIAL ? (
+    <MaterialThemeProvider>{layout}</MaterialThemeProvider>
+  ) : (
+    layout
   );
 }

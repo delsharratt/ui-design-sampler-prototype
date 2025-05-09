@@ -83,7 +83,7 @@ export default function DaisyToggleWrapperRenderer({ }: DaisyToggleProps) {
             </div>
 
             {/* Render the Button */}
-            <div className="mt-4">
+            <div className="flex justify-around mt-8 w-full">
                 <DaisyToggle
                     label={"Preview Toggle"}
                     library={LIBRARY_IDS.DAISY}

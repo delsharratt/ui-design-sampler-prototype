@@ -87,7 +87,7 @@ export default function MaterialButtonWrapperRenderer({ }: MaterialButtonProps) 
             </div>
 
             {/* Render the Button */}
-            <div className="mt-4">
+            <div className="flex justify-around mt-8 w-full">
                 <MaterialButton
                     label="Preview Button"
                     library={LIBRARY_IDS.MATERIAL}
