@@ -1,13 +1,14 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import { MaterialButtonColor, MaterialButtonSize, MaterialButtonVariant, MaterialButtonProps } from './types';
+import { MaterialButtonVariant, MaterialButtonProps } from './types';
 import { COMPONENT_IDS } from '@/core/system/componentRegistry';
+import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
 
 export default function MaterialButton({
     label = COMPONENT_IDS.Button,
+    size = MaterialComponentSize.Medium,
+    color = MaterialComponentColor.Primary,
     variant = MaterialButtonVariant.Outlined,
-    size = MaterialButtonSize.Medium,
-    color = MaterialButtonColor.Primary,
     loading = false,
     disabled = false,
     disableElevation = false,
@@ -15,12 +16,12 @@ export default function MaterialButton({
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & MaterialButtonProps) {
     return (
         <Button
-            variant={variant}
             size={size}
             color={color}
+            variant={variant}
+            loading={loading}
             disabled={disabled || loading}
             disableElevation={disableElevation}
-            loading={loading}
             {...rest}
         >
             {loading ? 'Loading...' : label}

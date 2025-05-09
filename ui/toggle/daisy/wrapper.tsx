@@ -1,19 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
-import { DaisyButtonModifier, DaisyButtonProps, DaisyButtonVariant } from '../daisy/types';
 import { DaisyElementColor, DaisyElementSize } from '@/core/constants/daisy';
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
-import DaisyButton from '.';
+import { DaisyToggleProps } from './types';
+import DaisyToggle from '.';
 
-export default function DaisyButtonWrapperRenderer({ }: DaisyButtonProps) {
-    const [size, setSize] = useState<DaisyElementSize>(DaisyElementSize.Medium);
+export default function DaisyToggleWrapperRenderer({ }: DaisyToggleProps) {
     const [color, setColor] = useState<DaisyElementColor>(DaisyElementColor.Primary);
-    const [variant, setVariant] = useState<DaisyButtonVariant>(DaisyButtonVariant.Outline);
-    const [modifier, setModifier] = useState<DaisyButtonModifier>();
+    const [size, setSize] = useState<DaisyElementSize>(DaisyElementSize.Medium);
 
-    const [icon, setIcon] = useState(false);
-    const [iconOnly, setIconOnly] = useState(false);
+    const [simple, setSimple] = useState(false);
     const [disabled, setDisabled] = useState(false);
 
     return (
@@ -55,66 +52,20 @@ export default function DaisyButtonWrapperRenderer({ }: DaisyButtonProps) {
                         </select>
                     </label>
 
-                    {/* Variant Selector */}
-                    <label>
-                        <span className="mr-2">Style:</span>
-                        <select
-                            value={variant}
-                            onChange={(e) => setVariant(e.target.value as DaisyButtonVariant)}
-                            className="select select-bordered"
-                        >
-                            {Object.values(DaisyButtonVariant).map((variantOption) => (
-                                <option key={variantOption} value={variantOption}>
-                                    {variantOption}
-                                </option>
-                            ))}
-                        </select>
-                    </label>
-
-                    {/* Modifier Selector */}
-                    <label>
-                        <span className="mr-2">Modifier:</span>
-                        <select
-                            value={modifier}
-                            onChange={(e) => setModifier(e.target.value as DaisyButtonModifier)}
-                            className="select select-bordered"
-                        >
-                            {Object.values(DaisyButtonModifier).map((modifierOption) => (
-                                <option key={modifierOption} value={modifierOption}>
-                                    {modifierOption}
-                                </option>
-                            ))}
-                        </select>
-                    </label>
-
                 </div>
 
-                {/* Column for Checkbox Styles */}
+                {/* Column for Checbox Styles */}
                 <div className="flex flex-col basis-1/3 gap-4">
 
-                    {/* With Icon */}
+                    {/* Simple Toggle */}
                     <label className="flex items-center gap-2">
                         <input
                             type="checkbox"
-                            checked={icon}
-                            onChange={(e) => setIcon(e.target.checked)}
+                            checked={simple}
+                            onChange={(e) => setSimple(e.target.checked)}
                             className="checkbox mr-2"
                         />
-                        <span>Icon</span>
-                    </label>
-
-                    {/* Icon Only */}
-                    <label className="flex items-center gap-2">
-                        <input
-                            type="checkbox"
-                            checked={iconOnly}
-                            onChange={(e) => {
-                                setIconOnly(e.target.checked)
-                                setIcon(e.target.checked ? true : false); // Ensure icon is checked if iconOnly is checked
-                            }}
-                            className="checkbox mr-2"
-                        />
-                        <span>Icon Only</span>
+                        <span>Simple Toggle</span>
                     </label>
 
                     {/* Disabled Toggle */}
@@ -132,21 +83,18 @@ export default function DaisyButtonWrapperRenderer({ }: DaisyButtonProps) {
             </div>
 
             {/* Render the Button */}
-            <div className="flex justify-around mt-8 w-full">
-                <DaisyButton
-                    label={disabled ? "Loading" : "Preview Button"}
+            <div className="mt-4">
+                <DaisyToggle
+                    label={"Preview Toggle"}
                     library={LIBRARY_IDS.DAISY}
-                    variant={variant}
                     size={size}
                     color={color}
-                    modifier={modifier}
-                    icon={icon}
-                    iconOnly={iconOnly}
+                    simple={simple}
                     disabled={disabled}
                 />
             </div>
 
-            {/* Hidden buttons to get around Tailwind buildtime class names limitation */}
+            {/* Hidden buttons to get around Tailwind buildtime class name limitation */}
             <div className="hidden">
                 <button className="btn btn-soft btn-primary btn-xs">Soft | Primary | Extra Small</button>
                 <button className="btn btn-outline btn-secondary btn-sm">Outline | Secondary | Small</button>

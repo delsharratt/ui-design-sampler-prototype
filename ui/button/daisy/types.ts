@@ -4,7 +4,7 @@
 *  All class names include a hyphenated "btn" prefix
 */
 
-import { ElementColor } from "@/core/constants/daisy";
+import { DaisyElementColor, DaisyElementSize } from "@/core/constants/daisy";
 import { ButtonProps } from "../types";
 
 export enum DaisyButtonVariant {
@@ -20,14 +20,6 @@ export enum DaisyButtonBehavior {
     Disabled = 'disabled'
 }
 
-export enum DaisyButtonSize {
-    ExtraSmall = 'xs',
-    Small = 'sm',
-    Medium = 'md',
-    Large = 'lg',
-    ExtraLarge = 'xl'
-}
-
 export enum DaisyButtonModifier {
     Wide = 'wide',
     Block = 'block', // full width
@@ -36,9 +28,9 @@ export enum DaisyButtonModifier {
 }
 
 export interface DaisyButtonProps extends ButtonProps {
-    size?: DaisyButtonSize;
+    size?: DaisyElementSize;
+    color?: DaisyElementColor;
     variant?: DaisyButtonVariant;
-    color?: ElementColor;
     modifier?: DaisyButtonModifier | null;
     icon?: boolean;
     iconOnly?: boolean;

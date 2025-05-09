@@ -13,13 +13,8 @@
 */
 
 // import { ButtonProps } from "@mui/material"; // Q: Should I be using this instead of the custom ButtonProps?
+import { MaterialComponentColor, MaterialComponentSize } from "@/core/constants/material";
 import { ButtonProps } from "../types";
-
-export enum MaterialButtonSize {
-    Small = 'small',
-    Medium = 'medium',
-    Large = 'large',
-}
 
 export enum MaterialButtonVariant {
     Text = 'text',
@@ -27,20 +22,11 @@ export enum MaterialButtonVariant {
     Outlined = 'outlined',
 }
 
-export enum MaterialButtonColor {
-    Primary = 'primary',
-    Secondary = 'secondary',
-    Error = 'error',
-    Info = 'info',
-    Warning = 'warning',
-    Success = 'success',
-}
-
 // TODO: introduce more props as desired for customization
 export interface MaterialButtonProps extends ButtonProps {
-    size?: MaterialButtonSize;
+    size?: MaterialComponentSize;
+    color: MaterialComponentColor;
     variant?: MaterialButtonVariant;
-    color: MaterialButtonColor;
     disableElevation?: boolean;
     // disableFocusRipple?: boolean;
     // fullWidth?: boolean;

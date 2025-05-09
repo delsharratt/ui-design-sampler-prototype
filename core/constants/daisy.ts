@@ -3,7 +3,15 @@ See documentation https://daisyui.com/docs/colors/
 All class names include a hyphenated "color" prefix
 */
 
-export enum ElementColor {
+export enum DaisyElementSize {
+    ExtraSmall = 'xs',
+    Small = 'sm',
+    Medium = 'md',
+    Large = 'lg',
+    ExtraLarge = 'xl'
+}
+
+export enum DaisyElementColor {
     Primary = 'primary',
     Secondary = 'secondary',
     Accent = 'accent',
@@ -14,7 +22,7 @@ export enum ElementColor {
     Error = 'error'
 }
 
-export enum BaseColor {
+export enum DaisyBaseColor {
     OneHundred = 'base-100',
     TwoHundred = 'base-200',
     ThreeHundred = 'base-300',

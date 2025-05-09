@@ -1,14 +1,14 @@
-import { ElementColor } from "@/core/constants/daisy";
+import { DaisyElementColor, DaisyElementSize } from "@/core/constants/daisy";
 import { DaisyToggleProps, DaisyToggleSize } from "./types";
 import clsx from "clsx";
+import { COMPONENT_IDS } from "@/core/system/componentRegistry";
 
 export default function DaisyToggle({
-    label = "Toggle",
-    color = ElementColor.Primary,
-    size = DaisyToggleSize.Medium,
-    disabled = false,
+    label = COMPONENT_IDS.Toggle,
+    color = DaisyElementColor.Primary,
+    size = DaisyElementSize.Medium,
     simple = false,
-    ...rest
+    disabled = false
 }: React.HTMLAttributes<HTMLElement> & DaisyToggleProps) {
     const toggleStyles = clsx(
         "toggle",
@@ -16,7 +16,6 @@ export default function DaisyToggle({
             color && `toggle-${color}`,
             size && `toggle-${size}`
         ],
-        rest.className, // Allow additional classes to be passed in
         "capitalize"
     );
 

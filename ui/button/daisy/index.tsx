@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { ElementColor } from "@/core/constants/daisy";
-import { DaisyButtonProps, DaisyButtonSize, DaisyButtonVariant } from "./types";
+import { DaisyElementColor, DaisyElementSize } from "@/core/constants/daisy";
+import { DaisyButtonProps, DaisyButtonVariant } from "./types";
 import { COMPONENT_IDS } from '@/core/system/componentRegistry';
 
 /* 
@@ -8,9 +8,9 @@ See documentation https://daisyui.com/components/button/
 */
 export default function DaisyButton({
     label = COMPONENT_IDS.Button,
+    size = DaisyElementSize.Medium,
+    color = DaisyElementColor.Primary,
     variant = DaisyButtonVariant.Outline,
-    size = DaisyButtonSize.Medium,
-    color = ElementColor.Primary,
     modifier = null,
     icon = false,
     iconOnly = false,

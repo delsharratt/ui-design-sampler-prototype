@@ -20,10 +20,11 @@ export default function LibraryLayout({
           key="all"
           href={`/${library}`}
           className={clsx(
-            'uppercase text-sm font-semibold text-neutral-300 hover:text-neutral-100 pb-2',
             {
               'font-bold text-neutral-100': pathname === `/${library}`,
+              'font-semibold text-neutral-300': pathname !== `/${library}`,
             },
+            'uppercase text-sm text-neutral-300 hover:text-neutral-100 pb-2',
           )}
         >
           View All
@@ -33,10 +34,11 @@ export default function LibraryLayout({
             key={component}
             href={`/${library}/${component}`}
             className={clsx(
-              'uppercase text-sm font-semibold text-neutral-300 hover:text-neutral-100 pb-2',
               {
-                'font-bold text-neutral-100': pathname === `/${library}/${label}`,
+                'font-bold text-neutral-100': pathname === `/${library}/${component}`,
+                'font-semibold text-neutral-300': pathname !== `/${library}/${component}`,
               },
+              'uppercase text-sm hover:text-neutral-100 pb-2',
             )}
           >
             {label}
