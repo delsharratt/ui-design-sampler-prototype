@@ -8,6 +8,8 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import Link from "next/link";
+import { Code } from '@mui/icons-material';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,23 +53,25 @@ export default function RootLayout({
 
             <div className="grid grid-cols-3 row-span-1 h-full w-full gap-8 text-center">
 
-              <div className="col-span-3 md:col-span-1 h-full flex flex-col gap-8 items-center p-8">
-                <h1 className="text-5xl font-bold">UI Design Sampler</h1>
+              <div className="col-span-3 md:col-span-1 h-full flex flex-col gap-4 items-center p-8">
+                <h1 className="text-5xl font-bold mb-4">UI Design Sampler</h1>
                 <h2 className="text-xl font-medium tracking-widest">
-                  PREVIEWING... {" "}
+                  <Code fontSize="large" /><br />PREVIEWING... {" "}
                 </h2>
 
                 <LibrarySelector />
 
-                <ol className="list-inside list-disc text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+                <ol className="list-inside list-disc text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)] mt-4">
                   <li className="mb-2 tracking-[-.01em]">
-                    UI Design Sampler is a tool intended to customize previews of elements and layouts using different UI libraries in{" "}
-                    <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-                      Next.js
-                    </code>
+                    UI Design Sampler is a tool intended to customize previews of elements and layouts using different UI libraries.
                   </li>
-                  <li className="tracking-[-.01em]">
+                  {/* <li className="mb-2 tracking-[-.01em]">
                     Customize selections below to preview changes in the "browser"
+                  </li> */}
+                  <li className="tracking-[-.01em]">
+                    Built by <Link href="https://delsharratt.vercel.app/" className="text-blue-500 hover:text-blue-400">Del Sharratt</Link> using{" "}
+                    <Link href="https://nextjs.org/" className="text-blue-500 hover:text-blue-400">Next.js</Link> and{" "}
+                    <Link href="https://tailwindcss.com/" className="text-blue-500 hover:text-blue-400">Tailwind CSS</Link>.
                   </li>
                 </ol>
               </div>

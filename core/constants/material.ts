@@ -8,7 +8,6 @@ export const materialDarkTheme = createTheme({
 });
 
 export enum MaterialComponentColor {
-    Inherit = 'inherit',
     Standard = 'standard',
     Primary = 'primary',
     Secondary = 'secondary',

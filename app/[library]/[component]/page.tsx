@@ -1,4 +1,4 @@
-import { COMPONENT_WRAPPER_REGISTRY, COMPONENT_REGISTRY, ComponentId } from '@/core/system/componentRegistry';
+import { COMPONENT_WRAPPER_REGISTRY, COMPONENT_REGISTRY, ComponentId, COMPONENT_IDS } from '@/core/system/componentRegistry';
 import { Library } from '@/core/system/uiLibraries';
 import React from 'react';
 

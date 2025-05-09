@@ -10,7 +10,7 @@ import { exclusiveSampleData, nonExclusiveSampleData } from './config';
 export default function MaterialToggle({
     label = COMPONENT_IDS.Toggle,
     size = MaterialComponentSize.Medium,
-    color = MaterialComponentColor.Primary,
+    color = MaterialComponentColor.Standard,
     orientation = MaterialToggleOrientation.Horizontal,
     isExclusive = false,
     disableRipple = false,

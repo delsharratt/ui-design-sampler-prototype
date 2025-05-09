@@ -1,9 +1,17 @@
 import { COMPONENT_REGISTRY } from '@/core/system/componentRegistry';
-import { Library } from '@/core/system/uiLibraries';
+import { LIBRARIES, Library } from '@/core/system/uiLibraries';
+import { Metadata } from 'next';
 import React from 'react';
+
+export const metadata: Metadata = {
+  title: 'Library Overview',
+};
 
 export default async function LibraryOverviewPage({ params }: { params: Promise<{ library: Library }> }) {
   const { library } = await params;
+
+  // Set the metadata title based on the library
+  metadata.title = LIBRARIES[library]?.label;
 
   return (
     <div className="flex flex-col gap-12">
