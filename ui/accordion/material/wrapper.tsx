@@ -9,7 +9,7 @@ import { MATERIAL_TRANSITIONS, MaterialTransitionId } from '../../../core/consta
 export default function MaterialAccordionWrapper({ }: MaterialAccordionProps) {
     const [expanded, setExpanded] = useState(false);
     const [disabled, setDisabled] = useState(false);
-    const [transition, setTransition] = useState<MaterialTransitionId | null>(null);
+    const [transition, setTransition] = useState<MaterialTransitionId>('none');
 
     return (
         <div className="flex flex-col gap-4 text-start w-full">
@@ -17,22 +17,6 @@ export default function MaterialAccordionWrapper({ }: MaterialAccordionProps) {
 
                 {/* Column for Dropdown Styles */}
                 <div className="flex flex-col basis-2/3 gap-4">
-
-                    {/* Size Selector */}
-                    {/* <label>
-                        <span className="mr-2">Size:</span>
-                        <select
-                            value={size}
-                            onChange={(e) => setSize(e.target.value as MaterialComponentSize)}
-                            className="select select-bordered"
-                        >
-                            {Object.values(MaterialComponentSize).map((sizeOption) => (
-                                <option key={sizeOption} value={sizeOption}>
-                                    {sizeOption}
-                                </option>
-                            ))}
-                        </select>
-                    </label> */}
 
                     {/* Transition Selector */}
                     <label>

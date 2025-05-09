@@ -34,6 +34,8 @@ export const MATERIAL_TRANSITIONS = {
     none: {
         label: 'None',
         description: 'No transition applied.',
+        Component: undefined,
+        props: {},
     },
     fade: {
         label: 'Fade',

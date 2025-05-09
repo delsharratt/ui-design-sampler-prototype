@@ -17,7 +17,7 @@ export default function MaterialButton({
     return (
         <Button
             size={size}
-            color={color} // Revisit and address MUI props type conflicts
+            // color={color} // Revisit and address MUI props type conflicts
             variant={variant}
             loading={loading}
             disabled={disabled || loading}
