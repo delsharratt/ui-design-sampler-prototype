@@ -1,22 +1,21 @@
-import React from 'react';
+import React, { ChangeEventHandler } from 'react';
 
 interface FormDropdownProps {
     label: string;
     value: string;
     options: string[];
-    onChange: (value: string) => void;
+    onChange: ChangeEventHandler;
     disabled?: false;
 }
 
 export const FormDropdown: React.FC<FormDropdownProps> = ({ label, value, options, onChange }) => {
-    console.log(value)
-    console.log(onChange)
+
     return (
         <label>
             <span className="mr-2">{label}:</span>
             <select
                 value={value}
-                onChange={(e) => onChange(e.target.value)}
+                onChange={onChange}
                 className="select select-bordered"
             >
                 {options.map((option) => (

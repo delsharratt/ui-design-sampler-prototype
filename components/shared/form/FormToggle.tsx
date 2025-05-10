@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ChangeEventHandler } from 'react';
 
 interface FormToggleProps {
   label: string;
   checked: boolean;
-  onChange: (checked: boolean) => void;
+  onChange: ChangeEventHandler;
   disabled?: boolean;
 }
 
@@ -13,7 +13,7 @@ export const FormToggle: React.FC<FormToggleProps> = ({ label, checked, onChange
       <input
         type="checkbox"
         checked={checked}
-        onChange={(e) => onChange(e.target.checked)}
+        onChange={onChange}
         className="checkbox"
       />
       <span>{label}</span>
