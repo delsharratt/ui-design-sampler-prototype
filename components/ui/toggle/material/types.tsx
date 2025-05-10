@@ -17,14 +17,23 @@
 import { MaterialComponentColor, MaterialComponentSize } from "@/core/constants/material";
 import { ToggleProps } from '../types';
 
+export enum MaterialToggleColor {
+    Standard = 'standard', // Style unique to toggles
+    Primary = MaterialComponentColor.Primary,
+    Secondary = MaterialComponentColor.Secondary,
+    Success = MaterialComponentColor.Success,
+    Error = MaterialComponentColor.Error,
+    Info = MaterialComponentColor.Info,
+    Warning = MaterialComponentColor.Warning,
+}
+
 export enum MaterialToggleOrientation {
     Horizontal = 'horizontal',
     Vertical = 'vertical',
 }
-
 export interface MaterialToggleProps extends ToggleProps {
     size?: MaterialComponentSize;
-    color?: MaterialComponentColor;
+    color?: MaterialToggleColor;
     orientation?: MaterialToggleOrientation;
     isExclusive?: boolean;
     disableRipple?: boolean;

@@ -1,16 +1,16 @@
 'use client';
 
 import * as React from 'react';
-import { MaterialToggleOrientation, MaterialToggleProps } from './types';
+import { MaterialToggleColor, MaterialToggleOrientation, MaterialToggleProps } from './types';
 import { COMPONENT_IDS } from '@/core/system/componentRegistry';
-import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
+import { MaterialComponentSize } from '@/core/constants/material';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { exclusiveSampleData, nonExclusiveSampleData } from './config';
 
 export default function MaterialToggle({
     label = COMPONENT_IDS.Toggle,
     size = MaterialComponentSize.Medium,
-    color = MaterialComponentColor.Standard,
+    color = MaterialToggleColor.Standard,
     orientation = MaterialToggleOrientation.Horizontal,
     isExclusive = false,
     disableRipple = false,

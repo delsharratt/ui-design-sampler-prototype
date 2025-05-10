@@ -1,13 +1,13 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import { MaterialButtonVariant, MaterialButtonProps } from './types';
+import { MaterialButtonVariant, MaterialButtonProps, MaterialButtonColor } from './types';
 import { COMPONENT_IDS } from '@/core/system/componentRegistry';
-import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
+import { MaterialComponentSize } from '@/core/constants/material';
 
 export default function MaterialButton({
     label = COMPONENT_IDS.Button,
     size = MaterialComponentSize.Medium,
-    color = MaterialComponentColor.Primary,
+    color = MaterialButtonColor.Primary,
     variant = MaterialButtonVariant.Outlined,
     loading = false,
     disabled = false,
@@ -17,7 +17,7 @@ export default function MaterialButton({
     return (
         <Button
             size={size}
-            // color={color} // Revisit and address MUI props type conflicts
+            color={color}
             variant={variant}
             loading={loading}
             disabled={disabled || loading}

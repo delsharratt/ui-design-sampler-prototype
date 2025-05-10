@@ -22,10 +22,20 @@ export enum MaterialButtonVariant {
     Outlined = 'outlined',
 }
 
+export enum MaterialButtonColor {
+    Inherit = 'inherit', // Style unique to buttons
+    Primary = MaterialComponentColor.Primary,
+    Secondary = MaterialComponentColor.Secondary,
+    Success = MaterialComponentColor.Success,
+    Error = MaterialComponentColor.Error,
+    Info = MaterialComponentColor.Info,
+    Warning = MaterialComponentColor.Warning,
+}
+
 // TODO: introduce more props as desired for customization
 export interface MaterialButtonProps extends ButtonProps {
     size?: MaterialComponentSize;
-    color: MaterialComponentColor;
+    color: MaterialButtonColor;
     variant?: MaterialButtonVariant;
     disableElevation?: boolean;
     // disableFocusRipple?: boolean;

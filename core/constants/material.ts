@@ -15,10 +15,10 @@ export enum MaterialComponentColor {
     Standard = 'standard',
     Primary = 'primary',
     Secondary = 'secondary',
+    Success = 'success',
     Error = 'error',
     Info = 'info',
     Warning = 'warning',
-    Success = 'success',
 }
 
 export enum MaterialComponentSize {
