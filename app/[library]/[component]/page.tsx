@@ -1,3 +1,4 @@
+import ComponentFormLayout from '@/components/shared/layout/ComponentFormLayout';
 import { COMPONENT_WRAPPER_REGISTRY, COMPONENT_REGISTRY, ComponentId, COMPONENT_IDS } from '@/core/system/componentRegistry';
 import { Library } from '@/core/system/uiLibraries';
 import React from 'react';
@@ -24,9 +25,8 @@ export default async function ComponentPage({ params }: { params: Promise<{ libr
     }
 
     return (
-        <div className="flex flex-col gap-4 items-start h-full w-full">
-            <h2 className="text-2xl font-semibold capitalize">{component} Customization</h2>
+        <ComponentFormLayout component={component}>
             <WrapperComponent library={library} />
-        </div>
+        </ComponentFormLayout>
     );
 }
