@@ -2,7 +2,7 @@
 
 import { COMPONENT_IDS } from '@/core/system/componentRegistry';
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
-import MaterialThemeProvider from '@/ui/providers/MaterialThemeProvider';
+import MaterialThemeProvider from '@/components/shared/MaterialThemeProvider';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useParams, usePathname } from 'next/navigation';

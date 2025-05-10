@@ -1,9 +1,9 @@
-import AccordionRenderer from "@/ui/accordion";
-import AccordionWrapperRenderer from "@/ui/accordion/wrapper";
-import ButtonRenderer from "@/ui/button";
-import ButtonWrapperRenderer from "@/ui/button/wrapper";
-import Toggle from "@/ui/toggle";
-import ToggleWrapperRenderer from "@/ui/toggle/wrapper";
+import AccordionRenderer from "@/components/ui/accordion";
+import AccordionWrapperRenderer from "@/components/ui/accordion/wrapper";
+import ButtonRenderer from "@/components/ui/button";
+import ButtonWrapperRenderer from "@/components/ui/button/wrapper";
+import Toggle from "@/components/ui/toggle";
+import ToggleWrapperRenderer from "@/components/ui/toggle/wrapper";
 
 export const COMPONENT_IDS = {
     Button: "button",

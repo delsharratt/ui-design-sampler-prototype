@@ -5,7 +5,6 @@ import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
 import MaterialToggle from './index';
 import { MaterialToggleOrientation, MaterialToggleProps } from './types';
-import MaterialThemeProvider from '@/ui/providers/MaterialThemeProvider';
 
 export default function MaterialToggleWrapperRenderer({ }: MaterialToggleProps) {
     const [size, setSize] = useState<MaterialComponentSize>(MaterialComponentSize.Medium);

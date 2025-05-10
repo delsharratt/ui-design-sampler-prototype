@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import LibrarySelector from "@/ui/LibrarySelector";
+import LibrarySelector from "@/components/ui/LibrarySelector";
 
 // MUI Font Imports
 import '@fontsource/roboto/300.css';
@@ -9,7 +9,6 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import Link from "next/link";
-import { Code } from '@mui/icons-material';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,7 +55,7 @@ export default function RootLayout({
               <div className="col-span-3 md:col-span-1 h-full flex flex-col gap-4 items-center p-8">
                 <h1 className="text-5xl font-bold mb-4">UI Design Sampler</h1>
                 <h2 className="text-xl font-medium tracking-widest">
-                  <Code fontSize="large" /><br />PREVIEWING... {" "}
+                  PREVIEWING... {" "}
                 </h2>
 
                 <LibrarySelector />

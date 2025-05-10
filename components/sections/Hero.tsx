@@ -1,4 +1,4 @@
-import BrowserMockup from "@/ui/daisy/BrowserMockup";
+import BrowserMockup from "@/components/ui/daisy/BrowserMockup";
 
 export default function Hero({ }: React.HTMLAttributes<HTMLElement> & {}) {
     return (

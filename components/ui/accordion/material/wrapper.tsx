@@ -1,15 +1,21 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import MaterialAccordion from './index';
 import { MaterialAccordionProps } from './types';
-import { MATERIAL_TRANSITIONS, MaterialTransitionId } from '../../../core/constants/material';
+import { MATERIAL_TRANSITIONS, MaterialTransitionId } from '../../../../core/constants/material';
 
 export default function MaterialAccordionWrapper({ }: MaterialAccordionProps) {
     const [expanded, setExpanded] = useState(false);
     const [disabled, setDisabled] = useState(false);
-    const [transition, setTransition] = useState<MaterialTransitionId>('none');
+    const [transition, setTransition] = useState<MaterialTransitionId>('none'); // Static default
+
+    useEffect(() => {
+        // Dynamically set the transition after hydration
+        const firstTransition = Object.keys(MATERIAL_TRANSITIONS)[0] as MaterialTransitionId;
+        setTransition(firstTransition);
+    }, []);
 
     return (
         <div className="flex flex-col gap-4 text-start w-full">
