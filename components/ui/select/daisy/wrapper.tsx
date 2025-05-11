@@ -1,22 +1,22 @@
 'use client';
 
 import React, { useState } from 'react';
-import { DaisyButtonModifier, DaisyButtonProps, DaisyButtonVariant } from './types';
+import { DaisySelectProps, DaisySelectVariant } from './types';
 import { DaisyElementColor, DaisyElementSize } from '@/core/constants/daisy';
-import { LIBRARY_IDS } from '@/core/system/uiLibraries';
-import DaisyButton from '.';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import { FormField } from '@/components/shared/form/useFormMap';
+import DaisySelect from '.';
+import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 
-export default function DaisyButtonWrapperRenderer({ }: DaisyButtonProps) {
+export default function DaisySelectWrapperRenderer({ }: DaisySelectProps) {
     const [size, setSize] = useState<DaisyElementSize>(DaisyElementSize.Medium);
     const [color, setColor] = useState<DaisyElementColor>(DaisyElementColor.Primary);
-    const [variant, setVariant] = useState<DaisyButtonVariant>(DaisyButtonVariant.Outline);
-    const [modifier, setModifier] = useState<DaisyButtonModifier>(DaisyButtonModifier.Block);
+    const [variant, setVariant] = useState<DaisySelectVariant>();
 
-    const [icon, setIcon] = useState(false);
-    const [iconOnly, setIconOnly] = useState(false);
+    const [fieldset, setFieldset] = useState(false);
+    const [hasLabel, setHasLabel] = useState(false);
     const [disabled, setDisabled] = useState(false);
+
 
     const DropdownFields: FormField[] = [
         {
@@ -37,30 +37,23 @@ export default function DaisyButtonWrapperRenderer({ }: DaisyButtonProps) {
             type: 'dropdown',
             label: 'Variant',
             value: variant,
-            options: Object.values(DaisyButtonVariant),
+            options: Object.values(DaisySelectVariant),
             onChange: (e) => setVariant(e.target.value)
-        },
-        {
-            type: 'dropdown',
-            label: 'Modifier',
-            value: modifier,
-            options: Object.values(DaisyButtonModifier),
-            onChange: (e) => setModifier(e.target.value)
         },
     ];
 
     const ToggleFields: FormField[] = [
         {
             type: 'toggle',
-            label: 'Icon',
-            value: icon,
-            onChange: (e) => setIcon(e.target.checked)
+            label: 'Disabled',
+            value: fieldset,
+            onChange: (e) => setFieldset(e.target.checked)
         },
         {
             type: 'toggle',
-            label: 'Icon Only',
-            value: iconOnly,
-            onChange: (e) => setIconOnly(e.target.checked)
+            label: 'Labels',
+            value: hasLabel,
+            onChange: (e) => setHasLabel(e.target.checked)
         },
         {
             type: 'toggle',
@@ -77,17 +70,16 @@ export default function DaisyButtonWrapperRenderer({ }: DaisyButtonProps) {
                 <FormColumnPanel size="1/3" fields={ToggleFields} />
             </div>
 
-            {/* Render the Button */}
+            {/* Render the Select */}
             <div className="flex justify-around mt-8 w-full">
-                <DaisyButton
-                    label={disabled ? "Loading" : "Preview Button"}
+                <DaisySelect
+                    label="Sample Dropdown"
                     library={LIBRARY_IDS.DAISY}
-                    variant={variant}
                     size={size}
                     color={color}
-                    modifier={modifier}
-                    icon={icon}
-                    iconOnly={iconOnly}
+                    variant={variant}
+                    fieldset={fieldset}
+                    hasLabel={hasLabel}
                     disabled={disabled}
                 />
             </div>

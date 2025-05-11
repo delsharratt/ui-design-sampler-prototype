@@ -1,30 +1,41 @@
-import { DropdownAlignment, DropdownDirection, DropdownModifier } from "./types";
+import { DaisyDropdownAlignment, DaisyDropdownDirection, DaisyDropdownProps } from "./types";
+import clsx from "clsx";
 
 /* 
 See documentation https://daisyui.com/components/dropdown/
 */
-export default function Dropdown({
+export default function DaisyDropdown({
     label,
-    alignment = DropdownAlignment.Start,
-    direction = DropdownDirection.Bottom,
+    alignment = DaisyDropdownAlignment.Start,
+    direction = DaisyDropdownDirection.Bottom,
     modifier = null,
-    ...props
-}: React.HTMLAttributes<HTMLElement> & {
-    label: string;
-    alignment?: DropdownAlignment;
-    direction?: DropdownDirection;
-    modifier?: DropdownModifier | null;
-}) {
+    ...rest
+}: React.HTMLAttributes<HTMLElement> & DaisyDropdownProps) {
+
+
+    const buttonStyles = clsx(
+        "dropdown",
+        [ // Styled based on props
+            alignment && `dropdown-${alignment}`,
+            direction && `dropdown-${direction}`,
+            modifier && `btn-${modifier}`,
+        ],
+        rest.className, // Allow additional classes to be passed in
+        "capitalize"
+    );
+
     return (
         <>
-            {/* change popover-1 and --anchor-1 names. Use unique names for each dropdown */}
+            {/* NOTE: Anchor Positioning is a new standard but isn't yet supported in Firefox and Safari */}
+            {/* Use unique names for each dropdown (values must match between button and ul) */}
             {/* For TSX uncomment the commented types below */}
-            <button className="btn" popoverTarget="popover-1" style={{ ['anchorName']: '--anchor-1' } as React.CSSProperties}>
+            <button className="btn" popoverTarget="sample-dropdown"
+                style={{ ['anchorName']: '--dropdown-anchor' } as React.CSSProperties}>
                 {label}
             </button>
 
             <ul className="dropdown menu w-52 rounded-box bg-base-100 shadow-sm"
-                popover="auto" id="popover-1" style={{ ['positionAnchor']: '--anchor-1' } as React.CSSProperties}>
+                popover="auto" id="sample-dropdown" style={{ ['positionAnchor']: '--dropdown-anchor' } as React.CSSProperties}>
                 <li><a>DaisyUI</a></li>
                 <li><a>ShadCN</a></li>
                 <li><a>OnceUI</a></li>

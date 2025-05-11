@@ -1,34 +1,47 @@
 /* 
-*  ---- MATERIAL UI BUTTONS ----
-*  See documentation https://mui.com/material-ui/react-select/
-*  See local documentation \node_modules\@mui\material\esm\Select\Select.d.ts
+*  ---- MATERIAL UI (DROPDOWN) MENUS ----
+*  See documentation https://mui.com/material-ui/react-menu/
+*  \node_modules\@mui\material\esm\Menu\Menu.d.ts
+*  \node_modules\@mui\material\esm\MenuList\MenuList.d.ts
+*  \node_modules\@mui\material\esm\MenuItem\MenuItem.d.ts
 * 
  * Demos:
- * - [Select](https://mui.com/material-ui/react-select/)
+ * - [App Bar](https://mui.com/material-ui/react-app-bar/)
+ * - [Menu](https://mui.com/material-ui/react-menu/)
+ * - [Menu](https://mui.com/material-ui/react-menu/)
+ * - [Menu Item](https://mui.com/material-ui/api/menu-item/)
  *
  * API:
- * - [Select API](https://mui.com/material-ui/api/select/)
- * - inherits [OutlinedInput API](https://mui.com/material-ui/api/outlined-input/)
-*/
-// import { SelectProps } from "@mui/material"; // Q: Should I be using this instead of the custom DropdownProps?
-import { MaterialComponentColor, MaterialComponentSize } from "@/core/constants/material";
+ * - [Menu API](https://mui.com/material-ui/api/menu/)
+ * - inherits [Popover API](https://mui.com/material-ui/api/popover/)
+ * - [MenuList API](https://mui.com/material-ui/api/menu-list/)
+ * - inherits [List API](https://mui.com/material-ui/api/list/)
+ * - [MenuItem  API](https://mui.com/material-ui/api/menu-item/)
+ * - inherits [ButtonBase API](https://mui.com/material-ui/api/button-base/)
+ */
+
+// import { MenuProps } from "@mui/material"; // Q: Should I be using this instead of the custom DropdownProps?
+import { MaterialComponentColor, MaterialComponentSize, MaterialTransitionId } from "@/core/constants/material";
 import { DropdownProps } from '../types';
 
-export enum MaterialButtonVariant {
-    Filled = 'filled',
-    Outlined = 'outlined',
-    Standard = 'standard',
+
+export enum MaterialDropdownVariant {
+    Menu = 'menu',
+    SelectedMenu = 'selectedMenu',
 }
 
+
+// TODO potentially add interfaces for menu list and menu item props as well
 export interface MaterialDropdownProps extends DropdownProps {
     size?: MaterialComponentSize;
-    color: MaterialComponentColor;
-    variant: MaterialButtonVariant
+    color?: MaterialComponentColor;
+    variant?: MaterialDropdownVariant;
     IconComponent?: React.ElementType;
-    autoWidth?: boolean;
-    disableRipple?: boolean;
-    disableFocusRipple?: boolean;
-    defaultOption?: boolean;
-    defaultOpen?: boolean;
-    // displayEmpty?: boolean; // Is this one necessary?
+    transition?: MaterialTransitionId;
+    dense?: boolean; // Applied to menu list
+    autoFocusItem?: boolean; // Applied to menu list
+    autoFocus?: boolean;
+    denseItems?: boolean; // Applied to menu items (?) if this is needed
+    disableGutters?: boolean; // Applied to menu items
+    divider?: boolean; //Applied to menu items
 }
