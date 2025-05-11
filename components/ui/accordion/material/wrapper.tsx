@@ -5,6 +5,8 @@ import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import MaterialAccordion from './index';
 import { MaterialAccordionProps } from './types';
 import { MATERIAL_TRANSITIONS, MaterialTransitionId } from '../../../../core/constants/material';
+import { FormField } from '@/components/shared/form/useFormMap';
+import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 
 export default function MaterialAccordionWrapper({ }: MaterialAccordionProps) {
     const [expanded, setExpanded] = useState(false);
@@ -17,57 +19,36 @@ export default function MaterialAccordionWrapper({ }: MaterialAccordionProps) {
         setTransition(firstTransition);
     }, []);
 
+    const DropdownFields: FormField[] = [
+        {
+            type: 'dropdown',
+            label: 'Transition',
+            value: transition,
+            options: Object.keys(MATERIAL_TRANSITIONS),
+            onChange: (e) => setTransition(e.target.value)
+        },
+    ];
+
+    const ToggleFields: FormField[] = [
+        {
+            type: 'toggle',
+            label: 'Join Items',
+            value: expanded,
+            onChange: (e) => setExpanded(e.target.checked)
+        },
+        {
+            type: 'toggle',
+            label: 'Disabled',
+            value: disabled,
+            onChange: (e) => setDisabled(e.target.checked)
+        },
+    ];
+
     return (
-        <div className="flex flex-col gap-4 text-start w-full">
-            <div className="flex flex-row gap-4 w-full">
-
-                {/* Column for Dropdown Styles */}
-                <div className="flex flex-col basis-2/3 gap-4">
-
-                    {/* Transition Selector */}
-                    <label>
-                        <span className="mr-2">Transition:</span>
-                        <select
-                            value={transition}
-                            onChange={(e) => setTransition(e.target.value as MaterialTransitionId)}
-                            className="select select-bordered"
-                        >
-                            {Object.entries(MATERIAL_TRANSITIONS).map(([id, { label }]) => (
-                                <option key={id} value={id}>
-                                    {label}
-                                </option>
-                            ))}
-                        </select>
-                    </label>
-
-                </div>
-
-                {/* Column for Checkbox Styles */}
-                <div className="flex flex-col basis-1/3 gap-4">
-
-                    {/* Expanded Toggle */}
-                    <label className="flex items-center gap-2">
-                        <input
-                            type="checkbox"
-                            checked={expanded}
-                            onChange={(e) => setExpanded(e.target.checked)}
-                            className="checkbox"
-                        />
-                        <span>Expanded</span>
-                    </label>
-
-                    {/* Disabled Toggle */}
-                    <label className="flex items-center gap-2">
-                        <input
-                            type="checkbox"
-                            checked={disabled}
-                            onChange={(e) => setDisabled(e.target.checked)}
-                            className="checkbox"
-                        />
-                        <span>Disabled</span>
-                    </label>
-
-                </div>
+        <>
+            <div className="flex flex-row gap-4 w-full border-b border-neutral-400 pb-10">
+                <FormColumnPanel size="2/3" fields={DropdownFields} />
+                <FormColumnPanel size="1/3" fields={ToggleFields} />
             </div>
 
             {/* Render the Accordion */}
@@ -78,6 +59,6 @@ export default function MaterialAccordionWrapper({ }: MaterialAccordionProps) {
                 />
             </div>
 
-        </div>
+        </>
     );
 }

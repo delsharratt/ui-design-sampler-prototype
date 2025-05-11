@@ -72,7 +72,7 @@ export default function DaisyButtonWrapperRenderer({ }: DaisyButtonProps) {
 
     return (
         <>
-            <div className="flex flex-row gap-4 w-full">
+            <div className="flex flex-row gap-4 w-full border-b border-neutral-400 pb-10">
                 <FormColumnPanel size="2/3" fields={DropdownFields} />
                 <FormColumnPanel size="1/3" fields={ToggleFields} />
             </div>

@@ -8,8 +8,8 @@ import { ToggleProps } from "../types";
 
 export interface DaisyToggleProps extends ToggleProps {
     label?: string;
-    color?: DaisyElementColor;
     size?: DaisyElementSize;
+    color?: DaisyElementColor;
     disabled?: boolean;
     simple?: boolean;
 }
