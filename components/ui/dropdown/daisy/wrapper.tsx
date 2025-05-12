@@ -6,6 +6,7 @@ import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import { FormField } from '@/components/shared/form/useFormMap';
 import DaisyDropdown from '.';
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
+import FormWrapper from '@/components/shared/layout/FormWrapper';
 
 export default function DaisyDropdownWrapperRenderer({ }: DaisyDropdownProps) {
     const [alignment, setAlignment] = useState<DaisyDropdownAlignment>(DaisyDropdownAlignment.Start);
@@ -41,10 +42,10 @@ export default function DaisyDropdownWrapperRenderer({ }: DaisyDropdownProps) {
 
     return (
         <>
-            <div className="flex flex-row gap-4 w-full border-b border-neutral-400 pb-10">
+            <FormWrapper>
                 <FormColumnPanel size="2/3" fields={DropdownFields} />
                 <FormColumnPanel size="1/3" fields={ToggleFields} />
-            </div>
+            </FormWrapper>
 
             {/* Render the Button */}
             <div className="flex justify-around mt-8 w-full">

@@ -7,6 +7,7 @@ import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import { FormField } from '@/components/shared/form/useFormMap';
 import DaisySelect from '.';
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
+import FormWrapper from '@/components/shared/layout/FormWrapper';
 
 export default function DaisySelectWrapperRenderer({ }: DaisySelectProps) {
     const [size, setSize] = useState<DaisyElementSize>(DaisyElementSize.Medium);
@@ -65,10 +66,10 @@ export default function DaisySelectWrapperRenderer({ }: DaisySelectProps) {
 
     return (
         <>
-            <div className="flex flex-row gap-4 w-full border-b border-neutral-400 pb-10">
+            <FormWrapper>
                 <FormColumnPanel size="2/3" fields={DropdownFields} />
                 <FormColumnPanel size="1/3" fields={ToggleFields} />
-            </div>
+            </FormWrapper>
 
             {/* Render the Select */}
             <div className="flex justify-around mt-8 w-full">

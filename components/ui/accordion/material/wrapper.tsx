@@ -7,6 +7,7 @@ import { MaterialAccordionProps } from './types';
 import { MATERIAL_TRANSITIONS, MaterialTransitionId } from '../../../../core/constants/material';
 import { FormField } from '@/components/shared/form/useFormMap';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
+import FormWrapper from '@/components/shared/layout/FormWrapper';
 
 export default function MaterialAccordionWrapper({ }: MaterialAccordionProps) {
     const [expanded, setExpanded] = useState(false);
@@ -46,10 +47,10 @@ export default function MaterialAccordionWrapper({ }: MaterialAccordionProps) {
 
     return (
         <>
-            <div className="flex flex-row gap-4 w-full border-b border-neutral-400 pb-10">
+            <FormWrapper>
                 <FormColumnPanel size="2/3" fields={DropdownFields} />
                 <FormColumnPanel size="1/3" fields={ToggleFields} />
-            </div>
+            </FormWrapper>
 
             {/* Render the Accordion */}
             <div className="flex justify-around mt-8 w-full">

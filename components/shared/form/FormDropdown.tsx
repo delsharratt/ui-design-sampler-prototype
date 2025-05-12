@@ -11,8 +11,8 @@ interface FormDropdownProps {
 export const FormDropdown: React.FC<FormDropdownProps> = ({ label, value, options, onChange }) => {
 
     return (
-        <label>
-            <span className="mr-2">{label}:</span>
+        <label className="flex flex-col">
+            <span className="mb-2">{label}:</span>
             <select
                 value={value}
                 onChange={onChange}

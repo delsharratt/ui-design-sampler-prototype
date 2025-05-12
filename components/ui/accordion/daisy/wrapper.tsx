@@ -8,6 +8,7 @@ import { ACCORDION_SAMPLE_DATA } from '../config';
 import DaisyAccordion from './index';
 import { FormField } from '@/components/shared/form/useFormMap';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
+import FormWrapper from '@/components/shared/layout/FormWrapper';
 
 export default function DaisyAccordionWrapper({ }: UnifiedAccordionProps) {
     const [modifier, setModifier] = useState<DaisyAccordionModifier>(DaisyAccordionModifier.Arrow);
@@ -34,10 +35,10 @@ export default function DaisyAccordionWrapper({ }: UnifiedAccordionProps) {
 
     return (
         <>
-            <div className="flex flex-row gap-4 w-full border-b border-neutral-400 pb-10">
+            <FormWrapper>
                 <FormColumnPanel size="2/3" fields={DropdownFields} />
                 <FormColumnPanel size="1/3" fields={ToggleFields} />
-            </div>
+            </FormWrapper>
 
             {/* Render the Accordion */}
             <div className="flex justify-around mt-8 w-full">

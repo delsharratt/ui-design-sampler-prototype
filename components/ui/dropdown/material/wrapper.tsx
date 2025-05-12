@@ -7,6 +7,7 @@ import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import { FormField } from '@/components/shared/form/useFormMap';
 import MaterialDropdown from './index';
+import FormWrapper from '@/components/shared/layout/FormWrapper';
 
 export default function MaterialDropdownWrapperRenderer({ }: MaterialDropdownProps) {
     const [size, setSize] = useState<MaterialComponentSize>(MaterialComponentSize.Medium);
@@ -50,10 +51,10 @@ export default function MaterialDropdownWrapperRenderer({ }: MaterialDropdownPro
 
     return (
         <>
-            <div className="flex flex-row gap-4 w-full border-b border-neutral-400 pb-10">
+            <FormWrapper>
                 <FormColumnPanel size="2/3" fields={DropdownFields} />
                 <FormColumnPanel size="1/3" fields={ToggleFields} />
-            </div>
+            </FormWrapper>
 
             {/* Render the Button */}
             <div className="flex justify-around mt-8 w-full">
