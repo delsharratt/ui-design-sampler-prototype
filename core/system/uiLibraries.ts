@@ -2,7 +2,7 @@
 export const LIBRARY_IDS = {
     DAISY: 'daisy',
     MATERIAL: 'material',
-    // SHADCN: 'shadcn',
+    SHADCN: 'shadcn',
     // BOOTSTRAP: 'bootstrap',
     // TAILWIND: 'tailwind',
     // CHAKRA: 'chakra',
@@ -16,5 +16,5 @@ export type Library = (typeof LIBRARY_IDS)[keyof typeof LIBRARY_IDS];
 export const LIBRARIES: Record<Library, { label: string }> = {
     [LIBRARY_IDS.DAISY]: { label: 'DaisyUI' },
     [LIBRARY_IDS.MATERIAL]: { label: 'Material UI' },
-    // [LIBRARY_IDS.SHADCN]: { label: 'shadcn/ui' },
+    [LIBRARY_IDS.SHADCN]: { label: 'shadcn/ui' },
 };

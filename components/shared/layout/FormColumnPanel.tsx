@@ -7,8 +7,6 @@ export function FormColumnPanel({ fields, size }: {
     fields: FormField[];
     className?: string;
 }) {
-
-
     return (
         <div className={`flex flex-col ${size === '1/3' ? 'basis-1/3' : 'basis-2/3'} gap-4`}>
             {fields.map((field, i) =>

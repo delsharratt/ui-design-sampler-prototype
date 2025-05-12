@@ -1,6 +1,7 @@
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import DaisyButton from './daisy';
 import MaterialButton from './material';
+import ShadcnButton, { ShadcnButtonProps } from './shadcn';
 import { UnifiedButtonProps } from './types';
 import { DaisyButtonProps } from './daisy/types';
 import { MaterialButtonProps } from './material/types';
@@ -13,6 +14,8 @@ export default function ButtonRenderer(props: UnifiedButtonProps) {
             return <DaisyButton {...rest as DaisyButtonProps} />;
         case LIBRARY_IDS.MATERIAL:
             return <MaterialButton {...rest as MaterialButtonProps} />;
+        case LIBRARY_IDS.SHADCN:
+            return <ShadcnButton {...rest as ShadcnButtonProps} />;
         default:
             throw new Error(`Unsupported library: ${library}`);
     }
