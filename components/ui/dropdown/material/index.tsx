@@ -1,10 +1,10 @@
-/* 
-*  ---- MATERIAL UI (DROPDOWN) MENUS ----
-*  See documentation https://mui.com/material-ui/react-menu/
-*  \node_modules\@mui\material\esm\Menu\Menu.d.ts
-*  \node_modules\@mui\material\esm\MenuList\MenuList.d.ts
-*  \node_modules\@mui\material\esm\MenuItem\MenuItem.d.ts
-* 
+/*
+ *  ---- MATERIAL UI (DROPDOWN) MENUS ----
+ *  See documentation https://mui.com/material-ui/react-menu/
+ *  \node_modules\@mui\material\esm\Menu\Menu.d.ts
+ *  \node_modules\@mui\material\esm\MenuList\MenuList.d.ts
+ *  \node_modules\@mui\material\esm\MenuItem\MenuItem.d.ts
+ *
  * Demos:
  * - [App Bar](https://mui.com/material-ui/react-app-bar/)
  * - [Menu](https://mui.com/material-ui/react-menu/)
@@ -22,67 +22,69 @@
 
 import * as React from 'react';
 // import { MenuProps } from "@mui/material"; // Q: Should I be using this instead of the custom DropdownProps?
-import { MaterialComponentColor, MaterialComponentSize, MaterialTransitionId } from "@/core/constants/material";
-import { COMPONENT_IDS } from '@/core/system/componentRegistry';
+import {
+  MaterialComponentColor,
+  MaterialComponentSize,
+  MaterialTransitionId
+} from '@/core/constants/material';
+// import { COMPONENT_IDS } from '@/core/system/componentRegistry';
 import { Button, Menu, MenuItem } from '@mui/material';
 import { DropdownProps } from '..';
 
-
 export enum MaterialDropdownVariant {
-    Menu = 'menu',
-    SelectedMenu = 'selectedMenu',
+  Menu = 'menu',
+  SelectedMenu = 'selectedMenu'
 }
 
 // TODO potentially add interfaces for menu list and menu item props as well
 export interface MaterialDropdownProps extends DropdownProps {
-    size?: MaterialComponentSize;
-    color?: MaterialComponentColor;
-    variant?: MaterialDropdownVariant;
-    IconComponent?: React.ElementType;
-    transition?: MaterialTransitionId;
-    dense?: boolean; // Applied to menu list
-    autoFocusItem?: boolean; // Applied to menu list
-    autoFocus?: boolean;
-    denseItems?: boolean; // Applied to menu items (?) if this is needed
-    disableGutters?: boolean; // Applied to menu items
-    divider?: boolean; //Applied to menu items
+  size?: MaterialComponentSize;
+  color?: MaterialComponentColor;
+  variant?: MaterialDropdownVariant;
+  IconComponent?: React.ElementType;
+  transition?: MaterialTransitionId;
+  dense?: boolean; // Applied to menu list
+  autoFocusItem?: boolean; // Applied to menu list
+  autoFocus?: boolean;
+  denseItems?: boolean; // Applied to menu items (?) if this is needed
+  disableGutters?: boolean; // Applied to menu items
+  divider?: boolean; //Applied to menu items
 }
 
-/* 
-* ---- DEFAULT COMPONENT EXPORT ----
-*/
+/*
+ * ---- DEFAULT COMPONENT EXPORT ----
+ */
 export default function MaterialDropdown({
-    label = COMPONENT_IDS.Button,
-    open = false,
-    size = MaterialComponentSize.Medium,
-    color = MaterialComponentColor.Primary,
-    variant = MaterialDropdownVariant.Menu,
-    ...rest
+  // label = COMPONENT_IDS.Button,
+  open = false
+  // size = MaterialComponentSize.Medium,
+  // color = MaterialComponentColor.Primary,
+  // variant = MaterialDropdownVariant.Menu
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & MaterialDropdownProps) {
-    return (
-        <div>
-            <Button
-                id="basic-button"
-            //   aria-controls={open ? 'basic-menu' : undefined}
-            //   aria-haspopup="true"
-            //   aria-expanded={open ? 'true' : undefined}
-            //   onClick={handleClick}
-            >
-                Dashboard
-            </Button>
-            <Menu
-                id="basic-menu"
-                //   anchorEl={anchorEl}
-                open={open}
-            //   onClose={handleClose}
-            //   MenuListProps={{
-            //     'aria-labelledby': 'basic-button',
-            //   }}
-            >
-                <MenuItem>Profile</MenuItem>
-                <MenuItem>My account</MenuItem>
-                <MenuItem>Logout</MenuItem>
-            </Menu>
-        </div>
-    );
+  return (
+    <div>
+      <Button
+        id='basic-button'
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup='true'
+        aria-expanded={open ? 'true' : undefined}
+        //   onClick={handleClick}
+      >
+        Dashboard
+      </Button>
+      <Menu
+        id='basic-menu'
+        //   anchorEl={anchorEl}
+        open={open}
+        //   onClose={handleClose}
+        //   MenuListProps={{
+        //     'aria-labelledby': 'basic-button',
+        //   }}
+      >
+        <MenuItem>Profile</MenuItem>
+        <MenuItem>My account</MenuItem>
+        <MenuItem>Logout</MenuItem>
+      </Menu>
+    </div>
+  );
 }
