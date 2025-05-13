@@ -49,10 +49,10 @@ export default function ShadcnButton({
   asChild = false,
   ...props
 }: ShadcnButtonProps) {
-  const Comp = asChild ? Slot : "button"
+  const Component = asChild ? Slot : "button"
 
   return (
-    <Comp
+    <Component
       data-slot="button"
       className={cn(shadcnButtonVariantStyles({ variant, size, className }))}
       {...props}

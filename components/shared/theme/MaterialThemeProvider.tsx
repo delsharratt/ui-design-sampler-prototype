@@ -1,6 +1,6 @@
 'use client';
 
-import { ThemeProvider, CssBaseline } from '@mui/material';
+import { ThemeProvider, CssBaseline, ScopedCssBaseline } from '@mui/material';
 import { materialDarkTheme } from '@/core/constants/material';
 import { JSX } from 'react';
 
@@ -14,7 +14,7 @@ import { JSX } from 'react';
 export default function MaterialThemeProvider({ children }: { children: React.ReactNode }): JSX.Element {
     return (
         <ThemeProvider theme={materialDarkTheme}>
-            <CssBaseline />
+            <ScopedCssBaseline />
             {children}
         </ThemeProvider>
     );
