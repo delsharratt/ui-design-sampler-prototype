@@ -1,8 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MaterialButtonColor, MaterialButtonProps, MaterialButtonVariant } from './types';
-import MaterialButton from './index';
+import MaterialButton, {
+    MaterialButtonColor,
+    MaterialButtonProps,
+    MaterialButtonVariant
+} from './index';
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import { MaterialComponentSize } from '@/core/constants/material';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';

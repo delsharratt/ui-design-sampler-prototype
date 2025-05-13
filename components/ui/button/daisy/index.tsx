@@ -1,13 +1,47 @@
-import clsx from 'clsx';
+/* 
+*  ---- DAISY UI BUTTONS ----
+*  See documentation https://daisyui.com/components/button/
+*  All class names include a hyphenated "btn" prefix
+*/
+
 import { DaisyElementColor, DaisyElementSize } from "@/core/constants/daisy";
-import { DaisyButtonProps, DaisyButtonVariant } from "./types";
-import { COMPONENT_IDS } from '@/core/system/componentRegistry';
+import { ButtonProps } from "..";
+import clsx from 'clsx';
+
+export enum DaisyButtonVariant {
+    Outline = 'outline',
+    Dash = 'dash',
+    Soft = 'soft',
+    Ghost = 'ghost',
+    Link = 'link'
+}
+
+export enum DaisyButtonBehavior {
+    Active = 'active',
+    Disabled = 'disabled'
+}
+
+export enum DaisyButtonModifier {
+    Wide = 'wide',
+    Block = 'block', // full width
+    Square = 'square',
+    Circle = 'circle'
+}
+
+export interface DaisyButtonProps extends ButtonProps {
+    size?: DaisyElementSize;
+    color?: DaisyElementColor;
+    variant?: DaisyButtonVariant;
+    modifier?: DaisyButtonModifier | null;
+    icon?: boolean;
+    iconOnly?: boolean;
+}
 
 /* 
-See documentation https://daisyui.com/components/button/
+* ---- DEFAULT COMPONENT EXPORT ----
 */
 export default function DaisyButton({
-    label = COMPONENT_IDS.Button,
+    label = "Preview Button",
     size = DaisyElementSize.Medium,
     color = DaisyElementColor.Primary,
     variant = DaisyButtonVariant.Outline,

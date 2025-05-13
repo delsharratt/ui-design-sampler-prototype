@@ -1,13 +1,31 @@
-import { LIBRARY_IDS } from '@/core/system/uiLibraries';
+import { Library, LIBRARY_IDS } from '@/core/system/uiLibraries';
 import DaisyAccordion from './daisy';
-import { UnifiedAccordionProps } from './types';
-import { DaisyAccordionProps } from './daisy/types';
+import { DaisyAccordionProps } from './daisy';
 import MaterialAccordion from './material';
-import { MaterialAccordionProps } from './material/types';
+import { MaterialAccordionProps } from './material';
 import { ACCORDION_SAMPLE_DATA } from './config';
 import { ShadcnAccordion } from './shadcn';
 import { AccordionSingleProps } from '@radix-ui/react-accordion';
 
+export interface AccordionItem {
+    id: string;
+    title: string;
+    details: string;
+}
+
+/* Shared Accordion Props */
+export interface AccordionProps {
+    library: Library;
+    items?: AccordionItem[];
+    disabled?: boolean;
+}
+
+/* Unified Button Props */
+export type UnifiedAccordionProps = DaisyAccordionProps | MaterialAccordionProps;
+
+/* 
+* ---- DEFAULT COMPONENT EXPORT ----
+*/
 export default function AccordionRenderer(props: UnifiedAccordionProps) {
     const { library, ...rest } = props;
 

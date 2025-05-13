@@ -3,8 +3,7 @@
 import React, { useState } from 'react';
 import { DaisyElementColor, DaisyElementSize } from '@/core/constants/daisy';
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
-import { DaisyToggleProps } from './types';
-import DaisyToggle from '.';
+import DaisyToggle, { DaisyToggleProps } from '.';
 import { FormField } from '@/components/shared/form/useFormMap';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import FormWrapper from '@/components/shared/layout/FormWrapper';

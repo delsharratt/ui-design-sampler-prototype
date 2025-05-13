@@ -1,7 +1,7 @@
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
-import { UnifiedSelectProps } from './types';
-import { DaisySelectProps } from './daisy/types';
-import { MaterialSelectProps } from './material/types';
+import { UnifiedSelectProps } from '.';
+import { DaisySelectProps } from './daisy';
+import { MaterialSelectProps } from './material';
 import DaisySelectWrapperRenderer from './daisy/wrapper';
 import MaterialSelectWrapperRenderer from './material/wrapper';
 

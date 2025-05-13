@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import { MaterialComponentSize } from '@/core/constants/material';
 import MaterialToggle from './index';
-import { MaterialToggleColor, MaterialToggleOrientation, MaterialToggleProps } from './types';
+import { MaterialToggleColor, MaterialToggleOrientation, MaterialToggleProps } from '.';
 import { FormField } from '@/components/shared/form/useFormMap';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import FormWrapper from '@/components/shared/layout/FormWrapper';

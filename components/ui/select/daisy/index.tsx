@@ -1,9 +1,27 @@
+/* 
+See documentation @link https://daisyui.com/components/select/
+All class names include a hyphenated "select" prefix
+*/
+
 import { DaisyElementColor, DaisyElementSize } from "@/core/constants/daisy";
-import { DaisySelectProps, DaisySelectVariant } from "./types";
+import { SelectProps } from "..";
 import clsx from "clsx";
 
+export enum DaisySelectVariant {
+    Ghost = 'ghost' // Only one style available
+}
+
+export interface DaisySelectProps extends SelectProps {
+    size?: DaisyElementSize;
+    color?: DaisyElementColor;
+    variant?: DaisySelectVariant;
+    fieldset?: boolean;
+    hasLabel?: boolean;
+    disabled?: boolean;
+}
+
 /* 
-See documentation https://daisyui.com/components/select/
+* ---- DEFAULT COMPONENT EXPORT ----
 */
 export default function DaisySelect({
     label,

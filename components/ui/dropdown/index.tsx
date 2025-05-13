@@ -1,11 +1,21 @@
-import { LIBRARY_IDS } from '@/core/system/uiLibraries';
-import { UnifiedDropdownProps } from './types';
-import { DaisyDropdownProps } from './daisy/types';
-import { MaterialDropdownProps } from './material/types';
+import { Library, LIBRARY_IDS } from '@/core/system/uiLibraries';
+import { DaisyDropdownProps } from './daisy';
+import { MaterialDropdownProps } from './material';
 import DaisyDropdown from './daisy';
 import MaterialDropdown from './material';
 import { ShadcnDropdownMenu } from './shadcn';
 import { DropdownMenuProps } from '@radix-ui/react-dropdown-menu';
+
+/* Shared Dropdown Props */
+export interface DropdownProps {
+    library: Library;
+    label?: string;
+    open?: boolean;
+}
+
+/* Unified Dropdown Props */
+export type UnifiedDropdownProps = DaisyDropdownProps | MaterialDropdownProps;
+
 
 export default function DropdownRenderer(props: UnifiedDropdownProps) {
     const { library, ...rest } = props;

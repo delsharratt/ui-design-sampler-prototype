@@ -1,4 +1,4 @@
-import { MaterialAccordionItem } from "./material/types";
+import { MaterialAccordionItem } from "./material";
 
 export const ACCORDION_SAMPLE_DATA: MaterialAccordionItem[] = [
     {

@@ -1,9 +1,26 @@
-import { AccordionItem } from "../types";
-import { DaisyAccordionModifier, DaisyAccordionProps } from "./types";
-import clsx from "clsx";
-
 /* 
 See documentation https://daisyui.com/components/accordion/
+All class names include a hyphenated "collapse" prefix
+*/
+
+import { AccordionItem, AccordionProps } from "..";
+import clsx from "clsx";
+
+export enum DaisyAccordionModifier {
+    Arrow = 'arrow',
+    Plus = 'plus',
+    Open = 'open',
+    Close = 'close'
+}
+
+export interface DaisyAccordionProps extends AccordionProps {
+    items?: AccordionItem[];
+    modifier?: DaisyAccordionModifier;
+    join?: boolean;
+}
+
+/* 
+* ---- DEFAULT COMPONENT EXPORT ----
 */
 export default function DaisyAccordion({
     items = [],

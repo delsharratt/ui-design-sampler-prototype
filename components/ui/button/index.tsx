@@ -1,11 +1,24 @@
-import { LIBRARY_IDS } from '@/core/system/uiLibraries';
+import { Library, LIBRARY_IDS } from '@/core/system/uiLibraries';
 import DaisyButton from './daisy';
 import MaterialButton from './material';
 import ShadcnButton, { ShadcnButtonProps } from './shadcn';
-import { UnifiedButtonProps } from './types';
-import { DaisyButtonProps } from './daisy/types';
-import { MaterialButtonProps } from './material/types';
+import { DaisyButtonProps } from './daisy';
+import { MaterialButtonProps } from './material';
 
+/* Shared Button Props */
+export interface ButtonProps {
+    library: Library;
+    label?: string;
+    disabled?: boolean;
+    loading?: boolean;
+}
+
+/* Shared Button Props */
+export type UnifiedButtonProps = DaisyButtonProps | MaterialButtonProps;
+
+/* 
+* ---- DEFAULT COMPONENT EXPORT ----
+*/
 export default function ButtonRenderer(props: UnifiedButtonProps) {
     const { library, ...rest } = props;
 

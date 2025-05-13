@@ -1,7 +1,7 @@
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
-import { UnifiedToggleProps } from './types';
-import { DaisyToggleProps } from './daisy/types';
-import { MaterialToggleProps } from './material/types';
+import { UnifiedToggleProps } from '.';
+import { DaisyToggleProps } from './daisy';
+import { MaterialToggleProps } from './material';
 import DaisyToggleWrapperRenderer from './daisy/wrapper';
 import MaterialToggleWrapperRenderer from './material/wrapper';
 

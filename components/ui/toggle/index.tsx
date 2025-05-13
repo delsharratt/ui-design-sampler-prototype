@@ -1,12 +1,24 @@
-import { LIBRARY_IDS } from '@/core/system/uiLibraries';
+import { Library, LIBRARY_IDS } from '@/core/system/uiLibraries';
 import DaisyToggle from './daisy';
-import { UnifiedToggleProps } from './types';
-import { DaisyToggleProps } from './daisy/types';
+import { DaisyToggleProps } from './daisy';
 import MaterialToggle from './material';
-import { MaterialToggleProps } from './material/types';
+import { MaterialToggleProps } from './material';
 import { ShadcnToggle } from './shadcn';
-import { ToggleProps } from '@radix-ui/react-toggle';
+import { ToggleProps as ShadcnToggleProps } from '@radix-ui/react-toggle';
 
+/* Shared Toggle Props */
+export interface ToggleProps {
+    library: Library;
+    label?: string;
+    active?: boolean;
+}
+
+/* Unified Toggle Props */
+export type UnifiedToggleProps = DaisyToggleProps | MaterialToggleProps;
+
+/* 
+* ---- DEFAULT COMPONENT EXPORT ----
+*/
 export default function ToggleRenderer(props: UnifiedToggleProps) {
     const { library, ...rest } = props;
 
@@ -16,7 +28,7 @@ export default function ToggleRenderer(props: UnifiedToggleProps) {
         case LIBRARY_IDS.MATERIAL:
             return <MaterialToggle {...rest as MaterialToggleProps} />;
         case LIBRARY_IDS.SHADCN:
-            return <ShadcnToggle {...rest as ToggleProps} />;
+            return <ShadcnToggle {...rest as ShadcnToggleProps} />;
         default:
             return null;
     }

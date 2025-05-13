@@ -1,8 +1,24 @@
-import { DaisyElementColor, DaisyElementSize } from "@/core/constants/daisy";
-import { DaisyToggleProps } from "./types";
+/* 
+See documentation https://daisyui.com/components/toggle/
+All class names include a hyphenated "toggle" prefix
+*/
+
 import clsx from "clsx";
 import { COMPONENT_IDS } from "@/core/system/componentRegistry";
+import { DaisyElementColor, DaisyElementSize } from "@/core/constants/daisy";
+import { ToggleProps } from "..";
 
+export interface DaisyToggleProps extends ToggleProps {
+    label?: string;
+    size?: DaisyElementSize;
+    color?: DaisyElementColor;
+    disabled?: boolean;
+    simple?: boolean;
+}
+
+/* 
+* ---- DEFAULT COMPONENT EXPORT ----
+*/
 export default function DaisyToggle({
     label = COMPONENT_IDS.Toggle,
     color = DaisyElementColor.Primary,

@@ -1,7 +1,7 @@
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
-import { UnifiedButtonProps } from './types';
-import { DaisyButtonProps } from './daisy/types';
-import { MaterialButtonProps } from './material/types';
+import { UnifiedButtonProps } from '.';
+import { DaisyButtonProps } from './daisy';
+import { MaterialButtonProps } from './material';
 import MaterialButtonWrapperRenderer from './material/wrapper';
 import DaisyButtonWrapperRenderer from './daisy/wrapper';
 

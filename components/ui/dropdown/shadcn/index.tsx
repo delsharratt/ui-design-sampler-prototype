@@ -1,3 +1,8 @@
+/* 
+* See documentation https://ui.shadcn.com/docs/components/dropdown-menu
+* Radix Primitive https://www.radix-ui.com/primitives/docs/components/dropdown-menu
+*/
+
 "use client"
 
 import * as React from "react"
@@ -6,10 +11,21 @@ import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-/* 
-* See documentation https://ui.shadcn.com/docs/components/dropdown-menu
-* Radix Primitive https://www.radix-ui.com/primitives/docs/components/dropdown-menu
-*/
+// Typically used for different language display support
+export enum ShadcnDropdowDirection {
+  LeftToRight = 'ltr',
+  RightToLeft = 'rtl'
+}
+
+// interface DropdownMenuProps {
+//     children?: React.ReactNode;
+//     dir?: Direction;
+//     open?: boolean;
+//     defaultOpen?: boolean;
+//     onOpenChange?(open: boolean): void;
+//     modal?: boolean;
+// }
+
 function ShadcnDropdownMenu({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {

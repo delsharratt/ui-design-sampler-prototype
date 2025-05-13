@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { DaisyButtonModifier, DaisyButtonProps, DaisyButtonVariant } from './types';
+import { DaisyButtonModifier, DaisyButtonProps, DaisyButtonVariant } from '.';
 import { DaisyElementColor, DaisyElementSize } from '@/core/constants/daisy';
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import DaisyButton from '.';

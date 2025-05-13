@@ -2,10 +2,9 @@
 
 import React, { useState } from 'react';
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
-import { DaisyAccordionModifier } from './types';
-import { UnifiedAccordionProps } from '../types';
+import DaisyAccordion, { DaisyAccordionModifier } from '.';
+import { UnifiedAccordionProps } from '..';
 import { ACCORDION_SAMPLE_DATA } from '../config';
-import DaisyAccordion from './index';
 import { FormField } from '@/components/shared/form/useFormMap';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import FormWrapper from '@/components/shared/layout/FormWrapper';

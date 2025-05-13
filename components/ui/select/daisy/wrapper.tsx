@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { DaisySelectProps, DaisySelectVariant } from './types';
+import { DaisySelectProps, DaisySelectVariant } from '.';
 import { DaisyElementColor, DaisyElementSize } from '@/core/constants/daisy';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import { FormField } from '@/components/shared/form/useFormMap';

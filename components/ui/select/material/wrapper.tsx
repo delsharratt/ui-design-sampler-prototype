@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MaterialSelectProps, MaterialSelectVariant } from './types';
+import { MaterialSelectProps, MaterialSelectVariant } from '.';
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';

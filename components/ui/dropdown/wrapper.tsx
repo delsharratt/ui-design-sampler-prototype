@@ -1,7 +1,7 @@
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
-import { UnifiedDropdownProps } from './types';
-import { DaisyDropdownProps } from './daisy/types';
-import { MaterialDropdownProps } from './material/types';
+import { UnifiedDropdownProps } from '.';
+import { DaisyDropdownProps } from './daisy';
+import { MaterialDropdownProps } from './material';
 import DaisyDropdownWrapperRenderer from './daisy/wrapper';
 import MaterialDropdownWrapperRenderer from './material/wrapper';
 

@@ -1,7 +1,7 @@
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
-import { UnifiedAccordionProps } from './types';
-import { DaisyAccordionProps } from './daisy/types';
-import { MaterialAccordionProps } from './material/types';
+import { UnifiedAccordionProps } from '.';
+import { DaisyAccordionProps } from './daisy';
+import { MaterialAccordionProps } from './material';
 import DaisyAccordionWrapper from './daisy/wrapper';
 import MaterialAccordionWrapper from './material/wrapper';
 import { ShadcnAccordion } from './shadcn';

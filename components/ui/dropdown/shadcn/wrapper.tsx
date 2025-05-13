@@ -5,7 +5,7 @@ import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import { FormField } from '@/components/shared/form/useFormMap';
 import FormWrapper from '@/components/shared/layout/FormWrapper';
 import { DropdownMenuProps } from '@radix-ui/react-dropdown-menu';
-import { ShadcnDropdowDirection } from './types';
+import { ShadcnDropdowDirection } from '.';
 import { ShadcnDropdownMenu } from '.';
 
 // interface DropdownMenuProps {

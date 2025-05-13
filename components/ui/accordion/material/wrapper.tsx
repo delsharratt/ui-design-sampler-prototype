@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import MaterialAccordion from './index';
-import { MaterialAccordionProps } from './types';
-import { MATERIAL_TRANSITIONS, MaterialTransitionId } from '../../../../core/constants/material';
+import { MaterialAccordionProps } from '.';
+import { MATERIAL_TRANSITIONS, MaterialTransitionId } from '@/core/constants/material';
 import { FormField } from '@/components/shared/form/useFormMap';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import FormWrapper from '@/components/shared/layout/FormWrapper';

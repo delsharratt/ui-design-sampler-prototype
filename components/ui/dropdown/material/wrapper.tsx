@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MaterialDropdownProps, MaterialDropdownVariant } from './types';
+import { MaterialDropdownProps, MaterialDropdownVariant } from '.';
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';

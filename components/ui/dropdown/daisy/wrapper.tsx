@@ -1,10 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import { DaisyDropdownAlignment, DaisyDropdownDirection, DaisyDropdownModifier, DaisyDropdownProps } from './types';
+import DaisyDropdown, {
+    DaisyDropdownAlignment,
+    DaisyDropdownDirection,
+    DaisyDropdownModifier,
+    DaisyDropdownProps
+} from '.';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import { FormField } from '@/components/shared/form/useFormMap';
-import DaisyDropdown from '.';
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import FormWrapper from '@/components/shared/layout/FormWrapper';
 
