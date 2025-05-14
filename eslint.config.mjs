@@ -4,6 +4,7 @@ import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import typescriptEslintPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptEslintParser from '@typescript-eslint/parser';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
+import eslintPluginSimpleImportSort from 'eslint-plugin-simple-import-sort';
 
 export default [
   {
@@ -26,9 +27,14 @@ export default [
       'react-hooks': eslintPluginReactHooks,
       'jsx-a11y': eslintPluginJsxA11y,
       '@typescript-eslint': typescriptEslintPlugin,
+      'simple-import-sort': eslintPluginSimpleImportSort,
       prettier: eslintPluginPrettier
     },
     rules: {
+      quotes: ['error', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
+      'jsx-quotes': ['error', 'prefer-double'],
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
       'react/react-in-jsx-scope': 'off', // Not needed for Next.js
       'react/jsx-props-no-spreading': 'off', // Allow prop spreading
       '@typescript-eslint/no-unused-vars': ['error']

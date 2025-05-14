@@ -1,9 +1,5 @@
 # UI Design Sampler – Contributor Guide
 
-Welcome! This guide outlines how to get started with local development, understand the project structure, and contribute effectively.
-
-## Getting Started
-
 ### 1. Clone the repo
 
 ```
@@ -39,14 +35,16 @@ npm run lint
 npm run lint:fix
 ```
 
-These commands use <b>ESLint</b> and <b>Prettier</b>, with rules configured for React, TypeScript, and Tailwind.
+These commands use <b>ESLint</b> and <b>Prettier</b>, with rules configured for React, TypeScript,
+and Tailwind.
 
 ## Git Commit Hooks
 
-This repo uses husky and lint-staged to enforce code quality before commits:
+This repo uses `husky` and `lint-staged` to enforce code quality before commits:
 
-- Runs eslint and prettier on staged files
-- Validates commit messages using Conventional Commits
+- Runs `eslint` and `prettier` on staged files
+- Validates commit messages using
+  [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
 ### First-time setup (after cloning):
 
@@ -72,39 +70,27 @@ The repository is organized by component first, then by UI library:
 
 ## Stack
 
-- <b>Framework:</b> Next.js (App Router)
+- <b>Framework:</b> [Next.js](https://nextjs.org/) (App Router)
 - <b>Styling:</b> Tailwind CSS v4
-- <b>Libraries Previewed:</b> [ShadCN/UI](https://ui.shadcn.com/) & [Material UI](https://mui.com/material-ui/) (MUI)
-  & [DaisyUI](https://daisyui.com/)
+- <b>Libraries Previewed:</b> [ShadCN/UI](https://ui.shadcn.com/) &
+  [Material UI](https://mui.com/material-ui/) (MUI) & [DaisyUI](https://daisyui.com/)
+- <b>Tools:</b> ESLint, Prettier, Husky, Commitlint
 
-Styling: Tailwind CSS v4
+## Contributing Tips
 
-Libraries previewed: DaisyUI, Material UI, ShadCN
+- Keep form logic generic and delegate prop-specific logic to wrapper components.
+- Reuse shared layout components when possible.
+- When adding a new UI library or component, follow the existing pattern:
+  - `[Library][Component].tsx`
+  - `[Component]Wrapper.tsx`
+  - Add form config to `useFormMap()`
 
-Tools: ESLint, Prettier, Husky, Commitlint
-
-✅ Contributing Tips
-
-Keep form logic generic and delegate prop-specific logic to wrapper components.
-
-Reuse shared layout components when possible.
-
-When adding a new UI library or component, follow the existing pattern:
-
-[Library][Component].tsx
-
-[Component]Wrapper.tsx
-
-Add form config to useFormMap()
-
-✨ Future Contributions
+## Future Contributions
 
 Interested in adding:
 
-Component code preview/copy
+- Component code preview/copy
+- A persistent style/theme saver
+- Per-library documentation and links
 
-A persistent style/theme saver
-
-Per-library documentation and links
-
-PRs are welcome!
+PRs are welcome! 🎉

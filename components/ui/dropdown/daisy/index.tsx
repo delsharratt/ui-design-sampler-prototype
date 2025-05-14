@@ -4,6 +4,7 @@ All class names include a hyphenated "dropdown" prefix
 */
 
 import clsx from 'clsx';
+
 import { DropdownProps } from '..';
 
 export enum DaisyDropdownAlignment {
@@ -56,8 +57,8 @@ export default function DaisyDropdown({
       {/* Use unique names for each dropdown (values must match between button and ul) */}
       {/* For TSX uncomment the commented types below */}
       <button
-        className='btn'
-        popoverTarget='sample-dropdown'
+        className="btn"
+        popoverTarget="sample-dropdown"
         style={{ ['anchorName']: '--dropdown-anchor' } as React.CSSProperties}
       >
         {label}
@@ -65,8 +66,8 @@ export default function DaisyDropdown({
 
       <ul
         className={dropdownStyles}
-        popover='auto'
-        id='sample-dropdown'
+        popover="auto"
+        id="sample-dropdown"
         style={{ ['positionAnchor']: '--dropdown-anchor' } as React.CSSProperties}
       >
         <li>

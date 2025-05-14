@@ -1,74 +1,76 @@
 'use client';
 
 import React, { useState } from 'react';
-import MaterialButton, {
-    MaterialButtonColor,
-    MaterialButtonProps,
-    MaterialButtonVariant
-} from './index';
-import { LIBRARY_IDS } from '@/core/system/uiLibraries';
-import { MaterialComponentSize } from '@/core/constants/material';
-import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
+
 import { FormField } from '@/components/shared/form/useFormMap';
+import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import FormWrapper from '@/components/shared/layout/FormWrapper';
+import { MaterialComponentSize } from '@/core/constants/material';
+import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 
-export default function MaterialButtonWrapperRenderer({ }: MaterialButtonProps) {
-    const [size, setSize] = useState<MaterialComponentSize>(MaterialComponentSize.Medium);
-    const [color, setColor] = useState<MaterialButtonColor>(MaterialButtonColor.Primary);
-    const [variant, setVariant] = useState<MaterialButtonVariant>(MaterialButtonVariant.Contained);
-    const [disabled, setDisabled] = useState(false);
+import MaterialButton, {
+  MaterialButtonColor,
+  MaterialButtonProps,
+  MaterialButtonVariant
+} from './index';
 
-    const DropdownFields: FormField[] = [
-        {
-            type: 'dropdown',
-            label: 'Size',
-            value: size,
-            options: Object.values(MaterialComponentSize),
-            onChange: (e) => setSize(e.target.value)
-        },
-        {
-            type: 'dropdown',
-            label: 'Color',
-            value: color,
-            options: Object.values(MaterialButtonColor),
-            onChange: (e) => setColor(e.target.value)
-        },
-        {
-            type: 'dropdown',
-            label: 'Variant',
-            value: variant,
-            options: Object.values(MaterialButtonVariant),
-            onChange: (e) => setVariant(e.target.value)
-        },
-    ];
+export default function MaterialButtonWrapperRenderer({}: MaterialButtonProps) {
+  const [size, setSize] = useState<MaterialComponentSize>(MaterialComponentSize.Medium);
+  const [color, setColor] = useState<MaterialButtonColor>(MaterialButtonColor.Primary);
+  const [variant, setVariant] = useState<MaterialButtonVariant>(MaterialButtonVariant.Contained);
+  const [disabled, setDisabled] = useState(false);
 
-    const ToggleFields: FormField[] = [
-        {
-            type: 'toggle',
-            label: 'Disabled',
-            value: disabled,
-            onChange: (e) => setDisabled(e.target.checked)
-        },
-    ];
+  const DropdownFields: FormField[] = [
+    {
+      type: 'dropdown',
+      label: 'Size',
+      value: size,
+      options: Object.values(MaterialComponentSize),
+      onChange: (e) => setSize(e.target.value)
+    },
+    {
+      type: 'dropdown',
+      label: 'Color',
+      value: color,
+      options: Object.values(MaterialButtonColor),
+      onChange: (e) => setColor(e.target.value)
+    },
+    {
+      type: 'dropdown',
+      label: 'Variant',
+      value: variant,
+      options: Object.values(MaterialButtonVariant),
+      onChange: (e) => setVariant(e.target.value)
+    }
+  ];
 
-    return (
-        <>
-            <FormWrapper>
-                <FormColumnPanel size="2/3" fields={DropdownFields} />
-                <FormColumnPanel size="1/3" fields={ToggleFields} />
-            </FormWrapper>
+  const ToggleFields: FormField[] = [
+    {
+      type: 'toggle',
+      label: 'Disabled',
+      value: disabled,
+      onChange: (e) => setDisabled(e.target.checked)
+    }
+  ];
 
-            {/* Render the Button */}
-            <div className="flex justify-around mt-8 w-full">
-                <MaterialButton
-                    label="Preview Button"
-                    library={LIBRARY_IDS.MATERIAL}
-                    variant={variant}
-                    size={size}
-                    color={color}
-                    disabled={disabled}
-                />
-            </div>
-        </>
-    );
+  return (
+    <>
+      <FormWrapper>
+        <FormColumnPanel size="2/3" fields={DropdownFields} />
+        <FormColumnPanel size="1/3" fields={ToggleFields} />
+      </FormWrapper>
+
+      {/* Render the Button */}
+      <div className="flex justify-around mt-8 w-full">
+        <MaterialButton
+          label="Preview Button"
+          library={LIBRARY_IDS.MATERIAL}
+          variant={variant}
+          size={size}
+          color={color}
+          disabled={disabled}
+        />
+      </div>
+    </>
+  );
 }

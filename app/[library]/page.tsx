@@ -1,13 +1,18 @@
-import { COMPONENT_REGISTRY } from '@/core/system/componentRegistry';
-import { LIBRARIES, Library } from '@/core/system/uiLibraries';
 import { Metadata } from 'next';
 import React from 'react';
 
+import { COMPONENT_REGISTRY } from '@/core/system/componentRegistry';
+import { LIBRARIES, Library } from '@/core/system/uiLibraries';
+
 export const metadata: Metadata = {
-  title: 'Library Overview',
+  title: 'Library Overview'
 };
 
-export default async function LibraryOverviewPage({ params }: { params: Promise<{ library: Library }> }) {
+export default async function LibraryOverviewPage({
+  params
+}: {
+  params: Promise<{ library: Library }>;
+}) {
   const { library } = await params;
 
   // Set the metadata title based on the library

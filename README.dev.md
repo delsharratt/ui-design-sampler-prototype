@@ -1,6 +1,9 @@
 # Next.js UI Design Sampler – Dev Summary
 
-This Next.js app is a single-user prototype designed to preview and customize UI components across multiple libraries. It supports live editing of component props like `variant`, `size`, `color`, and layout modifiers using dynamic forms. The tool serves to compare component APIs and usage between libraries, which can assist in the decision-making process when designing a new app as a developer.
+This Next.js app is a single-user prototype designed to preview and customize UI components across
+multiple libraries. It supports live editing of component props like `variant`, `size`, `color`, and
+layout modifiers using dynamic forms. The tool serves to compare component APIs and usage between
+libraries, which can assist in the decision-making process when designing a new app as a developer.
 
 ## Stack
 

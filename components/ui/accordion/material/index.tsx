@@ -13,7 +13,7 @@
 
 'use client';
 
-import * as React from 'react';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 // import { AccordionProps } from "@mui/material"; // Q: Should I be using this instead of the custom ButtonProps?
 // import { SlotProps } from "@mui/material";
 import {
@@ -24,10 +24,12 @@ import {
   Button,
   Typography
 } from '@mui/material'; //TODO: bring back Fade
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { ACCORDION_SAMPLE_DATA } from '../config';
+import * as React from 'react';
+
 import { MaterialTransitionId } from '@/core/constants/material';
+
 import { AccordionItem, AccordionProps } from '..';
+import { ACCORDION_SAMPLE_DATA } from '../config';
 
 export const ExpandIcons = {
   plus: 'plus',
@@ -117,7 +119,7 @@ export default function MaterialAccordion({
             aria-controls={`${id}-content`}
             id={`${id}-header`}
           >
-            <Typography component='span'>{title}</Typography>
+            <Typography component="span">{title}</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography>{details}</Typography>

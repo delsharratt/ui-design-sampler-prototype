@@ -15,13 +15,15 @@
 
 'use client';
 
-import * as React from 'react';
 // import { COMPONENT_IDS } from '@/core/system/componentRegistry';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { exclusiveSampleData, nonExclusiveSampleData } from './config';
+import * as React from 'react';
+
 // import ToggleProps from '@mui/material/ToggleButton'; // Q: Should I be using this instead of the custom ButtonProps?
 import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
+
 import { ToggleProps } from '..';
+import { exclusiveSampleData, nonExclusiveSampleData } from './config';
 
 export enum MaterialToggleColor {
   Standard = 'standard', // Style unique to toggles
@@ -86,7 +88,7 @@ export default function MaterialToggle({
       exclusive={isExclusive}
       fullWidth={fullWidth}
       onChange={isExclusive ? handleExclusiveChange : handleNonExclusiveChange}
-      aria-label='text alignment'
+      aria-label="text alignment"
     >
       {sampleData.map(({ value, label, icon, disabled }) => (
         <ToggleButton

@@ -1,6 +1,11 @@
 # Next.js UI Design Sampler
 
-A prototyping tool that lets you preview, customize, and compare UI components from multiple libraries — including DaisyUI, Material UI, and ShadCN. The app supports real-time prop manipulation, layout switching, and theming to explore how different systems implement component APIs.
+A prototyping tool that lets you preview, customize, and compare UI components from multiple
+libraries — including Material UI, ShadCN/UI, and DaisyUI. The app supports real-time prop
+manipulation, layout switching, and theming to explore how different systems implement component
+APIs.
+
+### 🔗 [Preview Live!](https://ui-design-sampler-prototype.vercel.app/)
 
 ## Features
 
@@ -10,7 +15,7 @@ A prototyping tool that lets you preview, customize, and compare UI components f
 - Tailwind-first architecture with theme support
 - Scaffolding in place for adding transitions, code previews, and saved presets
 
-# Stack
+## Stack
 
 - Next.js with App Router
 - TypeScript
@@ -20,8 +25,6 @@ A prototyping tool that lets you preview, customize, and compare UI components f
 
 ## More Documentation?
 
-<b>For Developers:</b>
-[README.dev.md](./README.dev.md)
+<b>For Developers:</b> [README.dev.md](./README.dev.md)
 
-<b>For Contributors:</b>
-[README.contributor.md](./README.contributor.md)
+<b>For Contributors:</b> [README.contributor.md](./README.contributor.md)

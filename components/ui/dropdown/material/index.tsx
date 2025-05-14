@@ -20,15 +20,17 @@
  * - inherits [ButtonBase API](https://mui.com/material-ui/api/button-base/)
  */
 
+// import { COMPONENT_IDS } from '@/core/system/componentRegistry';
+import { Button, Menu, MenuItem } from '@mui/material';
 import * as React from 'react';
+
 // import { MenuProps } from "@mui/material"; // Q: Should I be using this instead of the custom DropdownProps?
 import {
   MaterialComponentColor,
   MaterialComponentSize,
   MaterialTransitionId
 } from '@/core/constants/material';
-// import { COMPONENT_IDS } from '@/core/system/componentRegistry';
-import { Button, Menu, MenuItem } from '@mui/material';
+
 import { DropdownProps } from '..';
 
 export enum MaterialDropdownVariant {
@@ -64,16 +66,16 @@ export default function MaterialDropdown({
   return (
     <div>
       <Button
-        id='basic-button'
+        id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup='true'
+        aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         //   onClick={handleClick}
       >
         Dashboard
       </Button>
       <Menu
-        id='basic-menu'
+        id="basic-menu"
         //   anchorEl={anchorEl}
         open={open}
         //   onClose={handleClose}

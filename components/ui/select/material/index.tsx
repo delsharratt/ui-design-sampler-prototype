@@ -12,10 +12,12 @@
  */
 
 // import { SelectProps } from "@mui/material"; // Q: Should I be using this instead of the custom DropdownProps?
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import * as React from 'react';
+
 import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
 import { COMPONENT_IDS } from '@/core/system/componentRegistry';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+
 // import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { SelectProps } from '..';
 
@@ -62,10 +64,10 @@ export default function MaterialSelect({
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & MaterialSelectProps) {
   return (
     <FormControl>
-      <InputLabel id='demo-simple-select-label'>{label}</InputLabel>
+      <InputLabel id="demo-simple-select-label">{label}</InputLabel>
       <Select
-        labelId='demo-simple-select-label'
-        id='demo-simple-select'
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
         value={10} //Placeholder
         label={label}
         // onChange={handleChange}

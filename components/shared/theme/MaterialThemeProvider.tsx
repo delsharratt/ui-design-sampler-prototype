@@ -1,8 +1,9 @@
 'use client';
 
-import { ThemeProvider, ScopedCssBaseline } from '@mui/material';
-import { materialDarkTheme } from '@/core/constants/material';
+import { ScopedCssBaseline, ThemeProvider } from '@mui/material';
 import { JSX } from 'react';
+
+import { materialDarkTheme } from '@/core/constants/material';
 
 /**
  * MaterialThemeProvider is a React component that provides a Material UI theme to its children.

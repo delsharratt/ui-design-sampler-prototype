@@ -1,11 +1,12 @@
 'use client';
 
-import { COMPONENT_IDS } from '@/core/system/componentRegistry';
-import { Library } from '@/core/system/uiLibraries';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useParams, usePathname } from 'next/navigation';
+
 import LibraryThemeProvider from '@/components/shared/theme/LibraryThemeProvider';
+import { COMPONENT_IDS } from '@/core/system/componentRegistry';
+import { Library } from '@/core/system/uiLibraries';
 
 export default function LibraryLayout({ children }: { children: React.ReactNode }) {
   const { library } = useParams();
@@ -14,10 +15,10 @@ export default function LibraryLayout({ children }: { children: React.ReactNode 
   // Dynamically render theme provider based on library
   return (
     <LibraryThemeProvider library={library as Library}>
-      <div className='relative h-full w-full p-10'>
-        <nav className='absolute top-0 left-0 w-full flex gap-8 border-b border-neutral-400 p-10 pb-2'>
+      <div className="relative h-full w-full p-10">
+        <nav className="absolute top-0 left-0 w-full flex gap-8 border-b border-neutral-400 p-10 pb-2">
           <Link
-            key='all'
+            key="all"
             href={`/${library}`}
             className={clsx(
               {
@@ -47,7 +48,7 @@ export default function LibraryLayout({ children }: { children: React.ReactNode 
         </nav>
 
         {/* Scrolling Form Container */}
-        <div className='overflow-y-auto pt-20'>{children}</div>
+        <div className="overflow-y-auto pt-20">{children}</div>
       </div>
     </LibraryThemeProvider>
   );
