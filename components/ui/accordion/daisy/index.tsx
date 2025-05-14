@@ -1,11 +1,11 @@
+import clsx from 'clsx';
+
+import { AccordionItem, AccordionProps } from '..';
+
 /* 
 See documentation https://daisyui.com/components/accordion/
 All class names include a hyphenated "collapse" prefix
 */
-
-import clsx from 'clsx';
-
-import { AccordionItem, AccordionProps } from '..';
 
 export enum DaisyAccordionModifier {
   Arrow = 'arrow',

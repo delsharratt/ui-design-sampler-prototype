@@ -1,3 +1,15 @@
+'use client';
+
+// import { COMPONENT_IDS } from '@/core/system/componentRegistry';
+import { ToggleButton, ToggleButtonGroup } from '@mui/material';
+import * as React from 'react';
+
+// import ToggleProps from '@mui/material/ToggleButton'; // Q: Should I be using this instead of the custom ButtonProps?
+import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
+
+import { ToggleProps } from '..';
+import { exclusiveSampleData, nonExclusiveSampleData } from './config';
+
 /*
  *  ---- MATERIAL UI BUTTONS ----
  *  See documentation https://mui.com/material-ui/react-toggle-button/
@@ -12,18 +24,6 @@
  * - [ToggleButtonGroup API](https://mui.com/material-ui/api/toggle-button-group/)
  * - inherits [ButtonBase API](https://mui.com/material-ui/api/button-base/)
  */
-
-'use client';
-
-// import { COMPONENT_IDS } from '@/core/system/componentRegistry';
-import { ToggleButton, ToggleButtonGroup } from '@mui/material';
-import * as React from 'react';
-
-// import ToggleProps from '@mui/material/ToggleButton'; // Q: Should I be using this instead of the custom ButtonProps?
-import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
-
-import { ToggleProps } from '..';
-import { exclusiveSampleData, nonExclusiveSampleData } from './config';
 
 export enum MaterialToggleColor {
   Standard = 'standard', // Style unique to toggles

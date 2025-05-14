@@ -1,3 +1,16 @@
+// import { COMPONENT_IDS } from '@/core/system/componentRegistry';
+import { Button, Menu, MenuItem } from '@mui/material';
+import * as React from 'react';
+
+// import { MenuProps } from "@mui/material"; // Q: Should I be using this instead of the custom DropdownProps?
+import {
+  MaterialComponentColor,
+  MaterialComponentSize,
+  MaterialTransitionId
+} from '@/core/constants/material';
+
+import { DropdownProps } from '..';
+
 /*
  *  ---- MATERIAL UI (DROPDOWN) MENUS ----
  *  See documentation https://mui.com/material-ui/react-menu/
@@ -19,19 +32,6 @@
  * - [MenuItem  API](https://mui.com/material-ui/api/menu-item/)
  * - inherits [ButtonBase API](https://mui.com/material-ui/api/button-base/)
  */
-
-// import { COMPONENT_IDS } from '@/core/system/componentRegistry';
-import { Button, Menu, MenuItem } from '@mui/material';
-import * as React from 'react';
-
-// import { MenuProps } from "@mui/material"; // Q: Should I be using this instead of the custom DropdownProps?
-import {
-  MaterialComponentColor,
-  MaterialComponentSize,
-  MaterialTransitionId
-} from '@/core/constants/material';
-
-import { DropdownProps } from '..';
 
 export enum MaterialDropdownVariant {
   Menu = 'menu',

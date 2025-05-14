@@ -1,3 +1,11 @@
+import Button from '@mui/material/Button';
+import * as React from 'react';
+
+// import { ButtonProps } from "@mui/material"; // Q: Should I be using this instead of the custom ButtonProps?
+import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
+
+import { ButtonProps } from '..';
+
 /*
  *  ---- MATERIAL UI BUTTONS ----
  *  See documentation https://mui.com/material-ui/react-button/
@@ -11,14 +19,6 @@
  *  - [Button API](https://mui.com/material-ui/api/button/)
  *  - inherits [ButtonBase API](https://mui.com/material-ui/api/button-base/)
  */
-
-import Button from '@mui/material/Button';
-import * as React from 'react';
-
-// import { ButtonProps } from "@mui/material"; // Q: Should I be using this instead of the custom ButtonProps?
-import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
-
-import { ButtonProps } from '..';
 
 export enum MaterialButtonVariant {
   Text = 'text',

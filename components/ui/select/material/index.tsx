@@ -1,3 +1,13 @@
+// import { SelectProps } from "@mui/material"; // Q: Should I be using this instead of the custom DropdownProps?
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import * as React from 'react';
+
+import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
+import { COMPONENT_IDS } from '@/core/system/componentRegistry';
+
+// import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { SelectProps } from '..';
+
 /*
  *  ---- MATERIAL UI BUTTONS ----
  *  See documentation https://mui.com/material-ui/react-select/
@@ -10,16 +20,6 @@
  * - [Select API](https://mui.com/material-ui/api/select/)
  * - inherits [OutlinedInput API](https://mui.com/material-ui/api/outlined-input/)
  */
-
-// import { SelectProps } from "@mui/material"; // Q: Should I be using this instead of the custom DropdownProps?
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import * as React from 'react';
-
-import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
-import { COMPONENT_IDS } from '@/core/system/componentRegistry';
-
-// import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { SelectProps } from '..';
 
 export enum MaterialSelectVariant {
   Filled = 'filled',

@@ -1,11 +1,11 @@
+import clsx from 'clsx';
+
+import { DropdownProps } from '..';
+
 /* 
 See documentation @link https://daisyui.com/components/dropdown/
 All class names include a hyphenated "dropdown" prefix
 */
-
-import clsx from 'clsx';
-
-import { DropdownProps } from '..';
 
 export enum DaisyDropdownAlignment {
   Start = 'start',

@@ -1,14 +1,14 @@
-/*
- *  ---- DAISY UI BUTTONS ----
- *  See documentation https://daisyui.com/components/button/
- *  All class names include a hyphenated "btn" prefix
- */
-
 import clsx from 'clsx';
 
 import { DaisyElementColor, DaisyElementSize } from '@/core/constants/daisy';
 
 import { ButtonProps } from '..';
+
+/*
+ *  ---- DAISY UI BUTTONS ----
+ *  See documentation https://daisyui.com/components/button/
+ *  All class names include a hyphenated "btn" prefix
+ */
 
 export enum DaisyButtonVariant {
   Outline = 'outline',

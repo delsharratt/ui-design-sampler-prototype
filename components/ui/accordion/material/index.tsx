@@ -1,16 +1,3 @@
-/*
- *  ---- MATERIAL UI ACCORDIONS ----
- *  See documentation https://mui.com/material-ui/react-accordion/
- *  See local documentation \node_modules\@mui\material\esm\Accordion\Accordion.d.ts
- *
- * Demos:
- * - [Accordion](https://mui.com/material-ui/react-accordion/)
- *
- * API:
- * - [Accordion API](https://mui.com/material-ui/api/accordion/)
- * - inherits [Paper API](https://mui.com/material-ui/api/paper/)
- */
-
 'use client';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -30,6 +17,19 @@ import { MaterialTransitionId } from '@/core/constants/material';
 
 import { AccordionItem, AccordionProps } from '..';
 import { ACCORDION_SAMPLE_DATA } from '../config';
+
+/*
+ *  ---- MATERIAL UI ACCORDIONS ----
+ *  See documentation https://mui.com/material-ui/react-accordion/
+ *  See local documentation \node_modules\@mui\material\esm\Accordion\Accordion.d.ts
+ *
+ * Demos:
+ * - [Accordion](https://mui.com/material-ui/react-accordion/)
+ *
+ * API:
+ * - [Accordion API](https://mui.com/material-ui/api/accordion/)
+ * - inherits [Paper API](https://mui.com/material-ui/api/paper/)
+ */
 
 export const ExpandIcons = {
   plus: 'plus',

@@ -1,13 +1,13 @@
-/* 
-See documentation @link https://daisyui.com/components/select/
-All class names include a hyphenated "select" prefix
-*/
-
 import clsx from 'clsx';
 
 import { DaisyElementColor, DaisyElementSize } from '@/core/constants/daisy';
 
 import { SelectProps } from '..';
+
+/* 
+See documentation @link https://daisyui.com/components/select/
+All class names include a hyphenated "select" prefix
+*/
 
 export enum DaisySelectVariant {
   Ghost = 'ghost' // Only one style available
