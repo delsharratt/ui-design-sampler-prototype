@@ -7,7 +7,8 @@ import { DaisyAccordionProps } from './daisy';
 import DaisyAccordionWrapper from './daisy/wrapper';
 import { MaterialAccordionProps } from './material';
 import MaterialAccordionWrapper from './material/wrapper';
-import { ShadcnAccordion } from './shadcn';
+// import { ShadcnAccordionRootProps } from './shadcn';
+import ShadcnAccordionWrapper from './shadcn/wrapper';
 
 export default function AccordionWrapperRenderer(props: UnifiedAccordionProps) {
   const { library, ...rest } = props;
@@ -18,7 +19,7 @@ export default function AccordionWrapperRenderer(props: UnifiedAccordionProps) {
     case LIBRARY_IDS.MATERIAL:
       return <MaterialAccordionWrapper {...(rest as MaterialAccordionProps)} />;
     case LIBRARY_IDS.SHADCN:
-      return <ShadcnAccordion {...(rest as AccordionSingleProps)} />;
+      return <ShadcnAccordionWrapper {...(rest as AccordionSingleProps)} />;
     default:
       throw new Error(`Unsupported library: ${library}`);
   }

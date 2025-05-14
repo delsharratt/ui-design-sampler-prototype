@@ -7,7 +7,7 @@ import DaisyAccordion from './daisy';
 import { DaisyAccordionProps } from './daisy';
 import MaterialAccordion from './material';
 import { MaterialAccordionProps } from './material';
-import { ShadcnAccordion } from './shadcn';
+import ShadcnAccordion from './shadcn';
 
 export interface AccordionItem {
   id: string;
