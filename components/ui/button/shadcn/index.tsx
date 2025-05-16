@@ -1,5 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { ChevronRight, Loader2, MailOpen } from 'lucide-react';
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
@@ -25,8 +26,14 @@ export enum ShadcnButtonSize {
   Icon = 'icon'
 }
 
+// TODO: add support for button variants prop on button-styled Link (maybe when code snippets are added)
+
 export type ShadcnButtonProps = React.ComponentProps<'button'> &
   VariantProps<typeof shadcnButtonVariantStyles> & {
+    icon?: boolean;
+    iconOnly?: boolean;
+    loading?: boolean;
+    disabled?: boolean;
     asChild?: boolean;
   };
 
@@ -65,6 +72,10 @@ export default function ShadcnButton({
   className,
   variant,
   size,
+  icon,
+  iconOnly,
+  loading,
+  disabled,
   asChild = false,
   ...props
 }: ShadcnButtonProps) {
@@ -74,7 +85,22 @@ export default function ShadcnButton({
     <Component
       data-slot="button"
       className={cn(shadcnButtonVariantStyles({ variant, size, className }))}
+      disabled={disabled || loading}
+      aria-disabled={disabled || loading}
       {...props}
-    />
+    >
+      {iconOnly && <ChevronRight />}
+      {icon && !iconOnly && (
+        <>
+          <MailOpen /> Login with Email
+        </>
+      )}
+      {!icon && !loading && <>Preview Button</>}
+      {loading && (
+        <>
+          <Loader2 className="animate-spin" /> Loading...
+        </>
+      )}
+    </Component>
   );
 }
