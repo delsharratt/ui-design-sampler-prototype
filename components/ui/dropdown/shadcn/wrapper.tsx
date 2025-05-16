@@ -1,13 +1,13 @@
 'use client';
 
-import { DropdownMenuProps } from '@radix-ui/react-dropdown-menu';
+import { SelectProps } from '@radix-ui/react-select';
 import React, { useState } from 'react';
 
 import { FormField } from '@/components/shared/form/useFormMap';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import FormWrapper from '@/components/shared/layout/FormWrapper';
 
-import { ShadcnDropdowDirection } from '.';
+import { ShadcnDropdownDirection } from '.';
 import { ShadcnDropdownMenu } from '.';
 
 // interface DropdownMenuProps {
@@ -19,9 +19,9 @@ import { ShadcnDropdownMenu } from '.';
 //     modal?: boolean;
 // }
 
-export default function ShadcnDropdownWrapperRenderer({}: DropdownMenuProps) {
-  const [direction, setDirection] = useState<ShadcnDropdowDirection>(
-    ShadcnDropdowDirection.LeftToRight
+export default function ShadcnDropdownWrapperRenderer({}: SelectProps) {
+  const [direction, setDirection] = useState<ShadcnDropdownDirection>(
+    ShadcnDropdownDirection.LeftToRight
   );
 
   const [modal, setModal] = useState(false);
@@ -33,7 +33,7 @@ export default function ShadcnDropdownWrapperRenderer({}: DropdownMenuProps) {
       type: 'dropdown',
       label: 'Direction',
       value: direction,
-      options: Object.values(ShadcnDropdowDirection),
+      options: Object.values(ShadcnDropdownDirection),
       onChange: (e) => setDirection(e.target.value)
     }
   ];

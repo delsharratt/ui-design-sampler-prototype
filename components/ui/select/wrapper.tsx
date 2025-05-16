@@ -5,6 +5,8 @@ import { DaisySelectProps } from './daisy';
 import DaisySelectWrapperRenderer from './daisy/wrapper';
 import { MaterialSelectProps } from './material';
 import MaterialSelectWrapperRenderer from './material/wrapper';
+import { ShadcnSelectProps } from './shadcn';
+import ShadcnSelectWrapperRenderer from './shadcn/wrapper';
 
 export default function SelectWrapperRenderer(props: UnifiedSelectProps) {
   const { library, ...rest } = props;
@@ -14,6 +16,8 @@ export default function SelectWrapperRenderer(props: UnifiedSelectProps) {
       return <DaisySelectWrapperRenderer {...(rest as DaisySelectProps)} />;
     case LIBRARY_IDS.MATERIAL:
       return <MaterialSelectWrapperRenderer {...(rest as MaterialSelectProps)} />;
+    case LIBRARY_IDS.SHADCN:
+      return <ShadcnSelectWrapperRenderer {...(rest as ShadcnSelectProps)} />;
     default:
       throw new Error(`Unsupported library: ${library}`);
   }

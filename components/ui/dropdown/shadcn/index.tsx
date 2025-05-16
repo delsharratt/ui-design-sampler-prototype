@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils';
  */
 
 // Typically used for different language display support
-export enum ShadcnDropdowDirection {
+export enum ShadcnDropdownDirection {
   LeftToRight = 'ltr',
   RightToLeft = 'rtl'
 }

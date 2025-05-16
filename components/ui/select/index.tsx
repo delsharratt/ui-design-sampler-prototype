@@ -6,7 +6,7 @@ import DaisySelect from './daisy';
 import { DaisySelectProps } from './daisy';
 import MaterialSelect from './material';
 import { MaterialSelectProps } from './material';
-import { ShadcnSelect } from './shadcn';
+import ShadcnSelect from './shadcn';
 
 /* Shared Select Props */
 export interface SelectProps {

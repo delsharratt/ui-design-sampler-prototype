@@ -1,28 +1,156 @@
 'use client';
 
 import * as SelectPrimitive from '@radix-ui/react-select';
+import { SelectProps } from '@radix-ui/react-select';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
+import { FRUIT_OPTIONS, TIMEZONE_OPTIONS } from './config';
+
 /*
  * See documentation https://ui.shadcn.com/docs/components/select
  * Radix Primitive https://www.radix-ui.com/primitives/docs/components/select
  */
-function ShadcnSelect({ ...props }: React.ComponentProps<typeof SelectPrimitive.Root>) {
+
+// Typically used for different language display support
+export enum ShadcnSelectDirection {
+  LeftToRight = 'ltr',
+  RightToLeft = 'rtl'
+}
+
+export enum ShadcnSelectSide {
+  Top = 'top',
+  Right = 'right',
+  Bottom = 'bottom',
+  Left = 'left'
+}
+
+export enum ShadcnSelectPosition {
+  ItemAligned = 'item-aligned',
+  Popper = 'popper'
+}
+export enum ShadcnSelectAlign {
+  Start = 'start',
+  Center = 'center',
+  End = 'end'
+}
+
+export enum ShadcnSelectSticky {
+  Partial = 'partial',
+  Always = 'always'
+}
+
+export type ShadcnSelectProps = SelectProps & {
+  /* Root Level */
+  scrollable?: boolean;
+  direction?: ShadcnSelectDirection;
+  open?: boolean;
+  defaultOpen?: boolean;
+  disabled?: boolean;
+  /* Content Level */
+  side?: ShadcnSelectSide;
+  align?: ShadcnSelectAlign;
+  position: ShadcnSelectPosition;
+  sticky?: ShadcnSelectSticky;
+  required?: boolean;
+  separator?: boolean;
+
+  /* ALL SETTINGS BELOW ONLY APPLY TO POPPER*/
+  // TODO: implement sliders for number settings
+  arrowPadding?: number;
+  sideOffset?: number; // offset from the trigger, only available for top and bottom
+  alignOffset?: number; // offset from the trigger, only available for start and end
+  hideWhenDetached?: boolean; // hide the select when detached from the trigger
+
+  /* Item Level */
+  itemSeparator?: boolean; // sample "separator" on one select item
+  itemDisabled?: boolean; // sample "disabled" on one select item
+};
+
+/*
+ * ---- DEFAULT COMPONENT EXPORT ----
+ */
+export default function ShadcnSelect({
+  scrollable,
+  direction,
+  open,
+  defaultOpen,
+  disabled,
+  side,
+  align,
+  position,
+  sticky,
+  required,
+  separator,
+  sideOffset,
+  alignOffset,
+  arrowPadding,
+  hideWhenDetached
+}: ShadcnSelectProps) {
+  return (
+    <Select
+      required={required}
+      open={open}
+      defaultOpen={defaultOpen}
+      dir={direction}
+      disabled={disabled}
+    >
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Select a time zone" />
+      </SelectTrigger>
+      <SelectContent
+        side={side}
+        align={align}
+        position={position}
+        sticky={sticky}
+        sideOffset={sideOffset}
+        alignOffset={alignOffset}
+        arrowPadding={arrowPadding}
+        hideWhenDetached={hideWhenDetached}
+      >
+        {scrollable ? (
+          TIMEZONE_OPTIONS.map((group) => (
+            <div key={group.group}>
+              <SelectGroup>
+                <SelectLabel>{group.group}</SelectLabel>
+                {group.items.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+              {separator && <SelectSeparator />}
+            </div>
+          ))
+        ) : (
+          <SelectGroup>
+            {FRUIT_OPTIONS.map((option) => (
+              <SelectItem key={option.value} value={option.value}>
+                {option.label}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        )}
+      </SelectContent>
+    </Select>
+  );
+}
+
+function Select({ ...props }: React.ComponentProps<typeof SelectPrimitive.Root>) {
   return <SelectPrimitive.Root data-slot="select" {...props} />;
 }
 
-function ShadcnSelectGroup({ ...props }: React.ComponentProps<typeof SelectPrimitive.Group>) {
+function SelectGroup({ ...props }: React.ComponentProps<typeof SelectPrimitive.Group>) {
   return <SelectPrimitive.Group data-slot="select-group" {...props} />;
 }
 
-function ShadcnSelectValue({ ...props }: React.ComponentProps<typeof SelectPrimitive.Value>) {
+function SelectValue({ ...props }: React.ComponentProps<typeof SelectPrimitive.Value>) {
   return <SelectPrimitive.Value data-slot="select-value" {...props} />;
 }
 
-function ShadcnSelectTrigger({
+function SelectTrigger({
   className,
   size = 'default',
   children,
@@ -48,7 +176,7 @@ function ShadcnSelectTrigger({
   );
 }
 
-function ShadcnSelectContent({
+function SelectContent({
   className,
   children,
   position = 'popper',
@@ -67,7 +195,7 @@ function ShadcnSelectContent({
         position={position}
         {...props}
       >
-        <ShadcnSelectScrollUpButton />
+        <SelectScrollUpButton />
         <SelectPrimitive.Viewport
           className={cn(
             'p-1',
@@ -77,16 +205,13 @@ function ShadcnSelectContent({
         >
           {children}
         </SelectPrimitive.Viewport>
-        <ShadcnSelectScrollDownButton />
+        <SelectScrollDownButton />
       </SelectPrimitive.Content>
     </SelectPrimitive.Portal>
   );
 }
 
-function ShadcnSelectLabel({
-  className,
-  ...props
-}: React.ComponentProps<typeof SelectPrimitive.Label>) {
+function SelectLabel({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.Label>) {
   return (
     <SelectPrimitive.Label
       data-slot="select-label"
@@ -96,7 +221,7 @@ function ShadcnSelectLabel({
   );
 }
 
-function ShadcnSelectItem({
+function SelectItem({
   className,
   children,
   ...props
@@ -120,7 +245,7 @@ function ShadcnSelectItem({
   );
 }
 
-function ShadcnSelectSeparator({
+function SelectSeparator({
   className,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Separator>) {
@@ -133,7 +258,7 @@ function ShadcnSelectSeparator({
   );
 }
 
-function ShadcnSelectScrollUpButton({
+function SelectScrollUpButton({
   className,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.ScrollUpButton>) {
@@ -148,7 +273,7 @@ function ShadcnSelectScrollUpButton({
   );
 }
 
-function ShadcnSelectScrollDownButton({
+function SelectScrollDownButton({
   className,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.ScrollDownButton>) {
@@ -162,16 +287,3 @@ function ShadcnSelectScrollDownButton({
     </SelectPrimitive.ScrollDownButton>
   );
 }
-
-export {
-  ShadcnSelect,
-  ShadcnSelectContent,
-  ShadcnSelectGroup,
-  ShadcnSelectItem,
-  ShadcnSelectLabel,
-  ShadcnSelectScrollDownButton,
-  ShadcnSelectScrollUpButton,
-  ShadcnSelectSeparator,
-  ShadcnSelectTrigger,
-  ShadcnSelectValue
-};
