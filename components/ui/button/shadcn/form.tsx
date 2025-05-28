@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { FormField } from '@/components/shared/form/useFormMap';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import FormWrapper from '@/components/shared/layout/FormWrapper';
+import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 
 import ShadcnButton, { ShadcnButtonProps, ShadcnButtonSize, ShadcnButtonVariant } from '.';
 
@@ -83,6 +84,7 @@ export default function ShadcnButtonForm({}: ShadcnButtonProps) {
       <div className="flex justify-around mt-8 w-full">
         {/* TODO: IMPLEMENT PROPS AND CHILD PROP SUPPORT */}
         <ShadcnButton
+          library={LIBRARY_IDS.SHADCN}
           variant={variant}
           size={size}
           icon={icon}

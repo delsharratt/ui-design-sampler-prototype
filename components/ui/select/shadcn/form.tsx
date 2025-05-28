@@ -5,24 +5,19 @@ import React, { useState } from 'react';
 import { FormField } from '@/components/shared/form/useFormMap';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import FormWrapper from '@/components/shared/layout/FormWrapper';
+import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 
 import ShadcnSelect, {
   ShadcnSelectAlign,
-  ShadcnSelectDirection,
   ShadcnSelectPosition,
   ShadcnSelectProps,
-  ShadcnSelectSide,
-  ShadcnSelectSticky
+  ShadcnSelectSide
 } from '.';
 
 export default function ShadcnSelectForm({}: ShadcnSelectProps) {
-  const [direction, setDirection] = useState<ShadcnSelectDirection>(
-    ShadcnSelectDirection.LeftToRight
-  );
   const [side, setSide] = useState<ShadcnSelectSide>(ShadcnSelectSide.Bottom);
   const [align, setAlign] = useState<ShadcnSelectAlign>(ShadcnSelectAlign.Start);
   const [position, setPosition] = useState<ShadcnSelectPosition>(ShadcnSelectPosition.Popper);
-  const [sticky, setSticky] = useState<ShadcnSelectSticky>(ShadcnSelectSticky.Partial);
 
   const [scrollable, setScrollable] = useState(false);
   const [open, setOpen] = useState(false);
@@ -32,13 +27,6 @@ export default function ShadcnSelectForm({}: ShadcnSelectProps) {
   const [separator, setSeparator] = useState(false);
 
   const DropdownFields: FormField[] = [
-    {
-      type: 'dropdown',
-      label: 'Direction',
-      value: direction,
-      options: Object.values(ShadcnSelectDirection),
-      onChange: (e) => setDirection(e.target.value)
-    },
     {
       type: 'dropdown',
       label: 'Side',
@@ -59,13 +47,6 @@ export default function ShadcnSelectForm({}: ShadcnSelectProps) {
       value: position,
       options: Object.values(ShadcnSelectPosition),
       onChange: (e) => setPosition(e.target.value)
-    },
-    {
-      type: 'dropdown',
-      label: 'Sticky',
-      value: sticky,
-      options: Object.values(ShadcnSelectSticky),
-      onChange: (e) => setSticky(e.target.value)
     }
   ];
 
@@ -118,15 +99,14 @@ export default function ShadcnSelectForm({}: ShadcnSelectProps) {
       {/* Render the Select */}
       <div className="flex justify-around mt-8 w-full">
         <ShadcnSelect
+          library={LIBRARY_IDS.SHADCN}
           scrollable={scrollable}
-          direction={direction}
           open={open}
           defaultOpen={defaultOpen}
           disabled={disabled}
           side={side}
           align={align}
           position={position}
-          sticky={sticky}
           required={required}
           separator={separator}
         />

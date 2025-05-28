@@ -5,6 +5,8 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
+import { ButtonProps } from '..';
+
 /*
  *  ---- SHADCN/UI BUTTONS ----
  *  See documentation https://ui.shadcn.com/docs/components/button
@@ -28,8 +30,10 @@ export enum ShadcnButtonSize {
 
 // TODO: add support for button variants prop on button-styled Link (maybe when code snippets are added)
 
-export type ShadcnButtonProps = React.ComponentProps<'button'> &
+export type ShadcnButtonProps = ButtonProps &
+  React.ComponentProps<'button'> &
   VariantProps<typeof shadcnButtonVariantStyles> & {
+    custom?: boolean;
     icon?: boolean;
     iconOnly?: boolean;
     loading?: boolean;
@@ -76,19 +80,13 @@ export default function ShadcnButton({
   iconOnly,
   loading,
   disabled,
+  custom = false,
   asChild = false,
   ...props
 }: ShadcnButtonProps) {
   const Component = asChild ? Slot : 'button';
-
-  return (
-    <Component
-      data-slot="button"
-      className={cn(shadcnButtonVariantStyles({ variant, size, className }))}
-      disabled={disabled || loading}
-      aria-disabled={disabled || loading}
-      {...props}
-    >
+  const content = (
+    <>
       {iconOnly && <ChevronRight />}
       {icon && !iconOnly && (
         <>
@@ -101,6 +99,30 @@ export default function ShadcnButton({
           <Loader2 className="animate-spin" /> Loading...
         </>
       )}
+    </>
+  );
+
+  // If custom, render with children
+  if (custom) {
+    return (
+      <Component
+        data-slot="button"
+        className={cn(shadcnButtonVariantStyles({ variant, size, className }))}
+        {...props}
+      />
+    );
+  }
+
+  // Otherwise, render with content
+  return (
+    <Component
+      data-slot="button"
+      className={cn(shadcnButtonVariantStyles({ variant, size, className }))}
+      disabled={disabled || loading}
+      aria-disabled={disabled || loading}
+      {...props}
+    >
+      {content}
     </Component>
   );
 }

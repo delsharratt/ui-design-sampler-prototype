@@ -1,12 +1,10 @@
-import { SelectProps as ShadcnSelectProps } from '@radix-ui/react-select';
-
 import { Library, LIBRARY_IDS } from '@/core/system/uiLibraries';
 
 import DaisySelect from './daisy';
 import { DaisySelectProps } from './daisy';
 import MaterialSelect from './material';
 import { MaterialSelectProps } from './material';
-import ShadcnSelect from './shadcn';
+import ShadcnSelect, { ShadcnSelectProps } from './shadcn';
 
 /* Shared Select Props */
 export interface SelectProps {
@@ -16,7 +14,7 @@ export interface SelectProps {
 }
 
 /* Unified Select Props */
-export type UnifiedSelectProps = DaisySelectProps | MaterialSelectProps | SelectProps;
+export type UnifiedSelectProps = DaisySelectProps | MaterialSelectProps | ShadcnSelectProps;
 
 /*
  * ---- DEFAULT COMPONENT EXPORT ----

@@ -1,24 +1,18 @@
 'use client';
 
 import * as SelectPrimitive from '@radix-ui/react-select';
-import { SelectProps } from '@radix-ui/react-select';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
+import { SelectProps } from '..';
 import { FRUIT_OPTIONS, TIMEZONE_OPTIONS } from './config';
 
 /*
  * See documentation https://ui.shadcn.com/docs/components/select
  * Radix Primitive https://www.radix-ui.com/primitives/docs/components/select
  */
-
-// Typically used for different language display support
-export enum ShadcnSelectDirection {
-  LeftToRight = 'ltr',
-  RightToLeft = 'rtl'
-}
 
 export enum ShadcnSelectSide {
   Top = 'top',
@@ -31,57 +25,50 @@ export enum ShadcnSelectPosition {
   ItemAligned = 'item-aligned',
   Popper = 'popper'
 }
+
 export enum ShadcnSelectAlign {
   Start = 'start',
   Center = 'center',
   End = 'end'
 }
 
-export enum ShadcnSelectSticky {
-  Partial = 'partial',
-  Always = 'always'
-}
+export type ShadcnSelectProps = SelectProps &
+  SelectPrimitive.SelectProps & {
+    /* Root Level */
+    scrollable?: boolean;
+    open?: boolean;
+    defaultOpen?: boolean;
+    disabled?: boolean;
+    /* Content Level */
+    side?: ShadcnSelectSide;
+    align?: ShadcnSelectAlign;
+    position?: ShadcnSelectPosition;
+    required?: boolean;
+    separator?: boolean;
 
-export type ShadcnSelectProps = SelectProps & {
-  /* Root Level */
-  scrollable?: boolean;
-  direction?: ShadcnSelectDirection;
-  open?: boolean;
-  defaultOpen?: boolean;
-  disabled?: boolean;
-  /* Content Level */
-  side?: ShadcnSelectSide;
-  align?: ShadcnSelectAlign;
-  position: ShadcnSelectPosition;
-  sticky?: ShadcnSelectSticky;
-  required?: boolean;
-  separator?: boolean;
+    /* ALL SETTINGS BELOW ONLY APPLY TO POPPER*/
+    // TODO: implement sliders for number settings
+    arrowPadding?: number;
+    sideOffset?: number; // offset from the trigger, only available for top and bottom
+    alignOffset?: number; // offset from the trigger, only available for start and end
+    hideWhenDetached?: boolean; // hide the select when detached from the trigger
 
-  /* ALL SETTINGS BELOW ONLY APPLY TO POPPER*/
-  // TODO: implement sliders for number settings
-  arrowPadding?: number;
-  sideOffset?: number; // offset from the trigger, only available for top and bottom
-  alignOffset?: number; // offset from the trigger, only available for start and end
-  hideWhenDetached?: boolean; // hide the select when detached from the trigger
-
-  /* Item Level */
-  itemSeparator?: boolean; // sample "separator" on one select item
-  itemDisabled?: boolean; // sample "disabled" on one select item
-};
+    /* Item Level */
+    itemSeparator?: boolean; // sample "separator" on one select item
+    itemDisabled?: boolean; // sample "disabled" on one select item
+  };
 
 /*
  * ---- DEFAULT COMPONENT EXPORT ----
  */
 export default function ShadcnSelect({
   scrollable,
-  direction,
   open,
   defaultOpen,
   disabled,
   side,
   align,
   position,
-  sticky,
   required,
   separator,
   sideOffset,
@@ -90,13 +77,7 @@ export default function ShadcnSelect({
   hideWhenDetached
 }: ShadcnSelectProps) {
   return (
-    <Select
-      required={required}
-      open={open}
-      defaultOpen={defaultOpen}
-      dir={direction}
-      disabled={disabled}
-    >
+    <Select required={required} open={open} defaultOpen={defaultOpen} disabled={disabled}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select a time zone" />
       </SelectTrigger>
@@ -104,7 +85,6 @@ export default function ShadcnSelect({
         side={side}
         align={align}
         position={position}
-        sticky={sticky}
         sideOffset={sideOffset}
         alignOffset={alignOffset}
         arrowPadding={arrowPadding}

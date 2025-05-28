@@ -1,13 +1,9 @@
-import { AccordionSingleProps } from '@radix-ui/react-accordion';
-
 import { Library, LIBRARY_IDS } from '@/core/system/uiLibraries';
 
 import { ACCORDION_SAMPLE_DATA } from './config';
-import DaisyAccordion from './daisy';
-import { DaisyAccordionProps } from './daisy';
-import MaterialAccordion from './material';
-import { MaterialAccordionProps } from './material';
-import ShadcnAccordion from './shadcn';
+import DaisyAccordion, { DaisyAccordionProps } from './daisy';
+import MaterialAccordion, { MaterialAccordionProps } from './material';
+import ShadcnAccordion, { ShadcnAccordionProps } from './shadcn';
 
 export interface AccordionItem {
   id: string;
@@ -23,7 +19,10 @@ export interface AccordionProps {
 }
 
 /* Unified Button Props */
-export type UnifiedAccordionProps = DaisyAccordionProps | MaterialAccordionProps;
+export type UnifiedAccordionProps =
+  | DaisyAccordionProps
+  | MaterialAccordionProps
+  | ShadcnAccordionProps;
 
 /*
  * ---- DEFAULT COMPONENT EXPORT ----
@@ -39,7 +38,7 @@ export default function AccordionRenderer(props: UnifiedAccordionProps) {
         <MaterialAccordion {...(rest as MaterialAccordionProps)} items={ACCORDION_SAMPLE_DATA} />
       );
     case LIBRARY_IDS.SHADCN:
-      return <ShadcnAccordion {...(rest as AccordionSingleProps)} />;
+      return <ShadcnAccordion {...(rest as ShadcnAccordionProps)} />;
     default:
       return null;
   }

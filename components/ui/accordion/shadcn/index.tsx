@@ -6,6 +6,8 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
+import { AccordionProps } from '../index';
+
 /*
  * See documentation https://ui.shadcn.com/docs/components/accordion
  * Radix Primitive https://www.radix-ui.com/primitives/docs/components/accordion
@@ -31,8 +33,6 @@ export const accordionItems = [
   }
 ];
 
-export type ShadcnAccordionDirection = 'ltr' | 'rtl';
-
 export enum ShadcnAccordionType {
   Single = 'single',
   Multiple = 'multiple'
@@ -44,22 +44,23 @@ export type ShadcnAccordionRootProps =
   | AccordionPrimitive.AccordionSingleProps
   | AccordionPrimitive.AccordionMultipleProps;
 
-export type ShadcnAccordionProps = ShadcnAccordionRootProps & {
-  // type?: AccordionType; // TODO: troubleshoot type error
-  direction?: ShadcnAccordionDirection;
-  defaultValue?: string;
-  orientation?: ShadcnAccordionOrientation;
-  collapsible?: boolean;
-  value?: string;
-  triggerIcon?: boolean;
-  // onChange?: (value: string) => void;
-  disabled?: boolean;
-};
+export type ShadcnAccordionProps = AccordionProps &
+  ShadcnAccordionRootProps & {
+    // type?: AccordionType; // TODO: troubleshoot type error
+    defaultValue?: string;
+    orientation?: ShadcnAccordionOrientation;
+    collapsible?: boolean;
+    value?: string;
+    triggerIcon?: boolean;
+    // onChange?: (value: string) => void;
+    disabled?: boolean;
+  };
 
-/* Default Export Component */
+/*
+ * ---- DEFAULT COMPONENT EXPORT ----
+ */
 export default function ShadcnAccordion({
   // type = AccordionType.Single,
-  direction = 'ltr',
   defaultValue = 'item-1',
   orientation = 'vertical',
   collapsible = false,
@@ -71,7 +72,6 @@ export default function ShadcnAccordion({
     <div className="w-full overflow-x-hidden">
       <Accordion
         type="single"
-        dir={direction}
         defaultValue={defaultValue}
         collapsible={collapsible}
         orientation={orientation}
@@ -89,12 +89,17 @@ export default function ShadcnAccordion({
   );
 }
 
-/* Accordion Component */
+/*
+ * ---- SHADCN ACCORDION COMPONENT PRIMITIVES ----
+ * These are the lower-level building blocks used by the default export above.
+ * Most are direct wrappers around @radix-ui/react-accordion primitives,
+ * with added styling, props, and utility for use in custom accordion UIs.
+ */
+
 function Accordion({ ...props }: React.ComponentProps<typeof AccordionPrimitive.Root>) {
   return <AccordionPrimitive.Root data-slot="accordion" {...props} />;
 }
 
-/* Accordion Item Component */
 type AccordionItemProps = React.ComponentProps<typeof AccordionPrimitive.Item> & {
   disabled?: boolean;
 };
@@ -114,7 +119,6 @@ type AccordionTriggerProps = React.ComponentProps<typeof AccordionPrimitive.Trig
   icon?: boolean;
 };
 
-/* Accordion Trigger Component */
 function AccordionTrigger({ className, children, icon = false, ...props }: AccordionTriggerProps) {
   return (
     <AccordionPrimitive.Header className="flex">
@@ -136,7 +140,6 @@ function AccordionTrigger({ className, children, icon = false, ...props }: Accor
   );
 }
 
-/* Accordion Content Component */
 function AccordionContent({
   className,
   children,

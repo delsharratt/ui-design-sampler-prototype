@@ -7,9 +7,9 @@ import { FormField } from '@/components/shared/form/useFormMap';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import FormWrapper from '@/components/shared/layout/FormWrapper';
 
+import { LIBRARY_IDS } from '../../../../core/system/uiLibraries';
 import ShadcnAccordion, {
   accordionItems,
-  ShadcnAccordionDirection,
   ShadcnAccordionOrientation
   // ShadcnAccordionType
 } from '.';
@@ -17,7 +17,6 @@ import ShadcnAccordion, {
 export default function ShadcnAccordionForm({}: AccordionSingleProps) {
   // const [type, setType] = useState<ShadcnAccordionType>(ShadcnAccordionType.Single);
   const [defaultValue, setDefaultValue] = useState('item-1');
-  const [direction, setDirection] = useState<ShadcnAccordionDirection>('ltr');
   const [orientation, setOrientation] = useState<ShadcnAccordionOrientation>('horizontal');
   const [collapsible, setCollapsible] = useState(false);
   const [triggerIcon, setTriggerIcon] = useState(true);
@@ -37,13 +36,6 @@ export default function ShadcnAccordionForm({}: AccordionSingleProps) {
       value: defaultValue,
       options: Object.values(accordionItems).map((item) => item.value),
       onChange: (e) => setDefaultValue(e.target.value)
-    },
-    {
-      type: 'dropdown',
-      label: 'Direction',
-      value: direction,
-      options: ['ltr', 'rtl'], //TODO: use enum
-      onChange: (e) => setDirection(e.target.value)
     },
     {
       type: 'dropdown',
@@ -86,9 +78,9 @@ export default function ShadcnAccordionForm({}: AccordionSingleProps) {
       <div className="flex justify-around mt-8 w-full">
         {/* TODO: implement dynamic type */}
         <ShadcnAccordion
+          library={LIBRARY_IDS.SHADCN}
           type="single"
           defaultValue={defaultValue}
-          direction={direction}
           disabled={disabled}
         />
       </div>
