@@ -3,6 +3,7 @@ import AccordionFormRenderer from '@/components/ui/accordion/form';
 import ButtonRenderer from '@/components/ui/button';
 import ButtonFormRenderer from '@/components/ui/button/form';
 import DropdownRenderer from '@/components/ui/dropdown';
+import DropdownFormRenderer from '@/components/ui/dropdown/form';
 import SelectRenderer from '@/components/ui/select';
 import SelectFormRenderer from '@/components/ui/select/form';
 import ToggleRenderer from '@/components/ui/toggle';
@@ -32,5 +33,5 @@ export const COMPONENT_WRAPPER_REGISTRY = {
   [COMPONENT_IDS.Accordion]: AccordionFormRenderer,
   [COMPONENT_IDS.Toggle]: ToggleFormRenderer,
   [COMPONENT_IDS.Select]: SelectFormRenderer,
-  [COMPONENT_IDS.Dropdown]: DropdownRenderer
+  [COMPONENT_IDS.Dropdown]: DropdownFormRenderer
 };
