@@ -11,7 +11,7 @@ import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import { DaisyButtonModifier, DaisyButtonProps, DaisyButtonVariant } from '.';
 import DaisyButton from '.';
 
-export default function DaisyButtonWrapperRenderer({}: DaisyButtonProps) {
+export default function DaisyButtonForm({}: DaisyButtonProps) {
   const [size, setSize] = useState<DaisyElementSize>(DaisyElementSize.Medium);
   const [color, setColor] = useState<DaisyElementColor>(DaisyElementColor.Primary);
   const [variant, setVariant] = useState<DaisyButtonVariant>(DaisyButtonVariant.Outline);

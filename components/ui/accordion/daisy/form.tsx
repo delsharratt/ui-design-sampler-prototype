@@ -11,7 +11,7 @@ import { UnifiedAccordionProps } from '..';
 import { ACCORDION_SAMPLE_DATA } from '../config';
 import DaisyAccordion, { DaisyAccordionModifier } from '.';
 
-export default function DaisyAccordionWrapper({}: UnifiedAccordionProps) {
+export default function DaisyAccordionForm({}: UnifiedAccordionProps) {
   const [modifier, setModifier] = useState<DaisyAccordionModifier>(DaisyAccordionModifier.Arrow);
   const [join, setJoin] = useState(false);
 

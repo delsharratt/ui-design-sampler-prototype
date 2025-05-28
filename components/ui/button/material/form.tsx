@@ -5,18 +5,20 @@ import React, { useState } from 'react';
 import { FormField } from '@/components/shared/form/useFormMap';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import FormWrapper from '@/components/shared/layout/FormWrapper';
-import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
+import { MaterialComponentSize } from '@/core/constants/material';
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 
-import { MaterialDropdownProps, MaterialDropdownVariant } from '.';
-import MaterialDropdown from './index';
+import MaterialButton, {
+  MaterialButtonColor,
+  MaterialButtonProps,
+  MaterialButtonVariant
+} from './index';
 
-export default function MaterialDropdownWrapperRenderer({}: MaterialDropdownProps) {
+export default function MaterialButtonForm({}: MaterialButtonProps) {
   const [size, setSize] = useState<MaterialComponentSize>(MaterialComponentSize.Medium);
-  const [color, setColor] = useState<MaterialComponentColor>(MaterialComponentColor.Primary);
-  const [variant, setVariant] = useState<MaterialDropdownVariant>(MaterialDropdownVariant.Menu);
-
-  // const [multiple, setMultiple] = useState(false);
+  const [color, setColor] = useState<MaterialButtonColor>(MaterialButtonColor.Primary);
+  const [variant, setVariant] = useState<MaterialButtonVariant>(MaterialButtonVariant.Contained);
+  const [disabled, setDisabled] = useState(false);
 
   const DropdownFields: FormField[] = [
     {
@@ -30,25 +32,25 @@ export default function MaterialDropdownWrapperRenderer({}: MaterialDropdownProp
       type: 'dropdown',
       label: 'Color',
       value: color,
-      options: Object.values(MaterialComponentColor),
+      options: Object.values(MaterialButtonColor),
       onChange: (e) => setColor(e.target.value)
     },
     {
       type: 'dropdown',
       label: 'Variant',
       value: variant,
-      options: Object.values(MaterialDropdownVariant),
+      options: Object.values(MaterialButtonVariant),
       onChange: (e) => setVariant(e.target.value)
     }
   ];
 
   const ToggleFields: FormField[] = [
-    // {
-    //     type: 'toggle',
-    //     label: 'Multiple',
-    //     value: multiple,
-    //     onChange: (e) => setMultiple(e.target.checked)
-    // },
+    {
+      type: 'toggle',
+      label: 'Disabled',
+      value: disabled,
+      onChange: (e) => setDisabled(e.target.checked)
+    }
   ];
 
   return (
@@ -60,12 +62,13 @@ export default function MaterialDropdownWrapperRenderer({}: MaterialDropdownProp
 
       {/* Render the Button */}
       <div className="flex justify-around mt-8 w-full">
-        <MaterialDropdown
-          label="Preview Dropdown"
+        <MaterialButton
+          label="Preview Button"
           library={LIBRARY_IDS.MATERIAL}
+          variant={variant}
           size={size}
           color={color}
-          variant={variant}
+          disabled={disabled}
         />
       </div>
     </>

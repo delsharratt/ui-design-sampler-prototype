@@ -11,7 +11,7 @@ import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import { MaterialAccordionProps } from '.';
 import MaterialAccordion from './index';
 
-export default function MaterialAccordionWrapper({}: MaterialAccordionProps) {
+export default function MaterialAccordionForm({}: MaterialAccordionProps) {
   const [expanded, setExpanded] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [transition, setTransition] = useState<MaterialTransitionId>('none'); // Static default

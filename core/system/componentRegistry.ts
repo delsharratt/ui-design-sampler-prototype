@@ -1,12 +1,12 @@
 import AccordionRenderer from '@/components/ui/accordion';
-import AccordionWrapperRenderer from '@/components/ui/accordion/wrapper';
+import AccordionFormRenderer from '@/components/ui/accordion/form';
 import ButtonRenderer from '@/components/ui/button';
-import ButtonWrapperRenderer from '@/components/ui/button/wrapper';
+import ButtonFormRenderer from '@/components/ui/button/form';
 import DropdownRenderer from '@/components/ui/dropdown';
 import SelectRenderer from '@/components/ui/select';
-import SelectWrapperRenderer from '@/components/ui/select/wrapper';
+import SelectFormRenderer from '@/components/ui/select/form';
 import ToggleRenderer from '@/components/ui/toggle';
-import ToggleWrapperRenderer from '@/components/ui/toggle/wrapper';
+import ToggleFormRenderer from '@/components/ui/toggle/form';
 
 export const COMPONENT_IDS = {
   Button: 'button',
@@ -28,9 +28,9 @@ export const COMPONENT_REGISTRY = {
 };
 
 export const COMPONENT_WRAPPER_REGISTRY = {
-  [COMPONENT_IDS.Button]: ButtonWrapperRenderer,
-  [COMPONENT_IDS.Accordion]: AccordionWrapperRenderer,
-  [COMPONENT_IDS.Toggle]: ToggleWrapperRenderer,
-  [COMPONENT_IDS.Select]: SelectWrapperRenderer,
+  [COMPONENT_IDS.Button]: ButtonFormRenderer,
+  [COMPONENT_IDS.Accordion]: AccordionFormRenderer,
+  [COMPONENT_IDS.Toggle]: ToggleFormRenderer,
+  [COMPONENT_IDS.Select]: SelectFormRenderer,
   [COMPONENT_IDS.Dropdown]: DropdownRenderer
 };

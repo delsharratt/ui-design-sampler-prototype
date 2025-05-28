@@ -14,7 +14,7 @@ import ShadcnAccordion, {
   // ShadcnAccordionType
 } from '.';
 
-export default function ShadcnAccordionWrapper({}: AccordionSingleProps) {
+export default function ShadcnAccordionForm({}: AccordionSingleProps) {
   // const [type, setType] = useState<ShadcnAccordionType>(ShadcnAccordionType.Single);
   const [defaultValue, setDefaultValue] = useState('item-1');
   const [direction, setDirection] = useState<ShadcnAccordionDirection>('ltr');

@@ -11,7 +11,7 @@ import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import { MaterialToggleColor, MaterialToggleOrientation, MaterialToggleProps } from '.';
 import MaterialToggle from './index';
 
-export default function MaterialToggleWrapperRenderer({}: MaterialToggleProps) {
+export default function MaterialToggleForm({}: MaterialToggleProps) {
   const [size, setSize] = useState<MaterialComponentSize>(MaterialComponentSize.Medium);
   const [color, setColor] = useState<MaterialToggleColor>(MaterialToggleColor.Primary);
   const [orientation, setOrientation] = useState<MaterialToggleOrientation>(

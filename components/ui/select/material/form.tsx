@@ -11,7 +11,7 @@ import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import { MaterialSelectProps, MaterialSelectVariant } from '.';
 import MaterialSelect from './index';
 
-export default function MaterialSelectWrapperRenderer({}: MaterialSelectProps) {
+export default function MaterialSelectForm({}: MaterialSelectProps) {
   const [size, setSize] = useState<MaterialComponentSize>(MaterialComponentSize.Medium);
   const [color, setColor] = useState<MaterialComponentColor>(MaterialComponentColor.Primary);
   const [variant, setVariant] = useState<MaterialSelectVariant>(MaterialSelectVariant.Outlined);

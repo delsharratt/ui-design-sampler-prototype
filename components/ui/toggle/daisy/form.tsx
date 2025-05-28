@@ -10,7 +10,7 @@ import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 
 import DaisyToggle, { DaisyToggleProps } from '.';
 
-export default function DaisyToggleWrapperRenderer({}: DaisyToggleProps) {
+export default function DaisyToggleForm({}: DaisyToggleProps) {
   const [size, setSize] = useState<DaisyElementSize>(DaisyElementSize.Medium);
   const [color, setColor] = useState<DaisyElementColor>(DaisyElementColor.Primary);
 

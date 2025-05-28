@@ -4,22 +4,22 @@ import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 
 import { UnifiedAccordionProps } from '.';
 import { DaisyAccordionProps } from './daisy';
-import DaisyAccordionWrapper from './daisy/wrapper';
+import DaisyAccordionForm from './daisy/form';
 import { MaterialAccordionProps } from './material';
-import MaterialAccordionWrapper from './material/wrapper';
+import MaterialAccordionForm from './material/form';
 // import { ShadcnAccordionRootProps } from './shadcn';
-import ShadcnAccordionWrapper from './shadcn/wrapper';
+import ShadcnAccordionForm from './shadcn/form';
 
-export default function AccordionWrapperRenderer(props: UnifiedAccordionProps) {
+export default function AccordionFormRenderer(props: UnifiedAccordionProps) {
   const { library, ...rest } = props;
 
   switch (library) {
     case LIBRARY_IDS.DAISY:
-      return <DaisyAccordionWrapper {...(rest as DaisyAccordionProps)} />;
+      return <DaisyAccordionForm {...(rest as DaisyAccordionProps)} />;
     case LIBRARY_IDS.MATERIAL:
-      return <MaterialAccordionWrapper {...(rest as MaterialAccordionProps)} />;
+      return <MaterialAccordionForm {...(rest as MaterialAccordionProps)} />;
     case LIBRARY_IDS.SHADCN:
-      return <ShadcnAccordionWrapper {...(rest as AccordionSingleProps)} />;
+      return <ShadcnAccordionForm {...(rest as AccordionSingleProps)} />;
     default:
       throw new Error(`Unsupported library: ${library}`);
   }

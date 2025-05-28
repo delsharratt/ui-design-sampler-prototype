@@ -15,7 +15,7 @@ import ShadcnSelect, {
   ShadcnSelectSticky
 } from '.';
 
-export default function ShadcnSelectWrapperRenderer({}: ShadcnSelectProps) {
+export default function ShadcnSelectForm({}: ShadcnSelectProps) {
   const [direction, setDirection] = useState<ShadcnSelectDirection>(
     ShadcnSelectDirection.LeftToRight
   );

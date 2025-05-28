@@ -19,7 +19,7 @@ import { ShadcnDropdownMenu } from '.';
 //     modal?: boolean;
 // }
 
-export default function ShadcnDropdownWrapperRenderer({}: SelectProps) {
+export default function ShadcnDropdownForm({}: SelectProps) {
   const [direction, setDirection] = useState<ShadcnDropdownDirection>(
     ShadcnDropdownDirection.LeftToRight
   );

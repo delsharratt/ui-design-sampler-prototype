@@ -11,7 +11,7 @@ import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import { DaisySelectProps, DaisySelectVariant } from '.';
 import DaisySelect from '.';
 
-export default function DaisySelectWrapperRenderer({}: DaisySelectProps) {
+export default function DaisySelectForm({}: DaisySelectProps) {
   const [size, setSize] = useState<DaisyElementSize>(DaisyElementSize.Medium);
   const [color, setColor] = useState<DaisyElementColor>(DaisyElementColor.Primary);
   const [variant, setVariant] = useState<DaisySelectVariant>();

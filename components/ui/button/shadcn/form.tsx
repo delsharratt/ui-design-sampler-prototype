@@ -8,7 +8,7 @@ import FormWrapper from '@/components/shared/layout/FormWrapper';
 
 import ShadcnButton, { ShadcnButtonProps, ShadcnButtonSize, ShadcnButtonVariant } from '.';
 
-export default function ShadcnButtonWrapperRenderer({}: ShadcnButtonProps) {
+export default function ShadcnButtonForm({}: ShadcnButtonProps) {
   const [variant, setVariant] = useState<ShadcnButtonVariant>(ShadcnButtonVariant.Default);
   const [size, setSize] = useState<ShadcnButtonSize>(ShadcnButtonSize.Default);
 

@@ -14,7 +14,7 @@ import DaisyDropdown, {
   DaisyDropdownProps
 } from '.';
 
-export default function DaisyDropdownWrapperRenderer({}: DaisyDropdownProps) {
+export default function DaisyDropdownForm({}: DaisyDropdownProps) {
   const [alignment, setAlignment] = useState<DaisyDropdownAlignment>(DaisyDropdownAlignment.Start);
   const [direction, setDirection] = useState<DaisyDropdownDirection>(DaisyDropdownDirection.Top);
   const [modifier, setModifier] = useState<DaisyDropdownModifier>();
