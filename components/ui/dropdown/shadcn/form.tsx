@@ -6,38 +6,36 @@ import React, { useState } from 'react';
 import { FormField } from '@/components/shared/form/useFormMap';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import FormWrapper from '@/components/shared/layout/FormWrapper';
+import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 
-import { ShadcnDropdownDirection } from '.';
-import { ShadcnDropdownMenu } from '.';
-
-// interface DropdownMenuProps {
-//     children?: React.ReactNode;
-//     dir?: Direction;
-//     open?: boolean;
-//     defaultOpen?: boolean;
-//     onOpenChange?(open: boolean): void;
-//     modal?: boolean;
-// }
+import { ShadcnDropdown, ShadcnDropdownAlignment, ShadcnDropdownSide } from '.';
 
 export default function ShadcnDropdownForm({}: SelectProps) {
-  const [direction, setDirection] = useState<ShadcnDropdownDirection>(
-    ShadcnDropdownDirection.LeftToRight
-  );
+  const [side, setSide] = useState<ShadcnDropdownSide>(ShadcnDropdownSide.Bottom);
+  const [align, setAlign] = useState<ShadcnDropdownAlignment>(ShadcnDropdownAlignment.Start);
 
   const [modal, setModal] = useState(false);
   const [open, setOpen] = useState(false);
   const [defaultOpen, setDefaultOpen] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+  const [separator, setSeparator] = useState(false);
 
   const DropdownFields: FormField[] = [
     {
       type: 'dropdown',
-      label: 'Direction',
-      value: direction,
-      options: Object.values(ShadcnDropdownDirection),
-      onChange: (e) => setDirection(e.target.value)
+      label: 'Side',
+      value: side,
+      options: Object.values(ShadcnDropdownSide),
+      onChange: (e) => setSide(e.target.value)
+    },
+    {
+      type: 'dropdown',
+      label: 'Alignment',
+      value: align,
+      options: Object.values(ShadcnDropdownAlignment),
+      onChange: (e) => setAlign(e.target.value)
     }
   ];
-
   const ToggleFields: FormField[] = [
     {
       type: 'toggle',
@@ -53,9 +51,21 @@ export default function ShadcnDropdownForm({}: SelectProps) {
     },
     {
       type: 'toggle',
-      label: 'defaultOpen',
+      label: 'Default Open',
       value: defaultOpen,
       onChange: (e) => setDefaultOpen(e.target.checked)
+    },
+    {
+      type: 'toggle',
+      label: 'Disabled',
+      value: disabled,
+      onChange: (e) => setDisabled(e.target.checked)
+    },
+    {
+      type: 'toggle',
+      label: 'Separator',
+      value: separator,
+      onChange: (e) => setSeparator(e.target.checked)
     }
   ];
 
@@ -69,7 +79,15 @@ export default function ShadcnDropdownForm({}: SelectProps) {
       {/* Render the Button */}
       <div className="flex justify-around mt-8 w-full">
         {/* TODO: IMPLEMENT PROPS AND CHILD PROP SUPPORT */}
-        <ShadcnDropdownMenu />
+        <ShadcnDropdown
+          library={LIBRARY_IDS.SHADCN}
+          modal={modal}
+          open={open}
+          defaultOpen={defaultOpen}
+          side={side}
+          align={align}
+          disabled={disabled}
+        />
       </div>
     </>
   );

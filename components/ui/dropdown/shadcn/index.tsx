@@ -1,48 +1,160 @@
 'use client';
 
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
+import { ChevronRightIcon } from 'lucide-react';
 import * as React from 'react';
 
+import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import { cn } from '@/lib/utils';
+
+import ShadcnButton from '../../button/shadcn';
+import { DropdownProps } from '..';
+import { DROPDOWN_MENU_SAMPLE_DATA, DropdownMenuItemEntry } from './config';
 
 /*
  * See documentation https://ui.shadcn.com/docs/components/dropdown-menu
  * Radix Primitive https://www.radix-ui.com/primitives/docs/components/dropdown-menu
  */
 
-// Typically used for different language display support
-export enum ShadcnDropdownDirection {
-  LeftToRight = 'ltr',
-  RightToLeft = 'rtl'
+// Represents various example dropdown menus
+export enum ShadcnDropdownMenuExampleType {
+  Normal = 'normal',
+  Checkbox = 'checkbox',
+  Radio = 'radio'
 }
 
-// interface DropdownMenuProps {
-//     children?: React.ReactNode;
-//     dir?: Direction;
-//     open?: boolean;
-//     defaultOpen?: boolean;
-//     onOpenChange?(open: boolean): void;
-//     modal?: boolean;
-// }
+export enum ShadcnDropdownSide {
+  Top = 'top',
+  Bottom = 'bottom',
+  Left = 'left',
+  Right = 'right'
+}
 
-function ShadcnDropdownMenu({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {
+export enum ShadcnDropdownAlignment {
+  Start = 'start',
+  Center = 'center',
+  End = 'end'
+}
+
+// Extends Radix's DropdownMenuProps (view @radix-ui/react-dropdown-menu for details)
+export type ShadcnDropdownProps = DropdownProps &
+  DropdownMenuPrimitive.DropdownMenuProps & {
+    items?: DropdownMenuItemEntry[];
+    type?: ShadcnDropdownMenuExampleType;
+    separator?: boolean;
+    // DropdownMenuContent props
+    side?: ShadcnDropdownSide;
+    sideOffset?: number;
+    align?: ShadcnDropdownAlignment;
+    arrowPadding?: number;
+    // DropdownMenuTrigger props
+    open?: boolean; // [data-state]
+    disabled?: boolean; // [data-disabled]
+    triggerIcon?: boolean;
+  };
+
+/*
+ * ---- DEFAULT COMPONENT EXPORT ----
+ */
+export function ShadcnDropdown({
+  items = DROPDOWN_MENU_SAMPLE_DATA,
+  separator = false,
+  defaultOpen = false,
+  open = false,
+  modal = false,
+  side = ShadcnDropdownSide.Bottom,
+  sideOffset = 4, // Same default as Radix
+  align = ShadcnDropdownAlignment.Start,
+  arrowPadding = 0,
+  disabled = false
+  // triggerIcon = false //TODO: implement icon for trigger
+}: ShadcnDropdownProps) {
+  return (
+    <DropdownMenu defaultOpen={defaultOpen} open={open} modal={modal}>
+      {/* DROPDOWN MENU TRIGGER */}
+      <DropdownMenuTrigger data-state={open ? 'open' : 'closed'} data-disabled={disabled} asChild>
+        <ShadcnButton library={LIBRARY_IDS.SHADCN} variant="outline" custom>
+          Open
+        </ShadcnButton>
+      </DropdownMenuTrigger>
+      {/* DROPDOWN MENU CONTENT */}
+      <DropdownMenuContent
+        side={side}
+        sideOffset={sideOffset}
+        align={align}
+        arrowPadding={arrowPadding}
+        className="w-56"
+      >
+        {renderDropdownMenuItems(items, separator)}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+/*
+ * ---- RENDERING LOGIC FOR DROPDOWN MENU ITEMS ----
+ * This function recursively renders the dropdown menu items based on their type.
+ * It handles separators, labels, groups, submenus, and regular items.
+ */
+function renderDropdownMenuItems(items: DropdownMenuItemEntry[], separator: boolean = false) {
+  return items.map((item, idx) => {
+    if (separator && item.type === 'separator') {
+      return <DropdownMenuSeparator key={`separator-${idx}`} />;
+    }
+    if (item.type === 'label' && item.label) {
+      return <DropdownMenuLabel key={`label-${item.label}-${idx}`}>{item.label}</DropdownMenuLabel>;
+    }
+    if (item.type === 'group' && item.items) {
+      return (
+        <DropdownMenuGroup key={`group-${idx}`}>
+          {renderDropdownMenuItems(item.items)}
+        </DropdownMenuGroup>
+      );
+    }
+    if (item.type === 'submenu' && item.items && item.label) {
+      return (
+        <DropdownMenuSub key={`submenu-${item.label}-${idx}`}>
+          <DropdownMenuSubTrigger>{item.label}</DropdownMenuSubTrigger>
+          <DropdownMenuPortal>
+            <DropdownMenuSubContent>{renderDropdownMenuItems(item.items)}</DropdownMenuSubContent>
+          </DropdownMenuPortal>
+        </DropdownMenuSub>
+      );
+    }
+    // Default menu item (type: "normal")
+    return (
+      <DropdownMenuItem key={`item-${item.label ?? idx}`} disabled={item.disabled}>
+        {item.label}
+        {item.shortcut && <DropdownMenuShortcut>{item.shortcut}</DropdownMenuShortcut>}
+      </DropdownMenuItem>
+    );
+  });
+}
+
+/*
+ * ---- SHADCN DROPDOWN MENU COMPONENT PRIMITIVES ----
+ * These are the lower-level building blocks used by the default export above.
+ * Most are direct wrappers around @radix-ui/react-dropdown-menu primitives,
+ * with added styling, props, and utility for use in custom dropdown menu UIs.
+ */
+
+function DropdownMenu({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {
   return <DropdownMenuPrimitive.Root data-slot="dropdown-menu" {...props} />;
 }
 
-function ShadcnDropdownMenuPortal({
+function DropdownMenuPortal({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>) {
   return <DropdownMenuPrimitive.Portal data-slot="dropdown-menu-portal" {...props} />;
 }
 
-function ShadcnDropdownMenuTrigger({
+function DropdownMenuTrigger({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>) {
   return <DropdownMenuPrimitive.Trigger data-slot="dropdown-menu-trigger" {...props} />;
 }
 
-function ShadcnDropdownMenuContent({
+function DropdownMenuContent({
   className,
   sideOffset = 4,
   ...props
@@ -62,13 +174,11 @@ function ShadcnDropdownMenuContent({
   );
 }
 
-function ShadcnDropdownMenuGroup({
-  ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.Group>) {
+function DropdownMenuGroup({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Group>) {
   return <DropdownMenuPrimitive.Group data-slot="dropdown-menu-group" {...props} />;
 }
 
-function ShadcnDropdownMenuItem({
+function DropdownMenuItem({
   className,
   inset,
   variant = 'default',
@@ -91,63 +201,63 @@ function ShadcnDropdownMenuItem({
   );
 }
 
-function ShadcnDropdownMenuCheckboxItem({
-  className,
-  children,
-  checked,
-  ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem>) {
-  return (
-    <DropdownMenuPrimitive.CheckboxItem
-      data-slot="dropdown-menu-checkbox-item"
-      className={cn(
-        "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        className
-      )}
-      checked={checked}
-      {...props}
-    >
-      <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
-        <DropdownMenuPrimitive.ItemIndicator>
-          <CheckIcon className="size-4" />
-        </DropdownMenuPrimitive.ItemIndicator>
-      </span>
-      {children}
-    </DropdownMenuPrimitive.CheckboxItem>
-  );
-}
+// function DropdownMenuCheckboxItem({
+//   className,
+//   children,
+//   checked,
+//   ...props
+// }: React.ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem>) {
+//   return (
+//     <DropdownMenuPrimitive.CheckboxItem
+//       data-slot="dropdown-menu-checkbox-item"
+//       className={cn(
+//         "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+//         className
+//       )}
+//       checked={checked}
+//       {...props}
+//     >
+//       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+//         <DropdownMenuPrimitive.ItemIndicator>
+//           <CheckIcon className="size-4" />
+//         </DropdownMenuPrimitive.ItemIndicator>
+//       </span>
+//       {children}
+//     </DropdownMenuPrimitive.CheckboxItem>
+//   );
+// }
 
-function ShadcnDropdownMenuRadioGroup({
-  ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>) {
-  return <DropdownMenuPrimitive.RadioGroup data-slot="dropdown-menu-radio-group" {...props} />;
-}
+// function DropdownMenuRadioGroup({
+//   ...props
+// }: React.ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>) {
+//   return <DropdownMenuPrimitive.RadioGroup data-slot="dropdown-menu-radio-group" {...props} />;
+// }
 
-function ShadcnDropdownMenuRadioItem({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.RadioItem>) {
-  return (
-    <DropdownMenuPrimitive.RadioItem
-      data-slot="dropdown-menu-radio-item"
-      className={cn(
-        "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        className
-      )}
-      {...props}
-    >
-      <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
-        <DropdownMenuPrimitive.ItemIndicator>
-          <CircleIcon className="size-2 fill-current" />
-        </DropdownMenuPrimitive.ItemIndicator>
-      </span>
-      {children}
-    </DropdownMenuPrimitive.RadioItem>
-  );
-}
+// function DropdownMenuRadioItem({
+//   className,
+//   children,
+//   ...props
+// }: React.ComponentProps<typeof DropdownMenuPrimitive.RadioItem>) {
+//   return (
+//     <DropdownMenuPrimitive.RadioItem
+//       data-slot="dropdown-menu-radio-item"
+//       className={cn(
+//         "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+//         className
+//       )}
+//       {...props}
+//     >
+//       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+//         <DropdownMenuPrimitive.ItemIndicator>
+//           <CircleIcon className="size-2 fill-current" />
+//         </DropdownMenuPrimitive.ItemIndicator>
+//       </span>
+//       {children}
+//     </DropdownMenuPrimitive.RadioItem>
+//   );
+// }
 
-function ShadcnDropdownMenuLabel({
+function DropdownMenuLabel({
   className,
   inset,
   ...props
@@ -164,7 +274,7 @@ function ShadcnDropdownMenuLabel({
   );
 }
 
-function ShadcnDropdownMenuSeparator({
+function DropdownMenuSeparator({
   className,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Separator>) {
@@ -177,7 +287,7 @@ function ShadcnDropdownMenuSeparator({
   );
 }
 
-function ShadcnDropdownMenuShortcut({ className, ...props }: React.ComponentProps<'span'>) {
+function DropdownMenuShortcut({ className, ...props }: React.ComponentProps<'span'>) {
   return (
     <span
       data-slot="dropdown-menu-shortcut"
@@ -187,13 +297,11 @@ function ShadcnDropdownMenuShortcut({ className, ...props }: React.ComponentProp
   );
 }
 
-function ShadcnDropdownMenuSub({
-  ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.Sub>) {
+function DropdownMenuSub({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Sub>) {
   return <DropdownMenuPrimitive.Sub data-slot="dropdown-menu-sub" {...props} />;
 }
 
-function ShadcnDropdownMenuSubTrigger({
+function DropdownMenuSubTrigger({
   className,
   inset,
   children,
@@ -217,7 +325,7 @@ function ShadcnDropdownMenuSubTrigger({
   );
 }
 
-function ShadcnDropdownMenuSubContent({
+function DropdownMenuSubContent({
   className,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.SubContent>) {
@@ -232,21 +340,3 @@ function ShadcnDropdownMenuSubContent({
     />
   );
 }
-
-export {
-  ShadcnDropdownMenu,
-  ShadcnDropdownMenuCheckboxItem,
-  ShadcnDropdownMenuContent,
-  ShadcnDropdownMenuGroup,
-  ShadcnDropdownMenuItem,
-  ShadcnDropdownMenuLabel,
-  ShadcnDropdownMenuPortal,
-  ShadcnDropdownMenuRadioGroup,
-  ShadcnDropdownMenuRadioItem,
-  ShadcnDropdownMenuSeparator,
-  ShadcnDropdownMenuShortcut,
-  ShadcnDropdownMenuSub,
-  ShadcnDropdownMenuSubContent,
-  ShadcnDropdownMenuSubTrigger,
-  ShadcnDropdownMenuTrigger
-};
