@@ -5,7 +5,7 @@ libraries — including Material UI, ShadCN/UI, and DaisyUI. The app supports re
 manipulation, layout switching, and theming to explore how different systems implement component
 APIs.
 
-### 🔗 [Preview Live!](https://ui-design-sampler-prototype.vercel.app/) <i><(Work in Progress)/i>
+### 🔗 [Preview Live!](https://ui-design-sampler-prototype.vercel.app/) <i>(Work in Progress)</i>
 
 ## Features
 
