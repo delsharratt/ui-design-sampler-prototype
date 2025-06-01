@@ -48,7 +48,7 @@ export default function LibraryLayout({ children }: { children: React.ReactNode 
         </nav>
 
         {/* Scrolling Form Container */}
-        <div className="overflow-y-auto pt-20">{children}</div>
+        <div className="overflow-y-auto w-full h-full pt-20">{children}</div>
       </div>
     </LibraryThemeProvider>
   );
