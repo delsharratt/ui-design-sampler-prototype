@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-import { FormField } from '@/components/shared/form/useFormMap';
+import { FormField } from '@/components/shared/form/FormField';
 import { FormColumnPanel } from '@/components/shared/layout/FormColumnPanel';
 import FormWrapper from '@/components/shared/layout/FormWrapper';
 import { MaterialComponentSize } from '@/core/constants/material';
