@@ -32,6 +32,6 @@ export default function ToggleRenderer(props: UnifiedToggleProps) {
     case LIBRARY_IDS.SHADCN:
       return <ShadcnToggle {...(rest as ShadcnToggleProps)} />;
     default:
-      return null;
+      throw new Error(`Unsupported in library: ${library}`);
   }
 }
