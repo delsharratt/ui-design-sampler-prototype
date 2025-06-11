@@ -1,5 +1,6 @@
 import { Library, LIBRARY_IDS } from '@/core/system/uiLibraries';
 
+import DaisyCheckbox, { DaisyCheckboxProps } from './daisy';
 import ShadcnCheckbox, { ShadcnCheckboxProps } from './shadcn';
 
 /* Shared Checkbox Props */
@@ -17,8 +18,8 @@ export default function CheckboxRenderer(props: UnifiedCheckboxProps) {
   const { library, ...rest } = props;
 
   switch (library) {
-    // case LIBRARY_IDS.DAISY:
-    //   return <DaisyCheckbox {...(rest as DaisyCheckboxProps)} />;
+    case LIBRARY_IDS.DAISY:
+      return <DaisyCheckbox {...(rest as DaisyCheckboxProps)} />;
     // case LIBRARY_IDS.MATERIAL:
     //   return <MaterialCheckbox {...(rest as MaterialCheckboxProps)} />;
     case LIBRARY_IDS.SHADCN:
