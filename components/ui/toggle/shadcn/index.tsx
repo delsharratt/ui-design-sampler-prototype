@@ -7,7 +7,33 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-const shadcnToggleVariants = cva(
+import { ToggleProps } from '..';
+
+/*
+ *  ---- SHADCN/UI TOGGLES ----
+ *  See documentation https://ui.shadcn.com/docs/components/toggle
+ */
+
+export enum ShadcnToggleVariant {
+  Default = 'default',
+  Outline = 'outline'
+}
+
+export enum ShadcnToggleSize {
+  Default = 'default',
+  Sm = 'sm',
+  Lg = 'lg'
+}
+
+export type ShadcnToggleProps = ToggleProps &
+  VariantProps<typeof shadcnToggleVariantStyles> & {
+    pressed?: boolean;
+    defaultPressed?: boolean;
+    disabled?: boolean;
+    asChild?: boolean;
+  };
+
+const shadcnToggleVariantStyles = cva(
   "inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium hover:bg-muted hover:text-muted-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none transition-[color,box-shadow] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive whitespace-nowrap",
   {
     variants: {
@@ -29,7 +55,9 @@ const shadcnToggleVariants = cva(
   }
 );
 
-const ShadcnToggleGroupContext = React.createContext<VariantProps<typeof shadcnToggleVariants>>({
+const ShadcnToggleGroupContext = React.createContext<
+  VariantProps<typeof shadcnToggleVariantStyles>
+>({
   size: 'default',
   variant: 'default'
 });
@@ -42,12 +70,17 @@ function ShadcnToggle({
   className,
   variant,
   size,
+  pressed,
+  defaultPressed,
   ...props
-}: React.ComponentProps<typeof TogglePrimitive.Root> & VariantProps<typeof shadcnToggleVariants>) {
+}: React.ComponentProps<typeof TogglePrimitive.Root> &
+  VariantProps<typeof shadcnToggleVariantStyles>) {
   return (
     <TogglePrimitive.Root
       data-slot="toggle"
-      className={cn(shadcnToggleVariants({ variant, size, className }))}
+      pressed={pressed}
+      defaultPressed={defaultPressed}
+      className={cn(shadcnToggleVariantStyles({ variant, size, className }))}
       {...props}
     />
   );
@@ -64,7 +97,7 @@ function ShadcnToggleGroup({
   children,
   ...props
 }: React.ComponentProps<typeof ToggleGroupPrimitive.Root> &
-  VariantProps<typeof shadcnToggleVariants>) {
+  VariantProps<typeof shadcnToggleVariantStyles>) {
   return (
     <ToggleGroupPrimitive.Root
       data-slot="toggle-group"
@@ -90,7 +123,7 @@ function ShadcnToggleGroupItem({
   size,
   ...props
 }: React.ComponentProps<typeof ToggleGroupPrimitive.Item> &
-  VariantProps<typeof shadcnToggleVariants>) {
+  VariantProps<typeof shadcnToggleVariantStyles>) {
   const context = React.useContext(ShadcnToggleGroupContext);
 
   return (
@@ -99,7 +132,7 @@ function ShadcnToggleGroupItem({
       data-variant={context.variant || variant}
       data-size={context.size || size}
       className={cn(
-        shadcnToggleVariants({
+        shadcnToggleVariantStyles({
           variant: context.variant || variant,
           size: context.size || size
         }),
@@ -113,4 +146,4 @@ function ShadcnToggleGroupItem({
   );
 }
 
-export { ShadcnToggle, ShadcnToggleGroup, ShadcnToggleGroupItem, shadcnToggleVariants };
+export { ShadcnToggle, ShadcnToggleGroup, ShadcnToggleGroupItem };
