@@ -1,8 +1,8 @@
 import React from 'react';
 
 import {
+  COMPONENT_FORM_REGISTRY,
   COMPONENT_REGISTRY,
-  COMPONENT_WRAPPER_REGISTRY,
   ComponentId
 } from '@/core/system/componentRegistry';
 import { Library } from '@/core/system/uiLibraries';
@@ -14,10 +14,10 @@ export default async function ComponentPage({
 }) {
   const { library, component } = await params;
 
-  const WrapperComponent = COMPONENT_WRAPPER_REGISTRY[component];
+  const FormComponent = COMPONENT_FORM_REGISTRY[component];
   const BaseComponent = COMPONENT_REGISTRY[component];
 
-  if (!WrapperComponent || !BaseComponent) {
+  if (!FormComponent || !BaseComponent) {
     return <div>Component not found</div>;
   }
 
@@ -37,7 +37,7 @@ export default async function ComponentPage({
     <div className="flex flex-col gap-4 items-start h-full w-full">
       <h2 className="text-2xl font-semibold capitalize">{component} Customization</h2>
       <div className="flex flex-col gap-4 text-start w-full">
-        <WrapperComponent library={library} />
+        <FormComponent library={library} />
       </div>
     </div>
   );

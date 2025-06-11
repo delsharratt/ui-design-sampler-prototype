@@ -28,7 +28,7 @@ export const COMPONENT_REGISTRY = {
   [COMPONENT_IDS.Dropdown]: DropdownRenderer
 };
 
-export const COMPONENT_WRAPPER_REGISTRY = {
+export const COMPONENT_FORM_REGISTRY = {
   [COMPONENT_IDS.Button]: ButtonFormRenderer,
   [COMPONENT_IDS.Accordion]: AccordionFormRenderer,
   [COMPONENT_IDS.Toggle]: ToggleFormRenderer,
