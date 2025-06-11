@@ -12,9 +12,13 @@ export const FormDropdown: React.FC<FormDropdownProps> = ({ label, value, option
   return (
     <label className="flex flex-col">
       <span className="mb-2">{label}:</span>
-      <select value={value} onChange={onChange} className="select select-bordered">
+      <select value={value} onChange={onChange} className="select select-bordered capitalize">
         {options.map((option) => (
-          <option key={option} value={option}>
+          <option
+            className={option.length <= 2 ? 'uppercase' : 'capitalize'}
+            key={option}
+            value={option}
+          >
             {option}
           </option>
         ))}
