@@ -14,12 +14,8 @@ import { CheckboxProps } from '..';
  */
 
 export interface DaisyCheckboxProps extends CheckboxProps {
-  checked?: boolean;
-  defaultChecked?: boolean;
   elementSize?: DaisyElementSize; // Attribute is named `elementSize` to avoid conflict with native HTML input attribute
   color?: DaisyElementColor;
-  disabled?: boolean;
-  indeterminate?: boolean;
 }
 
 /*
@@ -27,7 +23,6 @@ export interface DaisyCheckboxProps extends CheckboxProps {
  */
 export default function DaisyCheckbox({
   checked = false,
-  defaultChecked = false,
   elementSize = DaisyElementSize.Medium,
   color = DaisyElementColor.Primary,
   disabled = false,
@@ -64,7 +59,7 @@ export default function DaisyCheckbox({
         }}
         ref={checkboxRef}
         type="checkbox"
-        checked={checked || defaultChecked}
+        checked={checked}
         className={checkboxStyles}
         disabled={disabled}
         {...rest}

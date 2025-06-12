@@ -16,7 +16,6 @@ export default function DaisyCheckboxForm({}: DaisyCheckboxProps) {
   const [color, setColor] = useState<DaisyElementColor>(DaisyElementColor.Primary);
 
   const [checked, setChecked] = useState(false);
-  const [defaultChecked, setDefaultChecked] = useState(false);
   const [indeterminate, setIndeterminate] = useState(false);
   const [disabled, setDisabled] = useState(false);
 
@@ -43,12 +42,6 @@ export default function DaisyCheckboxForm({}: DaisyCheckboxProps) {
       label: 'Checked',
       value: checked,
       onChange: (e) => setChecked(e.target.checked)
-    },
-    {
-      type: 'toggle',
-      label: 'Default Checked',
-      value: defaultChecked,
-      onChange: (e) => setDefaultChecked(e.target.checked)
     },
     {
       type: 'toggle',
@@ -79,9 +72,9 @@ export default function DaisyCheckboxForm({}: DaisyCheckboxProps) {
           elementSize={size}
           color={color}
           checked={checked}
-          defaultChecked={defaultChecked}
           indeterminate={indeterminate}
           disabled={disabled}
+          onChange={(e) => setChecked(e.target.checked)}
         />
       </div>
     </>

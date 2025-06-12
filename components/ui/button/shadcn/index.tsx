@@ -32,7 +32,8 @@ export enum ShadcnButtonSize {
 
 export type ShadcnButtonProps = ButtonProps &
   React.ComponentProps<'button'> &
-  VariantProps<typeof shadcnButtonVariantStyles> & {
+  VariantProps<typeof shadcnButtonVariantStyles> &
+  React.ButtonHTMLAttributes<HTMLButtonElement> & {
     custom?: boolean;
     icon?: boolean;
     iconOnly?: boolean;
