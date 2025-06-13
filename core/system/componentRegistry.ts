@@ -1,5 +1,5 @@
 import AccordionRenderer from '@/components/ui/accordion';
-import AccordionFormRenderer from '@/components/ui/accordion/form';
+import AccordionComponentForm from '@/components/ui/accordion/form';
 import ButtonRenderer from '@/components/ui/button';
 import ButtonFormRenderer from '@/components/ui/button/form';
 import CheckboxRenderer from '@/components/ui/checkbox';
@@ -33,7 +33,7 @@ export const COMPONENT_REGISTRY = {
 };
 
 export const COMPONENT_FORM_REGISTRY = {
-  [COMPONENT_IDS.Accordion]: AccordionFormRenderer,
+  [COMPONENT_IDS.Accordion]: AccordionComponentForm,
   [COMPONENT_IDS.Button]: ButtonFormRenderer,
   [COMPONENT_IDS.Checkbox]: CheckboxFormRenderer,
   [COMPONENT_IDS.Dropdown]: DropdownFormRenderer,

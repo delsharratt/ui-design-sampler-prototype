@@ -1,8 +1,7 @@
-import { Library, LIBRARY_IDS } from '@/core/system/uiLibraries';
+import { Library } from '@/core/system/uiLibraries';
 
-import { ACCORDION_SAMPLE_DATA } from './config';
 import DaisyAccordion, { DaisyAccordionProps } from './daisy';
-import MaterialAccordion, { MaterialAccordionProps } from './material';
+import MaterialAccordion, { MaterialAccordionItem, MaterialAccordionProps } from './material';
 import ShadcnAccordion, { ShadcnAccordionProps } from './shadcn';
 
 export interface AccordionItem {
@@ -24,22 +23,49 @@ export type UnifiedAccordionProps =
   | MaterialAccordionProps
   | ShadcnAccordionProps;
 
+const accordionComponents: Record<Library, React.FC<any>> = {
+  daisy: DaisyAccordion,
+  shadcn: ShadcnAccordion,
+  material: MaterialAccordion
+};
+
+/* SAMPLE DATA FOR ACCORDION COMPONENTS */
+
+// TODO: make this not material specific
+export const ACCORDION_SAMPLE_DATA: MaterialAccordionItem[] = [
+  {
+    id: 'panel1',
+    title: 'Accordion 1',
+    details:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
+    actions: null // No actions for this accordion
+  },
+  {
+    id: 'panel2',
+    title: 'Accordion 2',
+    details:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
+    actions: null // No actions for this accordion
+  },
+  {
+    id: 'panel3',
+    title: 'Accordion Actions',
+    details:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
+    actions: [
+      // { label: 'Cancel', onClick: () => console.log('Cancel clicked') },
+      // { label: 'Agree', onClick: () => console.log('Agree clicked') },
+    ]
+  }
+];
+
 /*
  * ---- DEFAULT COMPONENT EXPORT ----
  */
-export default function AccordionRenderer(props: UnifiedAccordionProps) {
-  const { library, ...rest } = props;
-
-  switch (library) {
-    case LIBRARY_IDS.DAISY:
-      return <DaisyAccordion {...(rest as DaisyAccordionProps)} items={ACCORDION_SAMPLE_DATA} />;
-    case LIBRARY_IDS.MATERIAL:
-      return (
-        <MaterialAccordion {...(rest as MaterialAccordionProps)} items={ACCORDION_SAMPLE_DATA} />
-      );
-    case LIBRARY_IDS.SHADCN:
-      return <ShadcnAccordion {...(rest as ShadcnAccordionProps)} />;
-    default:
-      return null;
-  }
+export default function AccordionRenderer({
+  library,
+  ...props
+}: { library: Library } & UnifiedAccordionProps) {
+  const Component = accordionComponents[library];
+  return <Component {...props} items={ACCORDION_SAMPLE_DATA} />;
 }

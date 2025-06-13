@@ -4,9 +4,10 @@ import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from 'lucide-react';
 import * as React from 'react';
 
+import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { cn } from '@/lib/utils';
 
-import { AccordionProps } from '../index';
+import { AccordionProps } from './index';
 
 /*
  * See documentation https://ui.shadcn.com/docs/components/accordion
@@ -46,6 +47,7 @@ export type ShadcnAccordionRootProps =
 
 export type ShadcnAccordionProps = AccordionProps &
   ShadcnAccordionRootProps & {
+    items: typeof accordionItems;
     // type?: AccordionType; // TODO: troubleshoot type error
     defaultValue?: string;
     orientation?: ShadcnAccordionOrientation;
@@ -57,9 +59,55 @@ export type ShadcnAccordionProps = AccordionProps &
   };
 
 /*
+ * ---- FORM CONFIGURATION ----
+ */
+export const shadcnAccordionFields: FormFieldConfig[] = [
+  // {
+  //   type: 'dropdown',
+  //   label: 'Type',
+  //   prop: 'type',
+  //   options: Object.values(ShadcnAccordionType),
+  //   default: ShadcnAccordionType.Single
+  // },
+  {
+    type: 'dropdown',
+    label: 'Default Value',
+    prop: 'defaultValue',
+    options: Object.values(accordionItems).map((item) => item.value),
+    default: 'item-1'
+  },
+  {
+    type: 'dropdown',
+    label: 'Direction',
+    prop: 'orientation',
+    options: ['horizontal', 'vertical'], //TODO: use enum
+    default: 'horizontal'
+  },
+  {
+    type: 'toggle',
+    label: 'Collapsible',
+    prop: 'collapsible',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Icon',
+    prop: 'triggerIcon',
+    default: true
+  },
+  {
+    type: 'toggle',
+    label: 'Disabled',
+    prop: 'disabled',
+    default: false
+  }
+];
+
+/*
  * ---- DEFAULT COMPONENT EXPORT ----
  */
 export default function ShadcnAccordion({
+  // items = accordionItems,
   // type = AccordionType.Single,
   defaultValue = 'item-1',
   orientation = 'vertical',

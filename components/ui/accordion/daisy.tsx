@@ -1,11 +1,15 @@
+'use client';
+
 import clsx from 'clsx';
 
-import { AccordionItem, AccordionProps } from '..';
+import { FormFieldConfig } from '@/components/shared/form/FormField';
 
-/* 
-See documentation https://daisyui.com/components/accordion/
-All class names include a hyphenated "collapse" prefix
-*/
+import { AccordionItem, AccordionProps } from '.';
+
+/*
+ * See documentation https://daisyui.com/components/accordion/
+ * All class names include a hyphenated "collapse" prefix
+ */
 
 export enum DaisyAccordionModifier {
   Arrow = 'arrow',
@@ -19,6 +23,25 @@ export interface DaisyAccordionProps extends AccordionProps {
   modifier?: DaisyAccordionModifier;
   join?: boolean;
 }
+
+/*
+ * ---- FORM CONFIGURATION ----
+ */
+export const daisyAccordionFields: FormFieldConfig[] = [
+  {
+    type: 'dropdown',
+    label: 'Modifier',
+    prop: 'modifier',
+    options: Object.values(DaisyAccordionModifier),
+    default: DaisyAccordionModifier.Arrow
+  },
+  {
+    type: 'toggle',
+    label: 'Join Items',
+    prop: 'join',
+    default: false
+  }
+];
 
 /*
  * ---- DEFAULT COMPONENT EXPORT ----

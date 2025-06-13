@@ -1,7 +1,7 @@
 'use client';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-// import { AccordionProps } from "@mui/material"; // Q: Should I be using this instead of the custom ButtonProps?
+// import { AccordionProps } from "@mui/material"; // Q: Should I be using this instead of the custom AccordionProps?
 // import { SlotProps } from "@mui/material";
 import {
   Accordion,
@@ -13,10 +13,10 @@ import {
 } from '@mui/material'; //TODO: bring back Fade
 import * as React from 'react';
 
-import { MaterialTransitionId } from '@/core/constants/material';
+import { FormFieldConfig } from '@/components/shared/form/FormField';
+import { MATERIAL_TRANSITIONS, MaterialTransitionId } from '@/core/constants/material';
 
-import { AccordionItem, AccordionProps } from '..';
-import { ACCORDION_SAMPLE_DATA } from '../config';
+import { AccordionItem, AccordionProps } from '.';
 
 /*
  *  ---- MATERIAL UI ACCORDIONS ----
@@ -81,10 +81,35 @@ export interface MaterialAccordionProps extends AccordionProps {
 }
 
 /*
+ * ---- FORM CONFIGURATION ----
+ */
+export const materialAccordionFields: FormFieldConfig[] = [
+  {
+    type: 'dropdown',
+    label: 'Transition',
+    prop: 'transition',
+    options: Object.keys(MATERIAL_TRANSITIONS),
+    default: 'none'
+  },
+  {
+    type: 'toggle',
+    label: 'Join Items',
+    prop: 'join',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Disabled',
+    prop: 'disabled',
+    default: false
+  }
+];
+
+/*
  * ---- DEFAULT COMPONENT EXPORT ----
  */
 export default function MaterialAccordion({
-  items = ACCORDION_SAMPLE_DATA,
+  items = [],
   // expandIcon = <ExpandMoreIcon />,
   disableGutters = false,
   heading = 'h1',
@@ -96,6 +121,14 @@ export default function MaterialAccordion({
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
+
+  /* THIS LOGIC IS INTENDED FOR FORM LEVEL COMPONENT ALONGSIDE STATE MANAGEMENT */
+  // TODO: figure out how to handle useEffect for dynamic transitions in MUI
+  // useEffect(() => {
+  //   // Dynamically set the transition after hydration
+  //   const firstTransition = Object.keys(MATERIAL_TRANSITIONS)[0] as MaterialTransitionId;
+  //   setTransition(firstTransition);
+  // }, []);
 
   return (
     <div>
