@@ -1,11 +1,13 @@
 import React from 'react';
 
+import GenericComponentForm from '@/components/shared/ui/ComponentForm';
 import {
   COMPONENT_FORM_REGISTRY,
-  COMPONENT_REGISTRY,
-  ComponentId
+  ComponentId,
+  NEW_COMPONENT_REGISTRY
 } from '@/core/system/componentRegistry';
 import { Library } from '@/core/system/uiLibraries';
+import { toPascalCase } from '@/core/utils/string';
 
 export default async function ComponentPage({
   params
@@ -13,31 +15,20 @@ export default async function ComponentPage({
   params: Promise<{ library: Library; component: ComponentId }>;
 }) {
   const { library, component } = await params;
+  const componentId = toPascalCase(component) as ComponentId;
 
-  const FormComponent = COMPONENT_FORM_REGISTRY[component];
-  const BaseComponent = COMPONENT_REGISTRY[component];
-
-  if (!FormComponent || !BaseComponent) {
-    return <div>Component not found</div>;
-  }
-
-  if (!library) {
-    // TODO: consider actual loading spinner? Also isn't this built into Next.js some other way???
-    return (
-      // Show a loading state while params are being resolved
-      <div className="flex flex-col gap-4 items-center justify-center h-full w-full text-center">
-        <h3 className="font-medium text-md tracking-widest text-neutral-300 w-1/3 uppercase">
-          Loading...
-        </h3>
-      </div>
-    );
+  let ComponentForm = COMPONENT_FORM_REGISTRY[componentId];
+  if (!ComponentForm) {
+    // Replace line above when fully migrated to new registry
+    const config = NEW_COMPONENT_REGISTRY[componentId];
+    return <GenericComponentForm library={library} {...config} />;
   }
 
   return (
     <div className="flex flex-col gap-4 items-start h-full w-full">
       <h2 className="text-2xl font-semibold capitalize">{component} Customization</h2>
       <div className="flex flex-col gap-4 text-start w-full">
-        <FormComponent library={library} />
+        <ComponentForm library={library} />
       </div>
     </div>
   );
