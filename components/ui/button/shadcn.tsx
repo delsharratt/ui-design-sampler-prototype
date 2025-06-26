@@ -3,9 +3,10 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { ChevronRight, Loader2, MailOpen } from 'lucide-react';
 import * as React from 'react';
 
+import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { cn } from '@/lib/utils';
 
-import { ButtonProps } from '..';
+import { ButtonProps } from '.';
 
 /*
  *  ---- SHADCN/UI BUTTONS ----
@@ -71,6 +72,50 @@ const shadcnButtonVariantStyles = cva(
 );
 
 /*
+ * ---- FORM CONFIGURATION ----
+ */
+export const shadcnButtonFields: FormFieldConfig[] = [
+  {
+    type: 'dropdown',
+    label: 'Size',
+    prop: 'size',
+    options: Object.values(ShadcnButtonVariant),
+    default: ShadcnButtonVariant.Default
+  },
+  {
+    type: 'dropdown',
+    label: 'Color',
+    prop: 'color',
+    options: Object.values(ShadcnButtonSize),
+    default: ShadcnButtonSize.Default
+  },
+  {
+    type: 'toggle',
+    label: 'Icon',
+    prop: 'icon',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Icon Only',
+    prop: 'iconOnly',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Loading',
+    prop: 'loading',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Disabled',
+    prop: 'disabled',
+    default: false
+  }
+];
+
+/*
  * ---- DEFAULT COMPONENT EXPORT ----
  */
 export default function ShadcnButton({
@@ -85,6 +130,31 @@ export default function ShadcnButton({
   asChild = false,
   ...props
 }: ShadcnButtonProps) {
+  // {
+  //   type: 'dropdown',
+  //   label: 'Size',
+  //   value: size,
+  //   options: Object.values(ShadcnButtonSize),
+  //   onChange: (e) => {
+  //     setSize(e.target.value);
+  //     // Set icon and iconOnly based on size when size is Icon
+  //     setIcon(e.target.value === ShadcnButtonSize.Icon);
+  //     setIconOnly(e.target.value === ShadcnButtonSize.Icon);
+  //   }
+  // }
+  // {
+  //   type: 'toggle',
+  //   label: 'Icon Only',
+  //   value: iconOnly,
+  //   onChange: (e) => {
+  //     setIcon(e.target.checked);
+  //     setIconOnly(e.target.checked);
+  //     // Set size to Icon if iconOnly is checked
+  //     // Otherwise, set it to Default
+  //     setSize(e.target.checked ? ShadcnButtonSize.Icon : ShadcnButtonSize.Default);
+  //   }
+  // },
+
   const Component = asChild ? Slot : 'button';
   const content = (
     <>

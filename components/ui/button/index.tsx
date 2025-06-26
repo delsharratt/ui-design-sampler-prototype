@@ -1,9 +1,7 @@
-import { Library, LIBRARY_IDS } from '@/core/system/uiLibraries';
+import { Library } from '@/core/system/uiLibraries';
 
-import DaisyButton from './daisy';
-import { DaisyButtonProps } from './daisy';
-import MaterialButton from './material';
-import { MaterialButtonProps } from './material';
+import DaisyButton, { DaisyButtonProps } from './daisy';
+import MaterialButton, { MaterialButtonProps } from './material';
 import ShadcnButton, { ShadcnButtonProps } from './shadcn';
 
 /* Shared Button Props */
@@ -15,22 +13,21 @@ export interface ButtonProps {
 }
 
 /* Shared Button Props */
-export type UnifiedButtonProps = DaisyButtonProps | MaterialButtonProps;
+export type UnifiedButtonProps = DaisyButtonProps | MaterialButtonProps | ShadcnButtonProps;
+
+const buttonComponents: Record<Library, React.FC<any>> = {
+  daisy: DaisyButton,
+  shadcn: ShadcnButton,
+  material: MaterialButton
+};
 
 /*
  * ---- DEFAULT COMPONENT EXPORT ----
  */
-export default function ButtonRenderer(props: UnifiedButtonProps) {
-  const { library, ...rest } = props;
-
-  switch (library) {
-    case LIBRARY_IDS.DAISY:
-      return <DaisyButton {...(rest as DaisyButtonProps)} />;
-    case LIBRARY_IDS.MATERIAL:
-      return <MaterialButton {...(rest as MaterialButtonProps)} />;
-    case LIBRARY_IDS.SHADCN:
-      return <ShadcnButton {...(rest as ShadcnButtonProps)} />;
-    default:
-      throw new Error(`Unsupported library: ${library}`);
-  }
+export default function ButtonRenderer({
+  library,
+  ...props
+}: { library: Library } & UnifiedButtonProps) {
+  const Component = buttonComponents[library];
+  return <Component {...props} />;
 }

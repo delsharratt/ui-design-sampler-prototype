@@ -1,10 +1,11 @@
 import Button from '@mui/material/Button';
 import * as React from 'react';
 
+import { FormFieldConfig } from '@/components/shared/form/FormField';
 // import { ButtonProps } from "@mui/material"; // Q: Should I be using this instead of the custom ButtonProps?
 import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
 
-import { ButtonProps } from '..';
+import { ButtonProps } from '.';
 
 /*
  *  ---- MATERIAL UI BUTTONS ----
@@ -47,6 +48,39 @@ export interface MaterialButtonProps extends ButtonProps {
   // endIcon?: React.ReactNode;
   // startIcon?: React.ReactNode;
 }
+
+/*
+ * ---- FORM CONFIGURATION ----
+ */
+export const materialButtonFields: FormFieldConfig[] = [
+  {
+    type: 'dropdown',
+    label: 'Size',
+    prop: 'size',
+    options: Object.values(MaterialComponentSize),
+    default: MaterialComponentSize.Medium
+  },
+  {
+    type: 'dropdown',
+    label: 'Color',
+    prop: 'color',
+    options: Object.values(MaterialButtonColor),
+    default: MaterialButtonColor.Primary
+  },
+  {
+    type: 'dropdown',
+    label: 'Variant',
+    prop: 'variant',
+    options: Object.values(MaterialButtonVariant),
+    default: MaterialButtonVariant.Contained
+  },
+  {
+    type: 'toggle',
+    label: 'Disabled',
+    prop: 'disabled',
+    default: false
+  }
+];
 
 /*
  * ---- DEFAULT COMPONENT EXPORT ----

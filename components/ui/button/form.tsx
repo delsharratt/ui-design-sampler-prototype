@@ -1,24 +1,38 @@
-import { LIBRARY_IDS } from '@/core/system/uiLibraries';
+'use client';
 
-import { UnifiedButtonProps } from '.';
-import { DaisyButtonProps } from './daisy';
-import DaisyButtonForm from './daisy/form';
-import { MaterialButtonProps } from './material';
-import MaterialButtonForm from './material/form';
-import { ShadcnButtonProps } from './shadcn';
-import ShadcnButtonForm from './shadcn/form';
+import dynamic from 'next/dynamic';
+import React from 'react';
 
-export default function ButtonFormRenderer(props: UnifiedButtonProps) {
-  const { library, ...rest } = props;
+import { FormFieldConfig } from '@/components/shared/form/FormField';
+import GenericComponentForm from '@/components/shared/ui/ComponentForm';
+import { Library } from '@/core/system/uiLibraries';
 
-  switch (library) {
-    case LIBRARY_IDS.DAISY:
-      return <DaisyButtonForm {...(rest as DaisyButtonProps)} />;
-    case LIBRARY_IDS.MATERIAL:
-      return <MaterialButtonForm {...(rest as MaterialButtonProps)} />;
-    case LIBRARY_IDS.SHADCN:
-      return <ShadcnButtonForm {...(rest as ShadcnButtonProps)} />;
-    default:
-      throw new Error(`Unsupported library: ${library}`);
-  }
+import { daisyButtonFields } from './daisy';
+import { materialButtonFields } from './material';
+import { shadcnButtonFields } from './shadcn';
+
+const DaisyButton = dynamic(() => import('./daisy'), { ssr: false });
+const MaterialButton = dynamic(() => import('./material'), { ssr: false });
+const ShadcnButton = dynamic(() => import('./shadcn'), { ssr: false });
+
+export const buttonComponents: Record<Library, React.ComponentType<any>> = {
+  daisy: DaisyButton,
+  shadcn: ShadcnButton,
+  material: MaterialButton
+};
+
+export const buttonFieldConfigs: Record<Library, FormFieldConfig[]> = {
+  daisy: daisyButtonFields,
+  shadcn: shadcnButtonFields,
+  material: materialButtonFields
+};
+
+export default function ButtonComponentForm({ library }: { library: Library }) {
+  return (
+    <GenericComponentForm
+      library={library}
+      componentMap={buttonComponents}
+      formConfigMap={buttonFieldConfigs}
+    />
+  );
 }

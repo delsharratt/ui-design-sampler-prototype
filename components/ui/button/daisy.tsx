@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 
+import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { DaisyElementColor, DaisyElementSize } from '@/core/constants/daisy';
 
-import { ButtonProps } from '..';
+import { ButtonProps } from '.';
 
 /*
  *  ---- DAISY UI BUTTONS ----
@@ -38,6 +39,58 @@ export interface DaisyButtonProps extends ButtonProps {
   icon?: boolean;
   iconOnly?: boolean;
 }
+
+/*
+ * ---- FORM CONFIGURATION ----
+ */
+export const daisyButtonFields: FormFieldConfig[] = [
+  {
+    type: 'dropdown',
+    label: 'Size',
+    prop: 'size',
+    options: Object.values(DaisyElementSize),
+    default: DaisyElementSize.Medium
+  },
+  {
+    type: 'dropdown',
+    label: 'Color',
+    prop: 'color',
+    options: Object.values(DaisyElementColor),
+    default: DaisyElementColor.Primary
+  },
+  {
+    type: 'dropdown',
+    label: 'Variant',
+    prop: 'variant',
+    options: Object.values(DaisyButtonVariant),
+    default: DaisyButtonVariant.Outline
+  },
+  {
+    type: 'dropdown',
+    label: 'Modifier',
+    prop: 'modifier',
+    options: Object.values(DaisyButtonModifier),
+    default: DaisyButtonModifier.Block
+  },
+  {
+    type: 'toggle',
+    label: 'Icon',
+    prop: 'icon',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Icon Only',
+    prop: 'iconOnly',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Disabled',
+    prop: 'disabled',
+    default: false
+  }
+];
 
 /*
  * ---- DEFAULT COMPONENT EXPORT ----
