@@ -1,13 +1,14 @@
 import clsx from 'clsx';
 
+import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { DaisyElementColor, DaisyElementSize } from '@/core/constants/daisy';
 
-import { SelectProps } from '..';
+import { SelectProps } from './componentRegistry';
 
-/* 
-See documentation @link https://daisyui.com/components/select/
-All class names include a hyphenated "select" prefix
-*/
+/*
+ * See documentation @link https://daisyui.com/components/select/
+ * All class names include a hyphenated "select" prefix
+ */
 
 export enum DaisySelectVariant {
   Ghost = 'ghost' // Only one style available
@@ -21,6 +22,51 @@ export interface DaisySelectProps extends SelectProps {
   hasLabel?: boolean;
   disabled?: boolean;
 }
+
+/*
+ * ---- FORM CONFIGURATION ----
+ */
+export const daisySelectFields: FormFieldConfig[] = [
+  {
+    type: 'dropdown',
+    label: 'Size',
+    prop: 'size',
+    options: Object.values(DaisyElementSize),
+    default: DaisyElementSize.Medium
+  },
+  {
+    type: 'dropdown',
+    label: 'Color',
+    prop: 'color',
+    options: Object.values(DaisyElementColor),
+    default: DaisyElementColor.Primary
+  },
+  {
+    type: 'dropdown',
+    label: 'Variant',
+    prop: 'alignment',
+    options: Object.values(DaisySelectVariant),
+    default: undefined
+  },
+  {
+    type: 'toggle',
+    label: 'Fieldset',
+    prop: 'fieldset',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Labels',
+    prop: 'hasLabel',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Disabled',
+    prop: 'disabled',
+    default: false
+  }
+];
 
 /*
  * ---- DEFAULT COMPONENT EXPORT ----

@@ -5,9 +5,10 @@ import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 import { cva, type VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 
+import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { cn } from '@/lib/utils';
 
-import { ToggleProps } from '..';
+import { ToggleProps } from './componentRegistry';
 
 /*
  *  ---- SHADCN/UI TOGGLES ----
@@ -63,10 +64,48 @@ const ShadcnToggleGroupContext = React.createContext<
 });
 
 /*
+ * ---- FORM CONFIGURATION ----
+ */
+export const shadcnToggleFields: FormFieldConfig[] = [
+  {
+    type: 'dropdown',
+    label: 'Side',
+    prop: 'side',
+    options: Object.values(ShadcnToggleVariant),
+    default: ShadcnToggleVariant.Default
+  },
+  {
+    type: 'dropdown',
+    label: 'Align',
+    prop: 'align',
+    options: Object.values(ShadcnToggleSize),
+    default: ShadcnToggleSize.Default
+  },
+  {
+    type: 'toggle',
+    label: 'Pressed',
+    prop: 'pressed',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Default Pressed',
+    prop: 'defaultPressed',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Disabled',
+    prop: 'disabled',
+    default: false
+  }
+];
+
+/*
  * See documentation https://ui.shadcn.com/docs/components/toggle
  * Radix Primitive https://www.radix-ui.com/primitives/docs/components/toggle
  */
-function ShadcnToggle({
+export default function ShadcnToggle({
   className,
   variant,
   size,
@@ -90,7 +129,7 @@ function ShadcnToggle({
  * See documentation https://ui.shadcn.com/docs/components/toggle-group
  * Radix Primitive https://www.radix-ui.com/primitives/docs/components/toggle-group
  */
-function ShadcnToggleGroup({
+export function ShadcnToggleGroup({
   className,
   variant,
   size,
@@ -116,7 +155,7 @@ function ShadcnToggleGroup({
   );
 }
 
-function ShadcnToggleGroupItem({
+export function ShadcnToggleGroupItem({
   className,
   children,
   variant,
@@ -145,5 +184,3 @@ function ShadcnToggleGroupItem({
     </ToggleGroupPrimitive.Item>
   );
 }
-
-export { ShadcnToggle, ShadcnToggleGroup, ShadcnToggleGroupItem };

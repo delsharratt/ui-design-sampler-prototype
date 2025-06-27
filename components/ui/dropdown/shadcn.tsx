@@ -4,17 +4,27 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { ChevronRightIcon } from 'lucide-react';
 import * as React from 'react';
 
+import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { LIBRARY_IDS } from '@/core/system/uiLibraries';
 import { cn } from '@/lib/utils';
 
-import ShadcnButton from '../../button/shadcn';
-import { DropdownProps } from '..';
-import { DROPDOWN_MENU_SAMPLE_DATA, DropdownMenuItemEntry } from './config';
+import ShadcnButton from '../button/shadcn';
+import { DropdownProps } from './componentRegistry';
 
 /*
  * See documentation https://ui.shadcn.com/docs/components/dropdown-menu
  * Radix Primitive https://www.radix-ui.com/primitives/docs/components/dropdown-menu
  */
+
+type DropdownMenuItemType = 'item' | 'submenu' | 'group' | 'label' | 'separator';
+
+export interface DropdownMenuItemEntry {
+  type?: DropdownMenuItemType;
+  label?: string;
+  shortcut?: string;
+  disabled?: boolean;
+  items?: DropdownMenuItemEntry[];
+}
 
 // Represents various example dropdown menus
 export enum ShadcnDropdownMenuExampleType {
@@ -54,9 +64,95 @@ export type ShadcnDropdownProps = DropdownProps &
   };
 
 /*
+ * ---- FORM CONFIGURATION ----
+ */
+export const shadcnDropdownFields: FormFieldConfig[] = [
+  {
+    type: 'dropdown',
+    label: 'Size',
+    prop: 'size',
+    options: Object.values(ShadcnDropdownSide),
+    default: ShadcnDropdownSide.Bottom
+  },
+  {
+    type: 'dropdown',
+    label: 'Color',
+    prop: 'color',
+    options: Object.values(ShadcnDropdownAlignment),
+    default: ShadcnDropdownAlignment.Start
+  },
+  {
+    type: 'toggle',
+    label: 'Modal',
+    prop: 'modal',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Open',
+    prop: 'open',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Default Open',
+    prop: 'defaultOpen',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Disabled',
+    prop: 'disabled',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Separator',
+    prop: 'separator',
+    default: false
+  }
+];
+
+/*
+ * ---- SAMPLE DATA ----
+ * // TODO: change to static data prop
+ */
+export const DROPDOWN_MENU_SAMPLE_DATA: DropdownMenuItemEntry[] = [
+  { type: 'label', label: 'My Account' },
+  { type: 'separator' },
+  {
+    type: 'group',
+    items: [
+      { label: 'Profile', shortcut: '⇧⌘P' },
+      { label: 'Billing', shortcut: '⌘B' },
+      { label: 'Settings', shortcut: '⌘S' },
+      { label: 'Keyboard shortcuts', shortcut: '⌘K' }
+    ]
+  },
+  { type: 'separator' },
+  {
+    type: 'group',
+    items: [
+      { label: 'Team' },
+      {
+        type: 'submenu',
+        label: 'Invite users',
+        items: [{ label: 'Email' }, { label: 'Message' }, { label: 'More...' }]
+      },
+      { label: 'New Team', shortcut: '⌘+T' }
+    ]
+  },
+  { type: 'separator' },
+  { label: 'GitHub' },
+  { label: 'Support' },
+  { label: 'API', disabled: true },
+  { label: 'Log out', shortcut: '⇧⌘Q' }
+];
+
+/*
  * ---- DEFAULT COMPONENT EXPORT ----
  */
-export function ShadcnDropdown({
+export default function ShadcnDropdown({
   items = DROPDOWN_MENU_SAMPLE_DATA,
   separator = false,
   defaultOpen = false,

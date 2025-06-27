@@ -2,6 +2,7 @@
 import { Button, Menu, MenuItem } from '@mui/material';
 import * as React from 'react';
 
+import { FormFieldConfig } from '@/components/shared/form/FormField';
 // import { MenuProps } from "@mui/material"; // Q: Should I be using this instead of the custom DropdownProps?
 import {
   MaterialComponentColor,
@@ -9,7 +10,7 @@ import {
   MaterialTransitionId
 } from '@/core/constants/material';
 
-import { DropdownProps } from '..';
+import { DropdownProps } from './componentRegistry';
 
 /*
  *  ---- MATERIAL UI (DROPDOWN) MENUS ----
@@ -52,6 +53,39 @@ export interface MaterialDropdownProps extends DropdownProps {
   disableGutters?: boolean; // Applied to menu items
   divider?: boolean; //Applied to menu items
 }
+
+/*
+ * ---- FORM CONFIGURATION ----
+ */
+export const materialDropdownFields: FormFieldConfig[] = [
+  {
+    type: 'dropdown',
+    label: 'Size',
+    prop: 'size',
+    options: Object.values(MaterialComponentSize),
+    default: MaterialComponentSize.Medium
+  },
+  {
+    type: 'dropdown',
+    label: 'Color',
+    prop: 'color',
+    options: Object.values(MaterialComponentColor),
+    default: MaterialComponentColor.Primary
+  },
+  {
+    type: 'dropdown',
+    label: 'Variant',
+    prop: 'variant',
+    options: Object.values(MaterialDropdownVariant),
+    default: MaterialDropdownVariant.Menu
+  }
+  // {
+  //   type: 'toggle',
+  //   label: 'Multiple',
+  //   prop: 'multiple',
+  //   default: false
+  // }
+];
 
 /*
  * ---- DEFAULT COMPONENT EXPORT ----

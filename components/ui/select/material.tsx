@@ -2,11 +2,12 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import * as React from 'react';
 
+import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
 import { COMPONENT_IDS } from '@/core/system/componentRegistry';
 
 // import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { SelectProps } from '..';
+import { SelectProps } from './componentRegistry';
 
 /*
  *  ---- MATERIAL UI BUTTONS ----
@@ -42,6 +43,88 @@ export interface MaterialSelectProps extends SelectProps {
   // TODO: determine if worth previewing, only available with native
   // placeholder?: boolean;
 }
+
+/*
+ * ---- FORM CONFIGURATION ----
+ */
+export const materialSelectFields: FormFieldConfig[] = [
+  {
+    type: 'dropdown',
+    label: 'Size',
+    prop: 'size',
+    options: Object.values(MaterialComponentSize),
+    default: MaterialComponentSize.Medium
+  },
+  {
+    type: 'dropdown',
+    label: 'Color',
+    prop: 'color',
+    options: Object.values(MaterialComponentColor),
+    default: MaterialComponentColor.Primary
+  },
+  {
+    type: 'dropdown',
+    label: 'Variant',
+    prop: 'variant',
+    options: Object.values(MaterialSelectVariant),
+    default: MaterialSelectVariant.Outlined
+  },
+  // {
+  //   type: 'dropdown',
+  //   label: 'Icon',
+  //   prop: 'icon',
+  //   options: Object.values(),
+  //   default: undefined
+  // },
+  {
+    type: 'toggle',
+    label: 'Multiple',
+    prop: 'multiple',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Checked',
+    prop: 'checked',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Auto Width',
+    prop: 'autoWidth',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Disabled Ripple',
+    prop: 'disableRipple',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Disable Focus Ripple',
+    prop: 'disableFocusRipple',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Default Option',
+    prop: 'defaultOption',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Default Open',
+    prop: 'defaultOpen',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Display Empty',
+    prop: 'displayEmpty',
+    default: false
+  }
+];
 
 /*
  * ---- DEFAULT COMPONENT EXPORT ----

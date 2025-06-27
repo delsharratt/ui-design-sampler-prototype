@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 
-import { DropdownProps } from '..';
+import { FormFieldConfig } from '@/components/shared/form/FormField';
+
+import { DropdownProps } from './componentRegistry';
 
 /* 
 See documentation @link https://daisyui.com/components/dropdown/
@@ -30,6 +32,51 @@ export interface DaisyDropdownProps extends DropdownProps {
   direction?: DaisyDropdownDirection;
   modifier?: DaisyDropdownModifier | null;
 }
+
+/*
+ * ---- FORM CONFIGURATION ----
+ */
+export const daisyDropdownFields: FormFieldConfig[] = [
+  {
+    type: 'dropdown',
+    label: 'Variant',
+    prop: 'alignment',
+    options: Object.values(DaisyDropdownAlignment),
+    default: DaisyDropdownAlignment.Start
+  },
+  {
+    type: 'dropdown',
+    label: 'Direction',
+    prop: 'direction',
+    options: Object.values(DaisyDropdownDirection),
+    default: DaisyDropdownDirection.Top
+  },
+  {
+    type: 'dropdown',
+    label: 'Modifier',
+    prop: 'modifier',
+    options: Object.values(DaisyDropdownModifier),
+    default: undefined
+  },
+  {
+    type: 'toggle',
+    label: 'Checked',
+    prop: 'checked',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Indeterminate',
+    prop: 'indeterminate',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Disabled',
+    prop: 'disabled',
+    default: false
+  }
+];
 
 /*
  * ---- DEFAULT COMPONENT EXPORT ----
@@ -86,6 +133,19 @@ export default function DaisyDropdown({
           <a>Tailwind</a>
         </li>
       </ul>
+
+      {/* Hidden buttons to get around Tailwind buildtime class names limitation */}
+      <div className="hidden">
+        <button className="btn btn-soft btn-primary btn-xs">Soft | Primary | Extra Small</button>
+        <button className="btn btn-outline btn-secondary btn-sm">
+          Outline | Secondary | Small
+        </button>
+        <button className="btn btn-dash btn-accent btn-md">Dash | Accent | Medium</button>
+        <button className="btn btn-active btn-info btn-lg">Active | Info | Large</button>
+        <button className="btn btn-ghost btn-success btn-xl">Ghost | Success | Extra Large</button>
+        <button className="btn btn-link btn-warning btn-square">Link | Warning | Square</button>
+        <button className="btn btn-widen btn-error btn-circle">Wide | Error | Circle</button>
+      </div>
     </>
   );
 }
