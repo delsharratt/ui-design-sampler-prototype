@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react';
 import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { DaisyElementColor, DaisyElementSize } from '@/core/constants/daisy';
 
-import { CheckboxProps } from '.';
+import { CheckboxProps } from './componentRegistry';
 
 /*
  *  ---- DAISY UI CHECKBOXES ----

@@ -8,7 +8,7 @@ import { useEffect, useRef } from 'react';
 import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
 
-import { CheckboxProps } from '.';
+import { CheckboxProps } from './componentRegistry';
 
 /*
  *  ---- MATERIAL UI CHECKBOXES ----

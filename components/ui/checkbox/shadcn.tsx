@@ -7,7 +7,7 @@ import * as React from 'react';
 import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { cn } from '@/lib/utils';
 
-import { CheckboxProps } from '.';
+import { CheckboxProps } from './componentRegistry';
 
 /*
  * See documentation https://ui.shadcn.com/docs/components/checkbox
