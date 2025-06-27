@@ -1,8 +1,7 @@
 import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { AccordionConfiguration } from '@/components/ui/accordion/componentRegistry';
 import { ButtonConfiguration } from '@/components/ui/button/componentRegistry';
-import CheckboxRenderer from '@/components/ui/checkbox';
-import CheckboxFormRenderer from '@/components/ui/checkbox/form';
+import { CheckboxConfiguration } from '@/components/ui/checkbox';
 import DropdownRenderer from '@/components/ui/dropdown';
 import DropdownFormRenderer from '@/components/ui/dropdown/form';
 import SelectRenderer from '@/components/ui/select';
@@ -33,11 +32,7 @@ export interface ComponentRegistryEntry {
 export const NEW_COMPONENT_REGISTRY: Record<ComponentId, ComponentRegistryEntry> = {
   Accordion: AccordionConfiguration,
   Button: ButtonConfiguration,
-  Checkbox: {
-    label: 'Checkbox',
-    componentMap: { daisy: CheckboxRenderer, shadcn: CheckboxRenderer, material: CheckboxRenderer },
-    formConfigMap: { daisy: [], shadcn: [], material: [] } // Placeholder, replace with actual configs
-  },
+  Checkbox: CheckboxConfiguration,
   Dropdown: {
     label: 'Dropdown',
     componentMap: { daisy: DropdownRenderer, shadcn: DropdownRenderer, material: DropdownRenderer },
@@ -59,7 +54,7 @@ export const NEW_COMPONENT_REGISTRY: Record<ComponentId, ComponentRegistryEntry>
 export const COMPONENT_REGISTRY: Record<ComponentId, React.ComponentType<any> | undefined> = {
   Accordion: undefined,
   Button: undefined,
-  Checkbox: CheckboxRenderer,
+  Checkbox: undefined,
   Dropdown: DropdownRenderer,
   Select: SelectRenderer,
   Toggle: ToggleRenderer
@@ -68,7 +63,7 @@ export const COMPONENT_REGISTRY: Record<ComponentId, React.ComponentType<any> | 
 export const COMPONENT_FORM_REGISTRY: Record<ComponentId, React.ComponentType<any> | undefined> = {
   Accordion: undefined,
   Button: undefined,
-  Checkbox: CheckboxFormRenderer,
+  Checkbox: undefined,
   Dropdown: DropdownFormRenderer,
   Select: SelectFormRenderer,
   Toggle: ToggleFormRenderer

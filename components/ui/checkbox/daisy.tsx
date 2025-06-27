@@ -3,9 +3,10 @@
 import clsx from 'clsx';
 import { useEffect, useRef } from 'react';
 
+import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { DaisyElementColor, DaisyElementSize } from '@/core/constants/daisy';
 
-import { CheckboxProps } from '..';
+import { CheckboxProps } from '.';
 
 /*
  *  ---- DAISY UI CHECKBOXES ----
@@ -17,6 +18,44 @@ export interface DaisyCheckboxProps extends CheckboxProps {
   elementSize?: DaisyElementSize; // Attribute is named `elementSize` to avoid conflict with native HTML input attribute
   color?: DaisyElementColor;
 }
+
+/*
+ * ---- FORM CONFIGURATION ----
+ */
+export const daisyCheckboxFields: FormFieldConfig[] = [
+  {
+    type: 'dropdown',
+    label: 'Size',
+    prop: 'size',
+    options: Object.values(DaisyElementSize),
+    default: DaisyElementSize.Medium
+  },
+  {
+    type: 'dropdown',
+    label: 'Color',
+    prop: 'color',
+    options: Object.values(DaisyElementColor),
+    default: DaisyElementColor.Primary
+  },
+  {
+    type: 'toggle',
+    label: 'Checked',
+    prop: 'checked',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Indeterminate',
+    prop: 'indeterminate',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Disabled',
+    prop: 'disabled',
+    default: false
+  }
+];
 
 /*
  * ---- DEFAULT COMPONENT EXPORT ----

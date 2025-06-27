@@ -5,9 +5,10 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import { Checkbox } from '@mui/material';
 import { useEffect, useRef } from 'react';
 
+import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
 
-import { CheckboxProps } from '..';
+import { CheckboxProps } from '.';
 
 /*
  *  ---- MATERIAL UI CHECKBOXES ----
@@ -29,6 +30,50 @@ export type MaterialCheckboxProps = CheckboxProps & {
   icon?: boolean;
   iconOnly?: boolean;
 };
+
+/*
+ * ---- FORM CONFIGURATION ----
+ */
+export const materialCheckboxFields: FormFieldConfig[] = [
+  {
+    type: 'dropdown',
+    label: 'Size',
+    prop: 'size',
+    options: Object.values(MaterialComponentSize),
+    default: MaterialComponentSize.Medium
+  },
+  {
+    type: 'dropdown',
+    label: 'Color',
+    prop: 'color',
+    options: Object.values(MaterialComponentColor),
+    default: MaterialComponentColor.Primary
+  },
+  {
+    type: 'toggle',
+    label: 'Icon',
+    prop: 'icon',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Checked',
+    prop: 'checked',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Indeterminate',
+    prop: 'indeterminate',
+    default: false
+  },
+  {
+    type: 'toggle',
+    label: 'Disabled',
+    prop: 'disabled',
+    default: false
+  }
+];
 
 /*
  * ---- DEFAULT COMPONENT EXPORT ----
