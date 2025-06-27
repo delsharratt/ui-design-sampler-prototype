@@ -15,7 +15,7 @@ export default function GenericComponentForm({
   library,
   componentMap,
   formConfigMap,
-  staticData = {}
+  staticData
 }: ComponentFormProps) {
   const Component = componentMap[library];
   const formConfig = formConfigMap[library];
@@ -36,7 +36,11 @@ export default function GenericComponentForm({
     <>
       <Form formFields={fields} />
       <div className="flex justify-around mt-8 w-full">
-        <Component {...formState} {...staticData} />
+        {staticData ? (
+          <Component {...formState} staticData={staticData} />
+        ) : (
+          <Component {...formState} />
+        )}
       </div>
     </>
   );

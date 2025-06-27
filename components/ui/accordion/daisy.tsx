@@ -19,7 +19,6 @@ export enum DaisyAccordionModifier {
 }
 
 export interface DaisyAccordionProps extends AccordionProps {
-  items?: AccordionItem[];
   modifier?: DaisyAccordionModifier;
   join?: boolean;
 }
@@ -47,10 +46,11 @@ export const daisyAccordionFields: FormFieldConfig[] = [
  * ---- DEFAULT COMPONENT EXPORT ----
  */
 export default function DaisyAccordion({
-  items = [],
+  staticData = [],
   modifier = DaisyAccordionModifier.Arrow,
   join = false
 }: React.HTMLAttributes<HTMLElement> & DaisyAccordionProps) {
+  const items = staticData as AccordionItem[];
   const wrapperClass = join ? 'join join-vertical bg-base-100' : 'flex flex-col gap-2'; // Apply "join" wrapper if enabled
 
   return (

@@ -17,7 +17,7 @@ export interface AccordionItem {
 
 export interface AccordionProps {
   library: Library;
-  items?: AccordionItem[];
+  staticData?: AccordionItem[];
   disabled?: boolean;
 }
 

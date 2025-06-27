@@ -109,13 +109,14 @@ export const materialAccordionFields: FormFieldConfig[] = [
  * ---- DEFAULT COMPONENT EXPORT ----
  */
 export default function MaterialAccordion({
-  items = [],
+  staticData = [],
   // expandIcon = <ExpandMoreIcon />,
   disableGutters = false,
   heading = 'h1',
   // transition,
   ...rest
 }: React.HTMLAttributes<HTMLElement> & MaterialAccordionProps) {
+  const items = staticData as MaterialAccordionItem[];
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
