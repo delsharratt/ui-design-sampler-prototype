@@ -79,15 +79,15 @@ export const shadcnButtonFields: FormFieldConfig[] = [
     type: 'dropdown',
     label: 'Size',
     prop: 'size',
-    options: Object.values(ShadcnButtonVariant),
-    default: ShadcnButtonVariant.Default
+    options: Object.values(ShadcnButtonSize),
+    default: ShadcnButtonSize.Default
   },
   {
     type: 'dropdown',
     label: 'Color',
     prop: 'color',
-    options: Object.values(ShadcnButtonSize),
-    default: ShadcnButtonSize.Default
+    options: Object.values(ShadcnButtonVariant),
+    default: ShadcnButtonVariant.Default
   },
   {
     type: 'toggle',
