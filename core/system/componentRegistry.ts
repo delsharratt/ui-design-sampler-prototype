@@ -1,13 +1,10 @@
 import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { AccordionConfiguration } from '@/components/ui/accordion/componentRegistry';
 import { ButtonConfiguration } from '@/components/ui/button/componentRegistry';
-import { CheckboxConfiguration } from '@/components/ui/checkbox';
-import DropdownRenderer from '@/components/ui/dropdown';
-import DropdownFormRenderer from '@/components/ui/dropdown/form';
-import SelectRenderer from '@/components/ui/select';
-import SelectFormRenderer from '@/components/ui/select/form';
-import ToggleRenderer from '@/components/ui/toggle';
-import ToggleFormRenderer from '@/components/ui/toggle/form';
+import { CheckboxConfiguration } from '@/components/ui/checkbox/componentRegistry';
+import { DropdownConfiguration } from '@/components/ui/dropdown/componentRegistry';
+import { SelectConfiguration } from '@/components/ui/select/componentRegistry';
+import { ToggleConfiguration } from '@/components/ui/toggle/componentRegistry';
 
 import { Library } from './uiLibraries';
 
@@ -29,42 +26,11 @@ export interface ComponentRegistryEntry {
   staticData?: Record<string, any>;
 }
 
-export const NEW_COMPONENT_REGISTRY: Record<ComponentId, ComponentRegistryEntry> = {
+export const COMPONENT_REGISTRY: Record<ComponentId, ComponentRegistryEntry> = {
   Accordion: AccordionConfiguration,
   Button: ButtonConfiguration,
   Checkbox: CheckboxConfiguration,
-  Dropdown: {
-    label: 'Dropdown',
-    componentMap: { daisy: DropdownRenderer, shadcn: DropdownRenderer, material: DropdownRenderer },
-    formConfigMap: { daisy: [], shadcn: [], material: [] } // Placeholder, replace with actual configs
-  },
-  Select: {
-    label: 'Select',
-    componentMap: { daisy: SelectRenderer, shadcn: SelectRenderer, material: SelectRenderer },
-    formConfigMap: { daisy: [], shadcn: [], material: [] } // Placeholder, replace with actual configs
-  },
-  Toggle: {
-    label: 'Toggle',
-    componentMap: { daisy: ToggleRenderer, shadcn: ToggleRenderer, material: ToggleRenderer },
-    formConfigMap: { daisy: [], shadcn: [], material: [] } // Placeholder, replace with actual configs
-  }
-};
-
-// Replace others with renderer components once made to reflect button component setup
-export const COMPONENT_REGISTRY: Record<ComponentId, React.ComponentType<any> | undefined> = {
-  Accordion: undefined,
-  Button: undefined,
-  Checkbox: undefined,
-  Dropdown: DropdownRenderer,
-  Select: SelectRenderer,
-  Toggle: ToggleRenderer
-};
-
-export const COMPONENT_FORM_REGISTRY: Record<ComponentId, React.ComponentType<any> | undefined> = {
-  Accordion: undefined,
-  Button: undefined,
-  Checkbox: undefined,
-  Dropdown: DropdownFormRenderer,
-  Select: SelectFormRenderer,
-  Toggle: ToggleFormRenderer
+  Dropdown: DropdownConfiguration,
+  Select: SelectConfiguration,
+  Toggle: ToggleConfiguration
 };
