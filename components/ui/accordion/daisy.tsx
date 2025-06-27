@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import { FormFieldConfig } from '@/components/shared/form/FormField';
 
-import { AccordionItem, AccordionProps } from '.';
+import { AccordionItem, AccordionProps } from './componentRegistry';
 
 /*
  * See documentation https://daisyui.com/components/accordion/

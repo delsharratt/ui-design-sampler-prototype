@@ -5,7 +5,7 @@ import { FormFieldConfig } from '@/components/shared/form/FormField';
 // import { ButtonProps } from "@mui/material"; // Q: Should I be using this instead of the custom ButtonProps?
 import { MaterialComponentColor, MaterialComponentSize } from '@/core/constants/material';
 
-import { ButtonProps } from '.';
+import { ButtonProps } from './componentRegistry';
 
 /*
  *  ---- MATERIAL UI BUTTONS ----

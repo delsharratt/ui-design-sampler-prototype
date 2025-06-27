@@ -16,7 +16,7 @@ import * as React from 'react';
 import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { MATERIAL_TRANSITIONS, MaterialTransitionId } from '@/core/constants/material';
 
-import { AccordionItem, AccordionProps } from '.';
+import { AccordionItem, AccordionProps } from './componentRegistry';
 
 /*
  *  ---- MATERIAL UI ACCORDIONS ----

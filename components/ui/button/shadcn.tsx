@@ -6,7 +6,7 @@ import * as React from 'react';
 import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { cn } from '@/lib/utils';
 
-import { ButtonProps } from '.';
+import { ButtonProps } from './componentRegistry';
 
 /*
  *  ---- SHADCN/UI BUTTONS ----

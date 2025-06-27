@@ -1,7 +1,6 @@
 import { FormFieldConfig } from '@/components/shared/form/FormField';
-import { ACCORDION_SAMPLE_DATA } from '@/components/ui/accordion';
-import { accordionComponents, accordionFieldConfigs } from '@/components/ui/accordion/form';
-import { buttonComponents, buttonFieldConfigs } from '@/components/ui/button/form';
+import { AccordionConfiguration } from '@/components/ui/accordion/componentRegistry';
+import { ButtonConfiguration } from '@/components/ui/button/componentRegistry';
 import CheckboxRenderer from '@/components/ui/checkbox';
 import CheckboxFormRenderer from '@/components/ui/checkbox/form';
 import DropdownRenderer from '@/components/ui/dropdown';
@@ -32,17 +31,8 @@ export interface ComponentRegistryEntry {
 }
 
 export const NEW_COMPONENT_REGISTRY: Record<ComponentId, ComponentRegistryEntry> = {
-  Accordion: {
-    label: 'Accordion',
-    componentMap: accordionComponents,
-    formConfigMap: accordionFieldConfigs,
-    staticData: ACCORDION_SAMPLE_DATA
-  },
-  Button: {
-    label: 'Button',
-    componentMap: buttonComponents,
-    formConfigMap: buttonFieldConfigs
-  },
+  Accordion: AccordionConfiguration,
+  Button: ButtonConfiguration,
   Checkbox: {
     label: 'Checkbox',
     componentMap: { daisy: CheckboxRenderer, shadcn: CheckboxRenderer, material: CheckboxRenderer },
@@ -66,7 +56,7 @@ export const NEW_COMPONENT_REGISTRY: Record<ComponentId, ComponentRegistryEntry>
 };
 
 // Replace others with renderer components once made to reflect button component setup
-export const COMPONENT_REGISTRY: Record<ComponentId, React.ComponentType<any>> = {
+export const COMPONENT_REGISTRY: Record<ComponentId, React.ComponentType<any> | undefined> = {
   Accordion: undefined,
   Button: undefined,
   Checkbox: CheckboxRenderer,

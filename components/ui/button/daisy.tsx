@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { DaisyElementColor, DaisyElementSize } from '@/core/constants/daisy';
 
-import { ButtonProps } from '.';
+import { ButtonProps } from './componentRegistry';
 
 /*
  *  ---- DAISY UI BUTTONS ----

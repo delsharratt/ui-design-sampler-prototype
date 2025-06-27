@@ -7,7 +7,7 @@ import * as React from 'react';
 import { FormFieldConfig } from '@/components/shared/form/FormField';
 import { cn } from '@/lib/utils';
 
-import { AccordionProps } from './index';
+import { AccordionProps } from './componentRegistry';
 
 /*
  * See documentation https://ui.shadcn.com/docs/components/accordion
