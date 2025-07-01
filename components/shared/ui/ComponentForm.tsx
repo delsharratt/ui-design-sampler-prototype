@@ -4,19 +4,16 @@ import React, { useState } from 'react';
 
 import { FORM_FIELD_IDS, FormField } from '@/components/shared/form/FormField';
 import Form from '@/components/shared/layout/Form';
-import { ComponentRegistryEntry } from '@/core/system/componentRegistry';
+import { COMPONENT_REGISTRY, ComponentId } from '@/core/system/componentRegistry';
 import { Library } from '@/core/system/uiLibraries';
 
-export interface ComponentFormProps extends ComponentRegistryEntry {
+export interface ComponentFormProps {
   library: Library;
+  componentId: ComponentId;
 }
 
-export default function GenericComponentForm({
-  library,
-  componentMap,
-  formConfigMap,
-  staticData
-}: ComponentFormProps) {
+export default function GenericComponentForm({ library, componentId }: ComponentFormProps) {
+  const { label, componentMap, formConfigMap, staticData } = COMPONENT_REGISTRY[componentId];
   const Component = componentMap[library];
   const formConfig = formConfigMap[library];
 
@@ -33,15 +30,18 @@ export default function GenericComponentForm({
   }));
 
   return (
-    <>
-      <Form formFields={fields} />
-      <div className="flex justify-around mt-8 w-full">
-        {staticData ? (
-          <Component {...formState} staticData={staticData} />
-        ) : (
-          <Component {...formState} />
-        )}
+    <div className="flex flex-col gap-4 items-start h-full w-full">
+      <h2 className="text-2xl font-semibold capitalize">{label} Customization</h2>
+      <div className="flex flex-col gap-4 text-start w-full">
+        <Form formFields={fields} />
+        <div className="flex justify-around mt-8 w-full">
+          {staticData ? (
+            <Component {...formState} staticData={staticData} />
+          ) : (
+            <Component {...formState} />
+          )}
+        </div>
       </div>
-    </>
+    </div>
   );
 }

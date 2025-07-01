@@ -5,7 +5,7 @@ import React from 'react';
 import { COMPONENT_REGISTRY } from '@/core/system/componentRegistry';
 import { Library } from '@/core/system/uiLibraries';
 
-export default function LibraryOverviewRenderer({ library }: { library: Library }) {
+export default function LibraryOverview({ library }: { library: Library }) {
   return (
     <div className="flex flex-col gap-12">
       {Object.entries(COMPONENT_REGISTRY).map(([componentKey, config]) => {

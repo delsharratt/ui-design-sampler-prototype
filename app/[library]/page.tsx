@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
 
+import LibraryOverview from '@/components/shared/ui/LibraryOverview';
 import { LIBRARIES, Library } from '@/core/system/uiLibraries';
-
-import LibraryOverviewRenderer from './LibraryOverviewRenderer';
 
 export const metadata: Metadata = {
   title: 'Library Overview'
@@ -16,5 +15,5 @@ export default async function LibraryOverviewPage({
   const { library } = await params;
   metadata.title = LIBRARIES[library]?.label ?? 'Library Overview';
 
-  return <LibraryOverviewRenderer library={library} />;
+  return <LibraryOverview library={library} />;
 }
