@@ -8,12 +8,17 @@ export const FORM_FIELD_IDS = {
 
 export type FormFieldType = (typeof FORM_FIELD_IDS)[keyof typeof FORM_FIELD_IDS];
 
-export interface FormField<T = any> {
+export interface FormFieldConfig {
   type: FormFieldType;
   label: string;
+  prop?: string; // TODO: remove optional after refactor
+  default?: string | boolean; // TODO: remove optional after refactor
+  options?: string[]; // Dropdowns only
+}
+
+// Used for rendering fields in the form with state management
+export interface FormField extends FormFieldConfig {
   value: any;
-  prop?: keyof T; // TODO: Determine if needed/useful
-  options?: string[]; // for dropdowns
   onChange: (value: any) => void;
 }
 

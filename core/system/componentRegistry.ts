@@ -1,15 +1,12 @@
-import AccordionRenderer from '@/components/ui/accordion';
-import AccordionFormRenderer from '@/components/ui/accordion/form';
-import ButtonRenderer from '@/components/ui/button';
-import ButtonFormRenderer from '@/components/ui/button/form';
-import CheckboxRenderer from '@/components/ui/checkbox';
-import CheckboxFormRenderer from '@/components/ui/checkbox/form';
-import DropdownRenderer from '@/components/ui/dropdown';
-import DropdownFormRenderer from '@/components/ui/dropdown/form';
-import SelectRenderer from '@/components/ui/select';
-import SelectFormRenderer from '@/components/ui/select/form';
-import ToggleRenderer from '@/components/ui/toggle';
-import ToggleFormRenderer from '@/components/ui/toggle/form';
+import { FormFieldConfig } from '@/components/shared/form/FormField';
+import { AccordionConfiguration } from '@/components/ui/accordion/componentRegistry';
+import { ButtonConfiguration } from '@/components/ui/button/componentRegistry';
+import { CheckboxConfiguration } from '@/components/ui/checkbox/componentRegistry';
+import { DropdownConfiguration } from '@/components/ui/dropdown/componentRegistry';
+import { SelectConfiguration } from '@/components/ui/select/componentRegistry';
+import { ToggleConfiguration } from '@/components/ui/toggle/componentRegistry';
+
+import { Library } from './uiLibraries';
 
 export const COMPONENT_IDS = {
   Button: 'button',
@@ -20,23 +17,20 @@ export const COMPONENT_IDS = {
   Toggle: 'toggle'
 } as const;
 
-export type ComponentId = (typeof COMPONENT_IDS)[keyof typeof COMPONENT_IDS];
+export type ComponentId = keyof typeof COMPONENT_IDS;
 
-// Replace others with renderer components once made to reflect button component setup
-export const COMPONENT_REGISTRY = {
-  [COMPONENT_IDS.Accordion]: AccordionRenderer,
-  [COMPONENT_IDS.Button]: ButtonRenderer,
-  [COMPONENT_IDS.Checkbox]: CheckboxRenderer,
-  [COMPONENT_IDS.Dropdown]: DropdownRenderer,
-  [COMPONENT_IDS.Select]: SelectRenderer,
-  [COMPONENT_IDS.Toggle]: ToggleRenderer
-};
+export interface ComponentRegistryEntry {
+  label: ComponentId;
+  componentMap: Record<Library, React.ComponentType<any>>;
+  formConfigMap: Record<Library, FormFieldConfig[]>;
+  staticData?: Record<string, any>;
+}
 
-export const COMPONENT_FORM_REGISTRY = {
-  [COMPONENT_IDS.Accordion]: AccordionFormRenderer,
-  [COMPONENT_IDS.Button]: ButtonFormRenderer,
-  [COMPONENT_IDS.Checkbox]: CheckboxFormRenderer,
-  [COMPONENT_IDS.Dropdown]: DropdownFormRenderer,
-  [COMPONENT_IDS.Select]: SelectFormRenderer,
-  [COMPONENT_IDS.Toggle]: ToggleFormRenderer
+export const COMPONENT_REGISTRY: Record<ComponentId, ComponentRegistryEntry> = {
+  Accordion: AccordionConfiguration,
+  Button: ButtonConfiguration,
+  Checkbox: CheckboxConfiguration,
+  Dropdown: DropdownConfiguration,
+  Select: SelectConfiguration,
+  Toggle: ToggleConfiguration
 };

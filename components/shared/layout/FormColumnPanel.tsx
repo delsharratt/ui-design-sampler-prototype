@@ -14,4 +14,3 @@ export function FormColumnPanel({
     </div>
   );
 }
-FormFieldRenderer;
